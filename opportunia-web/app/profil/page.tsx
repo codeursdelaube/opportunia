@@ -13,11 +13,13 @@ import {
   ArrowLeft,
   Zap,
   User,
+  Target,
+  Sparkles,
 } from 'lucide-react'
 import { saveProfile, generateUserId } from '@/lib/storage'
 import type { UserProfile } from '@/types'
 
-// ── Step data ────────────────────────────────────────────────
+// ── Lists ────────────────────────────────────────────────────
 
 const FILIERES = [
   'Informatique', 'Génie logiciel', 'Développement web', 'Data Science',
@@ -52,10 +54,6 @@ const COMPETENCES_LIST = [
   'Vente', 'Négociation', 'Prospection', 'Gestion de projet', 'Management',
   // Finance
   'Comptabilité', 'Finance', 'Audit', 'Fiscalité', 'Gestion',
-  // RH / Droit
-  'Recrutement', 'Gestion RH', 'Droit', 'Administration',
-  // Agriculture
-  'Agriculture', 'Agronomie', 'Environnement',
   // Soft
   'Travail en équipe', 'Leadership', 'Entrepreneuriat', 'Innovation',
   'Anglais', 'Français',
@@ -71,20 +69,35 @@ const INTERETS = [
   'Formation', 'Entrepreneuriat', 'Projet',
 ]
 
+const OBJECTIFS_SUGGESTIONS = [
+  'Devenir développeur IA',
+  'Devenir développeur Fullstack',
+  'Devenir Data Analyst',
+  'Devenir Designer UI/UX',
+  'Travailler dans le Marketing Digital',
+  'Devenir Chef de projet Tech',
+  'Devenir Commercial B2B',
+  'Créer ma startup technologique',
+]
+
 // ── Step config ───────────────────────────────────────────────
 
 const STEPS = [
-  { id: 'filiere', label: 'Filière', icon: GraduationCap, description: 'Votre domaine d\'études' },
-  { id: 'niveau', label: 'Niveau', icon: BookOpen, description: 'Votre niveau actuel' },
-  { id: 'competences', label: 'Compétences', icon: Code2, description: 'Vos compétences clés' },
-  { id: 'localisation', label: 'Localisation', icon: MapPin, description: 'Votre ville' },
-  { id: 'interets', label: 'Intérêts', icon: Heart, description: 'Ce que vous recherchez' },
-  { id: 'resume', label: 'Résumé', icon: CheckCircle2, description: 'Validation du profil' },
+  { id: 'identite', label: 'Identité', icon: User, description: 'Qui es-tu et quel est ton objectif ?' },
+  { id: 'filiere', label: 'Filière', icon: GraduationCap, description: 'Ton domaine d\'études principal' },
+  { id: 'niveau', label: 'Niveau', icon: BookOpen, description: 'Ton niveau d\'études actuel' },
+  { id: 'competences', label: 'Compétences', icon: Code2, description: 'Tes savoir-faire techniques et pratiques' },
+  { id: 'localisation', label: 'Localisation', icon: MapPin, description: 'Ta ville de résidence' },
+  { id: 'interets', label: 'Objectifs', icon: Heart, description: 'Types d\'opportunités recherchées' },
+  { id: 'resume', label: 'Validation', icon: CheckCircle2, description: 'Récapitulatif de ton profil' },
 ]
 
 // ── Form state ────────────────────────────────────────────────
 
 interface FormData {
+  prenom: string
+  nom: string
+  objectif_pro: string
   filiere: string
   niveau: string
   competences: string[]
@@ -93,14 +106,15 @@ interface FormData {
 }
 
 const INITIAL_FORM: FormData = {
-  filiere: '',
-  niveau: '',
-  competences: [],
-  localisation: '',
-  interets: [],
+  prenom: 'Éric',
+  nom: 'Koffi',
+  objectif_pro: 'Devenir développeur IA',
+  filiere: 'Informatique',
+  niveau: 'Bac+3',
+  competences: ['JavaScript', 'React', 'TypeScript', 'Git'],
+  localisation: 'Lomé',
+  interets: ['Stage', 'Projet', 'Formation'],
 }
-
-// ── Component ─────────────────────────────────────────────────
 
 export default function ProfilPage() {
   const router = useRouter()
@@ -110,14 +124,15 @@ export default function ProfilPage() {
   const [saving, setSaving] = useState(false)
 
   const totalSteps = STEPS.length
-  const progressPercent = ((currentStep) / (totalSteps - 1)) * 100
+  const progressPercent = (currentStep / (totalSteps - 1)) * 100
 
   function canGoNext(): boolean {
-    if (currentStep === 0) return !!form.filiere
-    if (currentStep === 1) return !!form.niveau
-    if (currentStep === 2) return form.competences.length > 0
-    if (currentStep === 3) return !!form.localisation
-    if (currentStep === 4) return form.interets.length > 0
+    if (currentStep === 0) return form.prenom.trim().length > 0 && form.objectif_pro.trim().length > 0
+    if (currentStep === 1) return !!form.filiere
+    if (currentStep === 2) return !!form.niveau
+    if (currentStep === 3) return form.competences.length > 0
+    if (currentStep === 4) return !!form.localisation
+    if (currentStep === 5) return form.interets.length > 0
     return true
   }
 
@@ -137,11 +152,16 @@ export default function ProfilPage() {
     setSaving(true)
     const profile: UserProfile = {
       id: generateUserId(),
+      prenom: form.prenom.trim() || 'Étudiant',
+      nom: form.nom.trim(),
+      objectif_pro: form.objectif_pro.trim() || 'Devenir développeur IA',
       filiere: form.filiere,
       niveau: form.niveau,
       competences: form.competences,
       localisation: form.localisation,
       interets: form.interets,
+      types_opportunites: form.interets,
+      projets: ['Projet étudiant ou académique'],
       createdAt: new Date().toISOString(),
     }
     saveProfile(profile)
@@ -149,23 +169,23 @@ export default function ProfilPage() {
   }
 
   const filteredSkills = COMPETENCES_LIST.filter(
-    (s) => !searchSkill || s.toLowerCase().includes(searchSkill.toLowerCase()),
+    (s) => !searchSkill || s.toLowerCase().includes(searchSkill.toLowerCase())
   )
 
   return (
-    <div className="min-h-screen hero-gradient flex flex-col items-center justify-center pt-16 px-4 pb-12">
+    <div className="min-h-screen hero-gradient flex flex-col items-center justify-center pt-20 px-4 pb-16">
       <div className="w-full max-w-2xl">
         {/* Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
               <Zap className="w-4 h-4 text-white fill-white" />
             </div>
             <span className="font-bold text-white text-lg">Opportunia</span>
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Créez votre profil</h1>
-          <p className="text-slate-400">
-            En {totalSteps - 1} étapes, nous personnalisons vos recommandations.
+          <h1 className="text-3xl font-extrabold text-white mb-2">Crée ton profil étudiant</h1>
+          <p className="text-slate-400 text-sm">
+            Personnalise ton orientation et reçois les opportunités sur-mesure.
           </p>
         </div>
 
@@ -179,23 +199,19 @@ export default function ProfilPage() {
               return (
                 <div key={step.id} className="flex flex-col items-center gap-1 flex-1">
                   <div
-                    className={`w-9 h-9 rounded-full flex items-center justify-center border-2 transition-all ${
+                    className={`w-8 sm:w-9 h-8 sm:h-9 rounded-full flex items-center justify-center border-2 transition-all ${
                       isDone
                         ? 'bg-blue-500 border-blue-500 text-white'
                         : isActive
-                        ? 'border-blue-500 text-blue-400 bg-blue-500/15'
-                        : 'border-white/15 text-slate-600 bg-transparent'
+                        ? 'border-blue-400 text-blue-300 bg-blue-500/20'
+                        : 'border-white/15 text-slate-500 bg-transparent'
                     }`}
                   >
-                    {isDone ? (
-                      <CheckCircle2 className="w-4 h-4" />
-                    ) : (
-                      <Icon className="w-4 h-4" />
-                    )}
+                    {isDone ? <CheckCircle2 className="w-4 h-4" /> : <Icon className="w-4 h-4" />}
                   </div>
                   <span
-                    className={`text-xs hidden sm:block font-medium transition-colors ${
-                      isActive ? 'text-blue-300' : isDone ? 'text-slate-400' : 'text-slate-700'
+                    className={`text-[11px] hidden sm:block font-medium transition-colors ${
+                      isActive ? 'text-blue-300 font-bold' : isDone ? 'text-slate-400' : 'text-slate-600'
                     }`}
                   >
                     {step.label}
@@ -205,239 +221,293 @@ export default function ProfilPage() {
             })}
           </div>
           {/* Progress bar */}
-          <div className="h-1 bg-white/8 rounded-full overflow-hidden">
+          <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
             <div
-              className="h-full bg-blue-500 rounded-full transition-all duration-500 ease-out"
+              className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-500 ease-out"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
         </div>
 
         {/* Step card */}
-        <div className="glass-card p-5 sm:p-8 border-gradient">
-          {/* Step header */}
-          <div className="mb-8">
-            <p className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-2">
+        <div className="glass-card p-6 sm:p-8 border-gradient">
+          <div className="mb-6">
+            <span className="text-blue-400 text-xs font-bold uppercase tracking-widest">
               Étape {currentStep + 1} / {totalSteps}
-            </p>
-            <h2 className="text-2xl font-bold text-white">{STEPS[currentStep].label}</h2>
+            </span>
+            <h2 className="text-2xl font-bold text-white mt-1">{STEPS[currentStep].label}</h2>
             <p className="text-slate-400 text-sm mt-1">{STEPS[currentStep].description}</p>
           </div>
 
-          {/* ── Step 0: Filière ── */}
+          {/* ── Step 0: Identité & Objectif ── */}
           {currentStep === 0 && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                    Prénom *
+                  </label>
+                  <input
+                    type="text"
+                    value={form.prenom}
+                    onChange={(e) => setForm({ ...form, prenom: e.target.value })}
+                    placeholder="Ex: Éric"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-blue-400 text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                    Nom
+                  </label>
+                  <input
+                    type="text"
+                    value={form.nom}
+                    onChange={(e) => setForm({ ...form, nom: e.target.value })}
+                    placeholder="Ex: Koffi"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-blue-400 text-sm"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                  Objectif professionnel visé *
+                </label>
+                <input
+                  type="text"
+                  value={form.objectif_pro}
+                  onChange={(e) => setForm({ ...form, objectif_pro: e.target.value })}
+                  placeholder="Ex: Devenir développeur IA"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-blue-400 text-sm mb-2"
+                />
+
+                <p className="text-[11px] text-slate-400 mb-2">Suggestions populaires :</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {OBJECTIFS_SUGGESTIONS.map((obj) => (
+                    <button
+                      key={obj}
+                      type="button"
+                      onClick={() => setForm({ ...form, objectif_pro: obj })}
+                      className={`text-xs px-2.5 py-1 rounded-lg border transition-all cursor-pointer ${
+                        form.objectif_pro === obj
+                          ? 'bg-blue-500/25 border-blue-500 text-blue-300'
+                          : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      {obj}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── Step 1: Filière ── */}
+          {currentStep === 1 && (
             <div>
-              <p className="text-slate-300 text-sm mb-4">Sélectionnez votre filière :</p>
+              <p className="text-slate-300 text-xs mb-3">Sélectionne ta filière :</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-72 overflow-y-auto pr-1">
                 {FILIERES.map((f) => (
                   <button
                     key={f}
                     onClick={() => setForm({ ...form, filiere: f })}
-                    className={`px-3 py-2.5 rounded-xl text-sm font-medium border text-left transition-all ${
+                    className={`px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium border text-left transition-all cursor-pointer ${
                       form.filiere === f
-                        ? 'bg-blue-500/25 border-blue-500/60 text-blue-200'
-                        : 'bg-white/4 border-white/8 text-slate-400 hover:border-white/20 hover:text-slate-200'
+                        ? 'bg-blue-500/25 border-blue-500/60 text-blue-200 shadow-md'
+                        : 'bg-white/5 border-white/10 text-slate-400 hover:border-white/20 hover:text-slate-200'
                     }`}
                   >
                     {f}
                   </button>
                 ))}
               </div>
-              {form.filiere && (
-                <p className="mt-4 text-sm text-emerald-400 flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4" />
-                  {form.filiere} sélectionné
-                </p>
-              )}
             </div>
           )}
 
-          {/* ── Step 1: Niveau ── */}
-          {currentStep === 1 && (
-            <div>
-              <p className="text-slate-300 text-sm mb-4">Sélectionnez votre niveau d&apos;études actuel :</p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {NIVEAUX.map((n) => (
-                  <button
-                    key={n}
-                    onClick={() => setForm({ ...form, niveau: n })}
-                    className={`py-4 rounded-xl text-sm font-semibold border transition-all ${
-                      form.niveau === n
-                        ? 'bg-blue-500/25 border-blue-500/60 text-blue-200'
-                        : 'bg-white/4 border-white/8 text-slate-400 hover:border-white/20 hover:text-slate-200'
-                    }`}
-                  >
-                    {n}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* ── Step 2: Compétences ── */}
+          {/* ── Step 2: Niveau ── */}
           {currentStep === 2 && (
-            <div>
-              <p className="text-slate-300 text-sm mb-3">
-                Sélectionnez vos compétences{' '}
-                <span className="text-slate-500">({form.competences.length} sélectionnée{form.competences.length > 1 ? 's' : ''})</span>
-              </p>
-              <input
-                type="text"
-                placeholder="Rechercher une compétence..."
-                value={searchSkill}
-                onChange={(e) => setSearchSkill(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-200 placeholder-slate-600 text-sm mb-3"
-              />
-              <div className="flex flex-wrap gap-2 max-h-52 overflow-y-auto">
-                {filteredSkills.map((skill) => (
-                  <button
-                    key={skill}
-                    onClick={() => setForm({ ...form, competences: toggleItem(form.competences, skill) })}
-                    className={`chip border transition-all ${
-                      form.competences.includes(skill)
-                        ? 'bg-blue-500/25 border-blue-500/50 text-blue-200'
-                        : 'bg-white/4 border-white/10 text-slate-400 hover:border-white/25 hover:text-slate-200'
-                    }`}
-                  >
-                    {skill}
-                  </button>
-                ))}
-              </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              {NIVEAUX.map((n) => (
+                <button
+                  key={n}
+                  onClick={() => setForm({ ...form, niveau: n })}
+                  className={`p-4 rounded-xl text-sm font-semibold border text-center transition-all cursor-pointer ${
+                    form.niveau === n
+                      ? 'bg-blue-500/25 border-blue-500/60 text-blue-200 shadow-md'
+                      : 'bg-white/5 border-white/10 text-slate-400 hover:border-white/20 hover:text-slate-200'
+                  }`}
+                >
+                  {n}
+                </button>
+              ))}
             </div>
           )}
 
-          {/* ── Step 3: Localisation ── */}
+          {/* ── Step 3: Compétences ── */}
           {currentStep === 3 && (
             <div>
-              <p className="text-slate-300 text-sm mb-4">Sélectionnez votre ville :</p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {LOCALISATIONS.map((loc) => (
-                  <button
-                    key={loc}
-                    onClick={() => setForm({ ...form, localisation: loc })}
-                    className={`py-4 rounded-xl text-sm font-semibold border transition-all ${
-                      form.localisation === loc
-                        ? 'bg-blue-500/25 border-blue-500/60 text-blue-200'
-                        : 'bg-white/4 border-white/8 text-slate-400 hover:border-white/20 hover:text-slate-200'
-                    }`}
-                  >
-                    {loc}
-                  </button>
-                ))}
+              <input
+                type="text"
+                value={searchSkill}
+                onChange={(e) => setSearchSkill(e.target.value)}
+                placeholder="Rechercher une compétence..."
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-blue-400 text-sm mb-3"
+              />
+              <div className="flex flex-wrap gap-1.5 max-h-64 overflow-y-auto pr-1">
+                {filteredSkills.map((s) => {
+                  const selected = form.competences.includes(s)
+                  return (
+                    <button
+                      key={s}
+                      onClick={() => setForm({ ...form, competences: toggleItem(form.competences, s) })}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-all cursor-pointer ${
+                        selected
+                          ? 'bg-blue-500 border-blue-400 text-white'
+                          : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      {selected ? '✓ ' : '+ '} {s}
+                    </button>
+                  )
+                })}
               </div>
-            </div>
-          )}
-
-          {/* ── Step 4: Intérêts ── */}
-          {currentStep === 4 && (
-            <div>
-              <p className="text-slate-300 text-sm mb-4">
-                Qu&apos;est-ce que vous recherchez ?{' '}
-                <span className="text-slate-500">(plusieurs choix possibles)</span>
+              <p className="text-xs text-slate-400 mt-3">
+                {form.competences.length} compétence(s) sélectionnée(s)
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {INTERETS.map((interest) => (
-                  <button
-                    key={interest}
-                    onClick={() => setForm({ ...form, interets: toggleItem(form.interets, interest) })}
-                    className={`py-4 rounded-xl text-sm font-semibold border transition-all ${
-                      form.interets.includes(interest)
-                        ? 'bg-blue-500/25 border-blue-500/60 text-blue-200'
-                        : 'bg-white/4 border-white/8 text-slate-400 hover:border-white/20 hover:text-slate-200'
-                    }`}
-                  >
-                    {interest}
-                  </button>
-                ))}
+            </div>
+          )}
+
+          {/* ── Step 4: Localisation ── */}
+          {currentStep === 4 && (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              {LOCALISATIONS.map((loc) => (
+                <button
+                  key={loc}
+                  onClick={() => setForm({ ...form, localisation: loc })}
+                  className={`p-3.5 rounded-xl text-sm font-semibold border text-center transition-all cursor-pointer ${
+                    form.localisation === loc
+                      ? 'bg-blue-500/25 border-blue-500/60 text-blue-200 shadow-md'
+                      : 'bg-white/5 border-white/10 text-slate-400 hover:border-white/20 hover:text-slate-200'
+                  }`}
+                >
+                  {loc}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* ── Step 5: Intérêts / Types ── */}
+          {currentStep === 5 && (
+            <div>
+              <p className="text-slate-300 text-xs mb-3">
+                Sélectionne les types d&apos;opportunités qui t&apos;intéressent :
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                {INTERETS.map((it) => {
+                  const sel = form.interets.includes(it)
+                  return (
+                    <button
+                      key={it}
+                      onClick={() => setForm({ ...form, interets: toggleItem(form.interets, it) })}
+                      className={`p-3.5 rounded-xl text-sm font-semibold border text-center transition-all cursor-pointer ${
+                        sel
+                          ? 'bg-purple-500/25 border-purple-500/60 text-purple-200 shadow-md'
+                          : 'bg-white/5 border-white/10 text-slate-400 hover:border-white/20 hover:text-slate-200'
+                      }`}
+                    >
+                      {sel ? '✓ ' : ''} {it}
+                    </button>
+                  )
+                })}
               </div>
             </div>
           )}
 
-          {/* ── Step 5: Résumé ── */}
-          {currentStep === 5 && (
-            <div className="space-y-5">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
-                  <User className="w-6 h-6 text-blue-400" />
+          {/* ── Step 6: Résumé & Validation ── */}
+          {currentStep === 6 && (
+            <div className="space-y-4">
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+                <div className="flex justify-between items-center pb-2 border-b border-white/10">
+                  <span className="text-xs text-slate-400">Étudiant</span>
+                  <span className="text-sm font-bold text-white">
+                    {form.prenom} {form.nom}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center pb-2 border-b border-white/10">
+                  <span className="text-xs text-slate-400">Objectif pro</span>
+                  <span className="text-sm font-semibold text-purple-300">
+                    {form.objectif_pro}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center pb-2 border-b border-white/10">
+                  <span className="text-xs text-slate-400">Filière & Niveau</span>
+                  <span className="text-sm font-medium text-white">
+                    {form.filiere} ({form.niveau})
+                  </span>
+                </div>
+                <div className="flex justify-between items-center pb-2 border-b border-white/10">
+                  <span className="text-xs text-slate-400">Ville</span>
+                  <span className="text-sm font-medium text-white">{form.localisation}</span>
                 </div>
                 <div>
-                  <p className="text-white font-semibold">Voici votre profil</p>
-                  <p className="text-slate-400 text-sm">Vérifiez les informations avant de continuer.</p>
-                </div>
-              </div>
-
-              {[
-                { label: 'Filière', value: form.filiere, icon: GraduationCap },
-                { label: 'Niveau', value: form.niveau, icon: BookOpen },
-                { label: 'Localisation', value: form.localisation, icon: MapPin },
-              ].map(({ label, value, icon: Icon }) => (
-                <div key={label} className="flex items-center gap-4 p-4 rounded-xl bg-white/4 border border-white/8">
-                  <Icon className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs text-slate-500 mb-0.5">{label}</p>
-                    <p className="text-sm font-medium text-white">{value}</p>
+                  <span className="text-xs text-slate-400 block mb-1.5">Compétences :</span>
+                  <div className="flex flex-wrap gap-1">
+                    {form.competences.map((c) => (
+                      <span
+                        key={c}
+                        className="text-xs px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30"
+                      >
+                        {c}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              ))}
-
-              <div className="p-4 rounded-xl bg-white/4 border border-white/8">
-                <p className="text-xs text-slate-500 mb-2 flex items-center gap-1">
-                  <Code2 className="w-3.5 h-3.5" />
-                  Compétences ({form.competences.length})
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {form.competences.map((s) => (
-                    <span key={s} className="chip border bg-blue-500/15 text-blue-300 border-blue-500/25 text-xs">
-                      {s}
-                    </span>
-                  ))}
-                </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-white/4 border border-white/8">
-                <p className="text-xs text-slate-500 mb-2 flex items-center gap-1">
-                  <Heart className="w-3.5 h-3.5" />
-                  Intérêts
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {form.interets.map((i) => (
-                    <span key={i} className="chip border bg-purple-500/15 text-purple-300 border-purple-500/25 text-xs">
-                      {i}
-                    </span>
-                  ))}
-                </div>
+              <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs flex items-center gap-2">
+                <Sparkles className="w-4 h-4 flex-shrink-0" />
+                <span>
+                  Ton profil est prêt ! Opportunia va calculer tes correspondances immédiatement.
+                </span>
               </div>
             </div>
           )}
 
-          {/* Navigation */}
-          <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/8">
-            <button
-              onClick={goPrev}
-              disabled={currentStep === 0}
-              className="flex items-center gap-2 px-5 py-3 rounded-xl border border-white/15 text-slate-400 text-sm font-medium transition-all hover:border-white/30 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Retour
-            </button>
+          {/* Navigation buttons */}
+          <div className="flex items-center justify-between mt-8 pt-5 border-t border-white/10">
+            {currentStep > 0 ? (
+              <button
+                onClick={goPrev}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs sm:text-sm font-medium transition-all cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Précédent
+              </button>
+            ) : (
+              <div />
+            )}
 
             {currentStep < totalSteps - 1 ? (
               <button
                 onClick={goNext}
                 disabled={!canGoNext()}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-400 text-white text-sm font-semibold transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-blue-500/25"
+                className={`inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                  canGoNext()
+                    ? 'bg-blue-500 hover:bg-blue-400 text-white shadow-lg shadow-blue-500/25'
+                    : 'bg-white/10 text-slate-500 cursor-not-allowed'
+                }`}
               >
-                Continuer
+                Suivant
                 <ArrowRight className="w-4 h-4" />
               </button>
             ) : (
               <button
                 onClick={handleSave}
                 disabled={saving}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold transition-all disabled:opacity-60 hover:shadow-lg hover:shadow-emerald-500/25"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white text-xs sm:text-sm font-bold shadow-lg shadow-blue-500/30 transition-all cursor-pointer"
               >
-                {saving ? 'Analyse en cours...' : 'Voir mes opportunités'}
-                {!saving && <Zap className="w-4 h-4 fill-current" />}
+                {saving ? 'Création en cours...' : 'Finaliser & Voir mes opportunités'}
+                <Sparkles className="w-4 h-4" />
               </button>
             )}
           </div>

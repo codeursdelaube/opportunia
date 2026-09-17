@@ -15,10 +15,9 @@ import {
   Star,
   ChevronRight,
 } from 'lucide-react'
-import opportunitiesData from '@/data/opportunities.json'
+import { ALL_OPPORTUNITIES as opportunities } from '@/lib/opportunities'
+import { HomeCtaButton } from '@/components/home/HomeCtaButton'
 import type { Opportunity } from '@/types'
-
-const opportunities = (opportunitiesData as { opportunities: Opportunity[] }).opportunities
 
 const CATEGORIES = [
   { icon: Briefcase, label: 'Stages', count: '120+', color: 'text-blue-400', bg: 'bg-blue-500/10 border-blue-500/20', desc: 'Expériences professionnelles' },
@@ -99,41 +98,19 @@ export default function LandingPage() {
             </div>
 
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black leading-[1.08] tracking-tight text-white">
-              Les opportunités{' '}
-              <br className="hidden sm:block" />
-              <span className="gradient-text">existent.</span>
+              Ne cherche plus une opportunité.{' '}
               <br />
-              <span className="text-slate-300 text-3xl sm:text-5xl lg:text-6xl font-bold">
-                Celles qui vous{' '}
-              </span>
-              <br />
-              <span className="text-white">correspondent.</span>
+              <span className="gradient-text">Trouve celle qui te correspond.</span>
             </h1>
 
             <p className="text-base sm:text-lg text-slate-400 max-w-xl leading-relaxed">
-              Opportunia analyse votre profil étudiant et calcule un score de compatibilité
-              pour chaque opportunité. Stages, bourses, concours, emplois — triés
-              par pertinence.
+              Opportunia analyse ton profil et te recommande les stages, emplois, formations,
+              concours et bourses adaptés à ton parcours. Il te montre ce qui te manque et
+              t&apos;accompagne jusqu&apos;à la candidature.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Link
-                href="/profil"
-                id="cta-create-profile"
-                className="flex items-center justify-center gap-2 px-7 py-3.5 sm:py-4 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-semibold text-base transition-all hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5"
-              >
-                Créer mon profil
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/opportunites"
-                id="cta-explore"
-                className="flex items-center justify-center gap-2 px-7 py-3.5 sm:py-4 rounded-xl border border-white/15 hover:border-white/30 text-white font-medium text-base transition-all hover:bg-white/5"
-              >
-                Explorer les opportunités
-              </Link>
-            </div>
+            <HomeCtaButton />
 
             {/* Social proof */}
             <div className="flex items-center gap-4 sm:gap-6 pt-2 sm:pt-4">

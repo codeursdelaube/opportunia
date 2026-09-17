@@ -38,11 +38,17 @@ export interface Opportunity {
 
 export interface UserProfile {
   id: string
+  prenom: string
+  nom: string
   filiere: string
   niveau: string
   competences: string[]
   localisation: string
   interets: string[]
+  types_opportunites?: string[]
+  objectif_pro: string
+  projets?: string[]
+  cv_uploaded?: boolean
   createdAt: string
 }
 
@@ -59,6 +65,13 @@ export interface MatchReason {
   label: string
 }
 
+export interface MissingSkillsAdvice {
+  matchedSkills: string[]
+  missingSkills: string[]
+  coveragePercent: number
+  recommendations: string[]
+}
+
 export interface MatchResult {
   opportunity: Opportunity
   score: number                // 0-100
@@ -66,6 +79,7 @@ export interface MatchResult {
   matchedSkills: string[]
   missingSkills: string[]
   reasons: MatchReason[]
+  advice?: MissingSkillsAdvice
   isExpired: boolean
   daysRemaining: number | null
   expiringSoon: boolean
@@ -77,3 +91,65 @@ export interface RadarDataPoint {
   value: number
   fullMark: number
 }
+
+// ── Application Tracker ───────────────────────────────────────
+
+export type ApplicationStatus =
+  | 'saved'       // ❤️ Sauvegardée
+  | 'prepared'    // 📝 Candidature préparée
+  | 'sent'        // 📨 Candidature envoyée
+  | 'pending'     // 👀 En attente
+  | 'interview'   // 🎤 Entretien
+  | 'accepted'    // 🎉 Accepté
+  | 'rejected'    // ❌ Refusé
+
+export interface ApplicationItem {
+  opportunityId: string
+  status: ApplicationStatus
+  date: string
+  notes?: string
+}
+
+// ── Career Readiness ──────────────────────────────────────────
+
+export interface CareerReadinessScore {
+  total: number           // 0-100
+  formation: number       // 0-100
+  competences: number     // 0-100
+  cv: number              // 0-100 (ou note explicite si non renseigné)
+  experience: number      // 0-100
+  objectif: number        // 0-100
+  actionItems: string[]
+  isCvMissing: boolean
+}
+
+// ── Career Path ───────────────────────────────────────────────
+
+export interface CareerPathStep {
+  id: string
+  title: string
+  category: 'fondamentaux' | 'avance' | 'projets' | 'tremplins' | 'objectif'
+  skills: string[]
+  description: string
+  completed: boolean
+  current?: boolean
+}
+
+export interface CareerPathData {
+  objective: string
+  targetRole: string
+  progressPercent: number
+  currentStepTitle: string
+  steps: CareerPathStep[]
+  recommendedOpportunities?: Opportunity[]
+  nextAction: string
+}
+
+// ── Application Generator ─────────────────────────────────────
+
+export interface GeneratedApplication {
+  subject: string
+  emailBody: string
+  coverLetter: string
+}
+

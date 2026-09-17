@@ -13,6 +13,7 @@ import type {
   MatchResult,
   MatchBreakdown,
   MatchReason,
+  MissingSkillsAdvice,
 } from '@/types'
 
 // ── Text normalization ────────────────────────────────────────
@@ -143,40 +144,49 @@ function findFieldGroup(normalised: string): string | null {
  * Only well-documented, reasonable relationships are included.
  */
 const SKILL_PROXIMITY: Record<string, string[]> = {
-  javascript: ['typescript', 'node.js', 'nodejs'],
-  typescript: ['javascript'],
-  react: ['next.js', 'nextjs', 'react native'],
-  'next.js': ['react', 'nextjs'],
-  nextjs: ['react', 'next.js'],
-  'node.js': ['nodejs', 'javascript', 'express'],
-  nodejs: ['node.js', 'javascript', 'express'],
-  python: ['django', 'flask', 'fastapi'],
-  django: ['python'],
-  flask: ['python'],
-  java: ['spring', 'kotlin'],
-  spring: ['java'],
+  javascript: ['typescript', 'node.js', 'nodejs', 'react', 'developpement web', 'frontend'],
+  typescript: ['javascript', 'react', 'next.js', 'node.js', 'developpement web'],
+  react: ['next.js', 'nextjs', 'react native', 'javascript', 'typescript', 'frontend', 'developpement web'],
+  'next.js': ['react', 'nextjs', 'typescript', 'javascript', 'frontend', 'developpement web'],
+  nextjs: ['react', 'next.js', 'typescript', 'javascript', 'developpement web'],
+  'node.js': ['nodejs', 'javascript', 'typescript', 'express', 'backend'],
+  nodejs: ['node.js', 'javascript', 'typescript', 'express', 'backend'],
+  'developpement web': ['web', 'react', 'javascript', 'typescript', 'html', 'css', 'next.js', 'frontend', 'backend', 'fullstack'],
+  web: ['developpement web', 'html', 'css', 'javascript', 'react'],
+  html: ['css', 'javascript', 'developpement web', 'frontend'],
+  css: ['html', 'javascript', 'tailwind', 'bootstrap', 'developpement web'],
+  tailwind: ['css', 'bootstrap', 'developpement web'],
+  python: ['django', 'flask', 'fastapi', 'data science', 'machine learning', 'statistiques', 'analyse de donnees'],
+  django: ['python', 'backend'],
+  flask: ['python', 'backend'],
+  fastapi: ['python', 'backend', 'api'],
+  java: ['spring', 'kotlin', 'backend'],
+  spring: ['java', 'backend'],
   kotlin: ['java', 'android'],
-  android: ['kotlin', 'java'],
-  figma: ['ui ux', 'design', 'prototypage'],
-  'ui ux': ['figma', 'design'],
+  android: ['kotlin', 'java', 'mobile'],
+  figma: ['ui ux', 'ui/ux', 'design', 'prototypage', 'graphisme', 'wireframing'],
+  'ui ux': ['figma', 'design', 'ui/ux', 'prototypage', 'wireframing'],
+  'ui/ux': ['figma', 'ui ux', 'design', 'prototypage'],
   photoshop: ['illustrator', 'design', 'graphisme', 'indesign'],
   illustrator: ['photoshop', 'design', 'graphisme', 'indesign'],
   indesign: ['photoshop', 'illustrator', 'graphisme'],
-  graphisme: ['photoshop', 'illustrator', 'design'],
-  design: ['figma', 'ui ux', 'graphisme', 'photoshop'],
-  marketing: ['digital marketing', 'communication', 'community management'],
-  'digital marketing': ['marketing', 'community management'],
-  'community management': ['marketing', 'digital marketing', 'communication'],
-  communication: ['marketing', 'community management'],
-  vente: ['prospection', 'negociation', 'commercial'],
-  prospection: ['vente', 'negociation'],
-  negociation: ['vente', 'prospection'],
+  graphisme: ['photoshop', 'illustrator', 'design', 'figma'],
+  design: ['figma', 'ui ux', 'ui/ux', 'graphisme', 'photoshop'],
+  marketing: ['digital marketing', 'communication', 'community management', 'reseaux sociaux'],
+  'digital marketing': ['marketing', 'community management', 'communication', 'seo'],
+  'community management': ['marketing', 'digital marketing', 'communication', 'reseaux sociaux'],
+  communication: ['marketing', 'community management', 'relations publiques'],
+  vente: ['prospection', 'negociation', 'commercial', 'relation client'],
+  prospection: ['vente', 'negociation', 'commercial'],
+  negociation: ['vente', 'prospection', 'commercial'],
+  commercial: ['vente', 'prospection', 'negociation', 'business development'],
   finance: ['comptabilite', 'tresorerie', 'audit', 'gestion'],
   comptabilite: ['finance', 'audit', 'gestion', 'tresorerie'],
-  audit: ['comptabilite', 'finance'],
+  audit: ['comptabilite', 'finance', 'gestion'],
   gestion: ['management', 'administration', 'finance', 'comptabilite'],
-  management: ['gestion', 'leadership'],
-  sql: ['mysql', 'postgresql', 'base de donnees'],
+  management: ['gestion', 'leadership', 'gestion de projet'],
+  'gestion de projet': ['management', 'agile', 'scrum', 'leadership'],
+  sql: ['mysql', 'postgresql', 'base de donnees', 'analyse de donnees'],
   mysql: ['sql', 'postgresql', 'base de donnees'],
   postgresql: ['sql', 'mysql', 'base de donnees'],
   git: ['github', 'gitlab', 'versionning'],
@@ -185,13 +195,18 @@ const SKILL_PROXIMITY: Record<string, string[]> = {
   programmation: ['informatique', 'developpement logiciel', 'python', 'javascript', 'java'],
   'developpement logiciel': ['programmation', 'informatique', 'ingenierie logicielle'],
   'ingenierie logicielle': ['developpement logiciel', 'programmation'],
-  informatique: ['programmation', 'developpement logiciel'],
+  informatique: ['programmation', 'developpement logiciel', 'systemes', 'reseaux'],
   innovation: ['entrepreneuriat', 'design thinking', 'creativite'],
   entrepreneuriat: ['innovation', 'business development'],
-  ia: ['intelligence artificielle', 'machine learning', 'deep learning'],
-  'intelligence artificielle': ['ia', 'machine learning', 'deep learning'],
-  'machine learning': ['ia', 'intelligence artificielle', 'data science'],
-  'data science': ['machine learning', 'statistiques', 'python'],
+  ia: ['intelligence artificielle', 'machine learning', 'deep learning', 'data science', 'python'],
+  'intelligence artificielle': ['ia', 'machine learning', 'deep learning', 'data science', 'python'],
+  'machine learning': ['ia', 'intelligence artificielle', 'data science', 'deep learning', 'python', 'statistiques'],
+  'data science': ['machine learning', 'statistiques', 'analyse de donnees', 'python', 'sql', 'intelligence artificielle'],
+  'analyse de donnees': ['data science', 'statistiques', 'excel', 'power bi', 'sql', 'python'],
+  statistiques: ['data science', 'analyse de donnees', 'machine learning', 'python'],
+  excel: ['analyse de donnees', 'comptabilite', 'gestion', 'finance', 'bureautique'],
+  'power bi': ['tableau', 'analyse de donnees', 'business intelligence', 'excel'],
+  tableau: ['power bi', 'analyse de donnees', 'business intelligence'],
 }
 
 // ── Level conversion ──────────────────────────────────────────
@@ -454,66 +469,108 @@ export function getMatchReasons(
 
   // Filière
   if (breakdown.filiere >= 28) {
-    reasons.push({ type: 'positive', label: 'Votre filière correspond parfaitement' })
+    reasons.push({ type: 'positive', label: `Ta filière (${profile.filiere}) correspond parfaitement` })
   } else if (breakdown.filiere >= 18) {
-    reasons.push({ type: 'positive', label: 'Votre filière est proche du domaine requis' })
+    reasons.push({ type: 'positive', label: `Ta filière (${profile.filiere}) est proche du domaine ciblé` })
   } else if (breakdown.filiere >= 8) {
-    reasons.push({ type: 'neutral', label: 'Votre filière est partiellement compatible' })
-  } else if (breakdown.filiere === 0) {
-    reasons.push({ type: 'negative', label: 'Votre filière ne correspond pas directement' })
+    reasons.push({ type: 'neutral', label: `Ta filière est partiellement compatible avec l'offre` })
+  } else {
+    reasons.push({ type: 'negative', label: `Ta filière s'éloigne des critères ciblés` })
   }
 
   // Niveau
   const profileNum = levelToNumber(profile.niveau)
   const reqNum = levelToNumber(opportunity.niveau_min)
   if (!opportunity.niveau_min || breakdown.niveau === 20) {
-    reasons.push({ type: 'positive', label: 'Votre niveau est compatible' })
+    reasons.push({ type: 'positive', label: `Ton niveau (${profile.niveau}) est suffisant pour cette offre` })
   } else if (profileNum < reqNum) {
     reasons.push({
       type: 'negative',
-      label: `Niveau requis : ${opportunity.niveau_min} (vous avez ${profile.niveau})`,
+      label: `Niveau requis : ${opportunity.niveau_min} (tu es actuellement à ${profile.niveau})`,
     })
   } else {
-    reasons.push({ type: 'positive', label: 'Votre niveau est compatible' })
+    reasons.push({ type: 'positive', label: `Ton niveau (${profile.niveau}) est compatible` })
   }
 
   // Compétences
   const total = matchedSkills.length + missingSkills.length
   if (total === 0) {
-    reasons.push({ type: 'positive', label: 'Aucune compétence spécifique requise' })
+    reasons.push({ type: 'positive', label: 'Aucune compétence technique préalable obligatoire' })
   } else if (matchedSkills.length === total) {
-    reasons.push({ type: 'positive', label: `Toutes les compétences requises correspondent (${total}/${total})` })
+    reasons.push({ type: 'positive', label: `Toutes tes compétences requises correspondent (${total}/${total})` })
   } else if (matchedSkills.length > 0) {
     reasons.push({
       type: 'positive',
-      label: `${matchedSkills.length} compétence${matchedSkills.length > 1 ? 's' : ''} sur ${total} correspondent`,
+      label: `${matchedSkills.length} de tes compétences correspondent (${matchedSkills.slice(0, 3).join(', ')}${matchedSkills.length > 3 ? '...' : ''})`,
     })
-  } else {
-    reasons.push({ type: 'negative', label: 'Aucune compétence requise dans votre profil' })
+  }
+
+  // Missing skills warnings
+  if (missingSkills.length > 0) {
+    const topMissing = missingSkills.slice(0, 2).join(' et ')
+    reasons.push({
+      type: 'neutral',
+      label: `Compétence${missingSkills.length > 1 ? 's' : ''} à renforcer : ${topMissing}`,
+    })
   }
 
   // Localisation
   if (breakdown.localisation >= 8) {
     const normOpp = normalizeText(opportunity.localisation)
     if (isRemote(normOpp)) {
-      reasons.push({ type: 'positive', label: "L'offre est disponible à distance / internationale" })
+      reasons.push({ type: 'positive', label: "Offre 100% accessible à distance / remote" })
     } else {
-      reasons.push({ type: 'positive', label: `L'offre est disponible à ${opportunity.localisation}` })
+      reasons.push({ type: 'positive', label: `L'opportunité est située à ${opportunity.localisation}` })
     }
   } else if (breakdown.localisation > 0) {
-    reasons.push({ type: 'neutral', label: 'Localisation différente de la vôtre' })
+    reasons.push({ type: 'neutral', label: `Localisation (${opportunity.localisation}) différente de ta ville (${profile.localisation})` })
   } else {
-    reasons.push({ type: 'negative', label: 'Localisation éloignée' })
+    reasons.push({ type: 'negative', label: 'Localisation géographique éloignée' })
   }
 
   // Intérêts
   if (breakdown.interets === 10) {
-    reasons.push({ type: 'positive', label: `Vous recherchez des ${opportunity.type}s` })
-  } else if (breakdown.interets === 0) {
-    reasons.push({ type: 'negative', label: `Ce type d'opportunité n'est pas dans vos intérêts` })
+    reasons.push({ type: 'positive', label: `Le format (${opportunity.type}) correspond à tes objectifs recherchés` })
   }
 
   return reasons
+}
+
+// ── Missing skills actionable advice ──────────────────────────
+
+export function getMissingSkillsAdvice(
+  profile: UserProfile,
+  opportunity: Opportunity,
+): MissingSkillsAdvice {
+  const { matchedSkills, missingSkills } = getSkillsScore(
+    profile.competences ?? [],
+    opportunity.competences_requises ?? [],
+  )
+
+  const total = matchedSkills.length + missingSkills.length
+  const coveragePercent = total > 0 ? Math.round((matchedSkills.length / total) * 100) : 100
+
+  const recommendations: string[] = []
+  if (missingSkills.length > 0) {
+    recommendations.push(`Apprendre les fondamentaux de ${missingSkills[0]}`)
+    if (missingSkills.length > 1) {
+      recommendations.push(`Réaliser un mini-projet combinant ${matchedSkills[0] || profile.filiere} et ${missingSkills[1]}`)
+    } else {
+      recommendations.push(`Créer un projet pratique utilisant ${missingSkills[0]}`)
+    }
+    recommendations.push(`Ajouter cette réalisation sur ton profil et ton CV avant d'envoyer`)
+  } else {
+    recommendations.push(`Ton profil technique couvre 100% des compétences demandées !`)
+    recommendations.push(`Prépare ta candidature en valorisant tes réalisations récentes`)
+    recommendations.push(`Postule rapidement pour maximiser tes chances d'être retenu`)
+  }
+
+  return {
+    matchedSkills,
+    missingSkills,
+    coveragePercent,
+    recommendations,
+  }
 }
 
 // ── Master function ───────────────────────────────────────────
@@ -542,6 +599,7 @@ export function calculateMatchScore(profile: UserProfile, opportunity: Opportuni
   const score = Math.min(100, Math.max(0, rawScore))
 
   const reasons = getMatchReasons(profile, opportunity, breakdown, matchedSkills, missingSkills)
+  const advice = getMissingSkillsAdvice(profile, opportunity)
 
   return {
     opportunity,
@@ -550,6 +608,7 @@ export function calculateMatchScore(profile: UserProfile, opportunity: Opportuni
     matchedSkills,
     missingSkills,
     reasons,
+    advice,
     isExpired,
     daysRemaining,
     expiringSoon,

@@ -3,12 +3,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Zap, LayoutDashboard, Briefcase, BookmarkCheck, User, Menu, X } from 'lucide-react'
+import { Zap, LayoutDashboard, Briefcase, BookmarkCheck, User, Menu, X, Send, Compass } from 'lucide-react'
 import { loadProfile } from '@/lib/storage'
 import { ThemeToggle } from './ThemeToggle'
 
 const NAV_LINKS = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/career-path', label: 'Career Path', icon: Compass },
+  { href: '/candidatures', label: 'Candidatures', icon: Send },
   { href: '/opportunites', label: 'Opportunités', icon: Briefcase },
   { href: '/sauvegardees', label: 'Sauvegardées', icon: BookmarkCheck },
 ]
@@ -40,7 +42,7 @@ export function Navbar() {
           <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center shadow-lg group-hover:shadow-blue-500/40 transition-shadow">
             <Zap className="w-4 h-4 text-white fill-white" />
           </div>
-          <span className="font-bold text-lg tracking-tight text-white">
+          <span className="font-bold text-lg tracking-tight" style={{ color: 'var(--opp-heading)' }}>
             Opportunia
           </span>
         </Link>
@@ -53,9 +55,10 @@ export function Navbar() {
               href={href}
               className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
                 pathname === href
-                  ? 'bg-blue-500/20 text-blue-300'
-                  : 'text-slate-400 hover:text-white hover:bg-white/5'
+                  ? 'bg-blue-500/20 text-blue-400'
+                  : 'text-slate-400 hover:bg-white/5'
               }`}
+              style={pathname !== href ? { color: 'var(--opp-text-muted)' } : {}}
             >
               <Icon className="w-4 h-4" />
               {label}
@@ -78,7 +81,8 @@ export function Navbar() {
             <>
               <Link
                 href="/opportunites"
-                className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                className="px-4 py-2 text-sm font-medium transition-colors"
+                style={{ color: 'var(--opp-text-muted)' }}
               >
                 Explorer
               </Link>
@@ -96,7 +100,8 @@ export function Navbar() {
         <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
           <button
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+            className="p-2 rounded-lg hover:bg-white/5 transition-colors"
+            style={{ color: 'var(--opp-text-muted)' }}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Menu"
           >
@@ -107,7 +112,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-white/10 bg-[#0a0f1e]/95 backdrop-blur-xl px-4 py-4 flex flex-col gap-2">
+        <div className="md:hidden border-t border-white/10 backdrop-blur-xl px-4 py-4 flex flex-col gap-2" style={{ background: 'var(--color-mobile-menu-bg)' }}>
           {hasProfile && NAV_LINKS.map(({ href, label, icon: Icon }) => (
             <Link
               key={href}
@@ -115,15 +120,16 @@ export function Navbar() {
               onClick={() => setMobileOpen(false)}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                 pathname === href
-                  ? 'bg-blue-500/20 text-blue-300'
-                  : 'text-slate-400 hover:text-white hover:bg-white/5'
+                  ? 'bg-blue-500/20 text-blue-400'
+                  : 'hover:bg-white/5'
               }`}
+              style={pathname !== href ? { color: 'var(--opp-text-muted)' } : {}}
             >
               <Icon className="w-4 h-4" />
               {label}
             </Link>
           ))}
-          <div className="pt-2 border-t border-white/10">
+          <div className="pt-2 border-t" style={{ borderColor: 'var(--color-border-subtle)' }}>
             {hasProfile ? (
               <Link
                 href="/dashboard"

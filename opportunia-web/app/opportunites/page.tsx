@@ -1,17 +1,16 @@
 'use client'
 
-import { useMemo, useState } from 'react'
-import { Search, SlidersHorizontal, X } from 'lucide-react'
+import { useMemo, useState, useEffect } from 'react'
+import Link from 'next/link'
+import { Search, SlidersHorizontal, X, Sparkles, Filter, AlertCircle, ArrowRight } from 'lucide-react'
 import { OpportunityCard } from '@/components/opportunity/OpportunityCard'
 import { loadProfile } from '@/lib/storage'
-import { rankOpportunities, calculateMatchScore } from '@/lib/matching'
+import { rankOpportunities } from '@/lib/matching'
 import { getTypeLabel } from '@/lib/utils'
-import opportunitiesData from '@/data/opportunities.json'
-import type { Opportunity, MatchResult } from '@/types'
+import { ALL_OPPORTUNITIES } from '@/lib/opportunities'
+import type { Opportunity, MatchResult, UserProfile } from '@/types'
 
-const ALL_OPPORTUNITIES = (opportunitiesData as { opportunities: Opportunity[] }).opportunities
-
-const TYPES = ['Tous', 'stage', 'emploi', 'bourse', 'concours', 'formation', 'freelance']
+const TYPES = ['Tous', 'stage', 'emploi', 'bourse', 'concours', 'formation', 'projet', 'freelance']
 const NIVEAUX = ['Tous', 'Bac', 'Bac+1', 'Bac+2', 'Bac+3', 'Bac+4', 'Bac+5', 'Master']
 const LOCALISATIONS = ['Toutes', 'Lomé', 'International', 'À distance']
 const SORTS = ['Pertinence', 'Deadline', 'Plus récent']
@@ -21,17 +20,24 @@ export default function OpportunitesPage() {
   const [typeFilter, setTypeFilter] = useState('Tous')
   const [niveauFilter, setNiveauFilter] = useState('Tous')
   const [locFilter, setLocFilter] = useState('Toutes')
+  const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'expired'>('active')
+  const [forYouOnly, setForYouOnly] = useState(false)
   const [sortBy, setSortBy] = useState('Pertinence')
   const [showFilters, setShowFilters] = useState(false)
+  const [profile, setProfile] = useState<UserProfile | null>(null)
+  const [mounted, setMounted] = useState(false)
 
-  const profile = useMemo(() => loadProfile(), [])
+  useEffect(() => {
+    setProfile(loadProfile())
+    setMounted(true)
+  }, [])
 
   // Build match results for all opportunities
   const allResults: MatchResult[] = useMemo(() => {
     if (profile) {
       return rankOpportunities(profile, ALL_OPPORTUNITIES, true)
     }
-    // No profile → create dummy results with score 0
+    // No profile → neutral results with score 0
     return ALL_OPPORTUNITIES.map((opp) => ({
       opportunity: opp,
       score: 0,
@@ -39,7 +45,7 @@ export default function OpportunitesPage() {
       matchedSkills: [],
       missingSkills: opp.competences_requises,
       reasons: [],
-      isExpired: false,
+      isExpired: opp.status === 'expired',
       daysRemaining: null,
       expiringSoon: false,
     }))
@@ -48,7 +54,23 @@ export default function OpportunitesPage() {
   const filtered = useMemo(() => {
     let results = allResults
 
-    // Search
+    // "Pour toi" filter
+    if (forYouOnly) {
+      if (profile) {
+        results = results.filter((r) => r.score >= 40 && !r.isExpired)
+      } else {
+        return []
+      }
+    }
+
+    // Status filter
+    if (statusFilter === 'active') {
+      results = results.filter((r) => !r.isExpired && r.opportunity.status !== 'expired')
+    } else if (statusFilter === 'expired') {
+      results = results.filter((r) => r.isExpired || r.opportunity.status === 'expired')
+    }
+
+    // Search query
     if (search.trim()) {
       const q = search.toLowerCase()
       results = results.filter(
@@ -56,29 +78,31 @@ export default function OpportunitesPage() {
           r.opportunity.titre.toLowerCase().includes(q) ||
           r.opportunity.entreprise.toLowerCase().includes(q) ||
           r.opportunity.description.toLowerCase().includes(q) ||
-          r.opportunity.type.toLowerCase().includes(q),
+          r.opportunity.type.toLowerCase().includes(q) ||
+          (r.opportunity.competences_requises || []).some((c) => c.toLowerCase().includes(q))
       )
     }
 
     // Type filter
     if (typeFilter !== 'Tous') {
-      results = results.filter((r) => r.opportunity.type === typeFilter)
+      results = results.filter((r) => r.opportunity.type?.toLowerCase() === typeFilter.toLowerCase())
     }
 
     // Niveau filter
     if (niveauFilter !== 'Tous') {
-      results = results.filter((r) => r.opportunity.niveau_min === niveauFilter)
+      results = results.filter((r) => r.opportunity.niveau_min?.toLowerCase() === niveauFilter.toLowerCase())
     }
 
     // Location filter
     if (locFilter !== 'Toutes') {
       const q = locFilter.toLowerCase()
-      results = results.filter((r) =>
-        r.opportunity.localisation.toLowerCase().includes(q) ||
-        (locFilter === 'À distance' &&
-          ['distance', 'remote', 'international'].some((kw) =>
-            r.opportunity.localisation.toLowerCase().includes(kw),
-          )),
+      results = results.filter(
+        (r) =>
+          r.opportunity.localisation.toLowerCase().includes(q) ||
+          (locFilter === 'À distance' &&
+            ['distance', 'remote', 'international'].some((kw) =>
+              r.opportunity.localisation.toLowerCase().includes(kw)
+            ))
       )
     }
 
@@ -95,48 +119,66 @@ export default function OpportunitesPage() {
     } else if (sortBy === 'Plus récent') {
       results = [...results].reverse()
     }
-    // Default: already sorted by score
 
     return results
-  }, [allResults, search, typeFilter, niveauFilter, locFilter, sortBy])
+  }, [allResults, search, typeFilter, niveauFilter, locFilter, statusFilter, forYouOnly, sortBy, profile])
 
   const activeFiltersCount = [
     typeFilter !== 'Tous',
     niveauFilter !== 'Tous',
     locFilter !== 'Toutes',
+    statusFilter !== 'active',
+    forYouOnly,
   ].filter(Boolean).length
 
   return (
-    <div className="min-h-screen hero-gradient pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+    <div className="min-h-screen hero-gradient pt-20 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-            Toutes les opportunités
-          </h1>
-          <p className="text-slate-400">
-            {filtered.length} opportunité{filtered.length !== 1 ? 's' : ''} trouvée{filtered.length !== 1 ? 's' : ''}
-            {profile && <span className="text-blue-300"> · triées par compatibilité avec votre profil</span>}
-          </p>
+        <div className="mb-8">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Catalogue d&apos;opportunités
+              </h1>
+              <p className="text-slate-400 text-sm mt-1">
+                {filtered.length} offre{filtered.length > 1 ? 's' : ''} disponible{filtered.length > 1 ? 's' : ''}
+                {profile && <span className="text-blue-300"> · triées selon la compatibilité avec ton profil</span>}
+              </p>
+            </div>
+
+            {/* "Pour toi" toggle button */}
+            <button
+              onClick={() => setForYouOnly(!forYouOnly)}
+              className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-md cursor-pointer ${
+                forYouOnly
+                  ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-blue-500/30'
+                  : 'bg-white/10 hover:bg-white/15 text-slate-300 hover:text-white border border-white/10'
+              }`}
+            >
+              <Sparkles className={`w-4 h-4 ${forYouOnly ? 'text-amber-300' : 'text-blue-400'}`} />
+              <span>Pour toi {profile ? `(${profile.filiere})` : ''}</span>
+            </button>
+          </div>
         </div>
 
         {/* Search & filters bar */}
-        <div className="glass-card p-4 mb-8">
+        <div className="glass-card p-4 mb-8 border-gradient">
           <div className="flex flex-col sm:flex-row gap-3">
             {/* Search */}
             <div className="relative flex-1">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
               <input
                 type="search"
-                placeholder="Rechercher une opportunité, entreprise..."
+                placeholder="Rechercher par titre, entreprise, compétence (ex: React, Python, Vente)..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-200 placeholder-slate-600 text-sm"
+                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-400"
               />
               {search && (
                 <button
                   onClick={() => setSearch('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -150,8 +192,8 @@ export default function OpportunitesPage() {
               className="px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 text-sm cursor-pointer"
             >
               {SORTS.map((s) => (
-                <option key={s} value={s} className="bg-[#0f1629]">
-                  {s}
+                <option key={s} value={s} className="bg-[#0f1629] text-white">
+                  Trier par : {s}
                 </option>
               ))}
             </select>
@@ -159,14 +201,14 @@ export default function OpportunitesPage() {
             {/* Filters toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className={`flex items-center gap-2 px-4 py-3 rounded-xl border text-sm font-medium transition-all ${
+              className={`flex items-center gap-2 px-4 py-3 rounded-xl border text-sm font-semibold transition-all cursor-pointer ${
                 showFilters || activeFiltersCount > 0
                   ? 'bg-blue-500/20 border-blue-500/40 text-blue-300'
-                  : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:border-white/20'
+                  : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
               }`}
             >
               <SlidersHorizontal className="w-4 h-4" />
-              Filtres
+              <span>Filtres</span>
               {activeFiltersCount > 0 && (
                 <span className="w-5 h-5 rounded-full bg-blue-500 text-white text-xs flex items-center justify-center font-bold">
                   {activeFiltersCount}
@@ -177,9 +219,9 @@ export default function OpportunitesPage() {
 
           {/* Expanded filters */}
           {showFilters && (
-            <div className="mt-4 pt-4 border-t border-white/8 grid sm:grid-cols-3 gap-4">
+            <div className="mt-4 pt-4 border-t border-white/10 grid sm:grid-cols-4 gap-4">
               <div>
-                <label className="block text-xs text-slate-500 mb-2 font-medium uppercase tracking-wide">
+                <label className="block text-xs text-slate-400 mb-2 font-semibold uppercase tracking-wider">
                   Type
                 </label>
                 <div className="flex flex-wrap gap-1.5">
@@ -187,10 +229,10 @@ export default function OpportunitesPage() {
                     <button
                       key={t}
                       onClick={() => setTypeFilter(t)}
-                      className={`chip border text-xs transition-all ${
+                      className={`text-xs px-2.5 py-1 rounded-lg border transition-all cursor-pointer ${
                         typeFilter === t
-                          ? 'bg-blue-500/25 border-blue-500/50 text-blue-200'
-                          : 'bg-white/4 border-white/10 text-slate-500 hover:text-slate-200'
+                          ? 'bg-blue-500/30 border-blue-500 text-blue-200 font-bold'
+                          : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
                       }`}
                     >
                       {t === 'Tous' ? 'Tous' : getTypeLabel(t as never)}
@@ -200,7 +242,7 @@ export default function OpportunitesPage() {
               </div>
 
               <div>
-                <label className="block text-xs text-slate-500 mb-2 font-medium uppercase tracking-wide">
+                <label className="block text-xs text-slate-400 mb-2 font-semibold uppercase tracking-wider">
                   Niveau
                 </label>
                 <div className="flex flex-wrap gap-1.5">
@@ -208,10 +250,10 @@ export default function OpportunitesPage() {
                     <button
                       key={n}
                       onClick={() => setNiveauFilter(n)}
-                      className={`chip border text-xs transition-all ${
+                      className={`text-xs px-2.5 py-1 rounded-lg border transition-all cursor-pointer ${
                         niveauFilter === n
-                          ? 'bg-blue-500/25 border-blue-500/50 text-blue-200'
-                          : 'bg-white/4 border-white/10 text-slate-500 hover:text-slate-200'
+                          ? 'bg-blue-500/30 border-blue-500 text-blue-200 font-bold'
+                          : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
                       }`}
                     >
                       {n}
@@ -221,7 +263,7 @@ export default function OpportunitesPage() {
               </div>
 
               <div>
-                <label className="block text-xs text-slate-500 mb-2 font-medium uppercase tracking-wide">
+                <label className="block text-xs text-slate-400 mb-2 font-semibold uppercase tracking-wider">
                   Localisation
                 </label>
                 <div className="flex flex-wrap gap-1.5">
@@ -229,13 +271,38 @@ export default function OpportunitesPage() {
                     <button
                       key={l}
                       onClick={() => setLocFilter(l)}
-                      className={`chip border text-xs transition-all ${
+                      className={`text-xs px-2.5 py-1 rounded-lg border transition-all cursor-pointer ${
                         locFilter === l
-                          ? 'bg-blue-500/25 border-blue-500/50 text-blue-200'
-                          : 'bg-white/4 border-white/10 text-slate-500 hover:text-slate-200'
+                          ? 'bg-blue-500/30 border-blue-500 text-blue-200 font-bold'
+                          : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
                       }`}
                     >
                       {l}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs text-slate-400 mb-2 font-semibold uppercase tracking-wider">
+                  Statut
+                </label>
+                <div className="flex flex-wrap gap-1.5">
+                  {[
+                    { id: 'active', label: 'Offres actives' },
+                    { id: 'all', label: 'Toutes (avec expirées)' },
+                    { id: 'expired', label: 'Expirées seulement' },
+                  ].map((s) => (
+                    <button
+                      key={s.id}
+                      onClick={() => setStatusFilter(s.id as never)}
+                      className={`text-xs px-2.5 py-1 rounded-lg border transition-all cursor-pointer ${
+                        statusFilter === s.id
+                          ? 'bg-blue-500/30 border-blue-500 text-blue-200 font-bold'
+                          : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      {s.label}
                     </button>
                   ))}
                 </div>
@@ -244,50 +311,84 @@ export default function OpportunitesPage() {
           )}
         </div>
 
-        {/* Type quick-filters row */}
-        <div className="flex gap-2 overflow-x-auto pb-3 mb-8 scrollbar-none">
+        {/* Quick types bar */}
+        <div className="flex gap-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
           {TYPES.map((t) => (
             <button
               key={t}
               onClick={() => setTypeFilter(t)}
-              className={`flex-shrink-0 px-4 py-2 rounded-full border text-sm font-medium transition-all ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 typeFilter === t
-                  ? 'bg-blue-500 border-blue-500 text-white'
-                  : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:border-white/25'
+                  ? 'bg-blue-500 text-white shadow-md'
+                  : 'bg-white/5 text-slate-400 hover:text-white border border-white/10'
               }`}
             >
-              {t === 'Tous' ? 'Toutes' : getTypeLabel(t as never)}
+              {t === 'Tous' ? 'Toutes les catégories' : getTypeLabel(t as never)}
             </button>
           ))}
         </div>
 
-        {/* Results */}
+        {/* Empty States */}
         {filtered.length === 0 ? (
-          <div className="text-center py-24 glass-card">
-            <p className="text-slate-400 text-lg mb-2">Aucune opportunité trouvée</p>
-            <p className="text-slate-600 text-sm">
-              Essayez de modifier vos filtres ou votre recherche.
-            </p>
-            <button
-              onClick={() => {
-                setSearch('')
-                setTypeFilter('Tous')
-                setNiveauFilter('Tous')
-                setLocFilter('Toutes')
-              }}
-              className="mt-4 text-blue-400 hover:text-blue-300 text-sm font-medium"
-            >
-              Réinitialiser les filtres
-            </button>
+          <div className="glass-card p-12 text-center border-gradient">
+            {forYouOnly && !profile ? (
+              <div className="max-w-md mx-auto space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 mx-auto">
+                  <Sparkles className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-white">
+                  Complète ton profil pour obtenir des recommandations personnalisées.
+                </h3>
+                <p className="text-slate-400 text-sm">
+                  Opportunia utilise ta filière, ton niveau et tes compétences pour calculer les meilleures opportunités.
+                </p>
+                <Link
+                  href="/profil"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-500 text-white font-bold text-sm shadow-lg shadow-blue-500/30"
+                >
+                  <span>Créer mon profil</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            ) : (
+              <div className="max-w-md mx-auto space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 mx-auto">
+                  <AlertCircle className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-white">
+                  Nous n&apos;avons pas encore trouvé d&apos;offre correspondant parfaitement à tes critères.
+                </h3>
+                <p className="text-slate-400 text-sm">
+                  Essaie d&apos;élargir les filtres ou d&apos;ajouter d&apos;autres compétences à ton profil.
+                </p>
+                <div className="flex flex-wrap justify-center gap-3 pt-2">
+                  <button
+                    onClick={() => {
+                      setSearch('')
+                      setTypeFilter('Tous')
+                      setNiveauFilter('Tous')
+                      setLocFilter('Toutes')
+                      setStatusFilter('active')
+                      setForYouOnly(false)
+                    }}
+                    className="px-4 py-2 rounded-xl bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-semibold cursor-pointer"
+                  >
+                    Élargir ma recherche
+                  </button>
+                  <Link
+                    href="/profil"
+                    className="px-4 py-2 rounded-xl bg-white/10 text-slate-300 text-xs font-semibold"
+                  >
+                    Améliorer mon profil
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((result) => (
-              <OpportunityCard
-                key={result.opportunity.id}
-                result={result}
-                showScore={!!profile}
-              />
+              <OpportunityCard key={result.opportunity.id} result={result} showScore={!!profile} />
             ))}
           </div>
         )}

@@ -42,7 +42,11 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="w-9 h-9 rounded-xl border border-white/10 dark:border-white/10 light:border-slate-300 flex items-center justify-center text-slate-400 hover:text-white dark:hover:text-white hover:bg-white/5 transition-all cursor-pointer"
+      className="w-9 h-9 rounded-xl flex items-center justify-center hover:bg-white/5 transition-all cursor-pointer"
+      style={{
+        border: '1px solid var(--color-card-border)',
+        color: 'var(--opp-text-muted)',
+      }}
       aria-label={theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre'}
       title={theme === 'dark' ? 'Mode clair' : 'Mode sombre'}
     >
