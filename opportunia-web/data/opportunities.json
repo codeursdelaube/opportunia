@@ -1,0 +1,793 @@
+{
+  "project": "Opportunia",
+  "opportunities": [
+    {
+      "id": "opp-001",
+      "titre": "Stage Développeur Web",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Entreprise Tech Togo",
+      "description": "Stage Développeur Web destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Informatique",
+        "Génie logiciel",
+        "Développement web"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-002",
+      "titre": "Stage Développeur Mobile",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Startup Digitale Togo",
+      "description": "Stage Développeur Mobile destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Informatique",
+        "Génie logiciel",
+        "Développement mobile"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "JavaScript",
+        "React Native",
+        "Git",
+        "API REST"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-003",
+      "titre": "Stage Assistant Marketing Digital",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Agence Digitale Togo",
+      "description": "Stage Assistant Marketing Digital destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Marketing",
+        "Communication",
+        "Commerce"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Marketing digital",
+        "Réseaux sociaux",
+        "Canva",
+        "Communication"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-004",
+      "titre": "Stage Assistant Comptable",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Cabinet Comptable Togo",
+      "description": "Stage Assistant Comptable destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Comptabilité",
+        "Finance",
+        "Gestion"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Comptabilité",
+        "Excel",
+        "Gestion financière",
+        "Rigueur"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-005",
+      "titre": "Stage Assistant Ressources Humaines",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Entreprise de Services Togo",
+      "description": "Stage Assistant Ressources Humaines destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Ressources humaines",
+        "Gestion",
+        "Administration"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Administration",
+        "Communication",
+        "Excel",
+        "Organisation"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-006",
+      "titre": "Stage Assistant Commercial",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Entreprise Commerciale Togo",
+      "description": "Stage Assistant Commercial destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Commerce",
+        "Marketing",
+        "Gestion"
+      ],
+      "niveau_min": "Bac+1",
+      "competences_requises": [
+        "Prospection",
+        "Communication",
+        "Vente",
+        "Relation client"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-007",
+      "titre": "Stage Communication Digitale",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Agence de Communication Togo",
+      "description": "Stage Communication Digitale destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Communication",
+        "Marketing",
+        "Journalisme"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Rédaction",
+        "Réseaux sociaux",
+        "Canva",
+        "Création de contenu"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-008",
+      "titre": "Stage Assistant Logistique",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Entreprise Logistique Togo",
+      "description": "Stage Assistant Logistique destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Logistique",
+        "Gestion",
+        "Transport"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Logistique",
+        "Gestion des stocks",
+        "Excel",
+        "Organisation"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-009",
+      "titre": "Stage Assistant Projet",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Organisation Togo",
+      "description": "Stage Assistant Projet destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Gestion de projet",
+        "Gestion",
+        "Administration"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Gestion de projet",
+        "Organisation",
+        "Communication",
+        "Excel"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-010",
+      "titre": "Stage Design Graphique",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Studio Créatif Togo",
+      "description": "Stage Design Graphique destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Design",
+        "Communication",
+        "Arts graphiques"
+      ],
+      "niveau_min": "Bac+1",
+      "competences_requises": [
+        "Photoshop",
+        "Illustrator",
+        "Canva",
+        "Créativité"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-011",
+      "titre": "Concours Jeunes Entrepreneurs",
+      "type": "Concours",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Programme Entrepreneuriat Togo",
+      "description": "Concours Jeunes Entrepreneurs destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Entrepreneuriat",
+        "Gestion",
+        "Commerce",
+        "Informatique"
+      ],
+      "niveau_min": "Bac",
+      "competences_requises": [
+        "Entrepreneuriat",
+        "Business plan",
+        "Pitch",
+        "Innovation"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-012",
+      "titre": "Formation en Entrepreneuriat",
+      "type": "Formation",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Programme de Formation Togo",
+      "description": "Formation en Entrepreneuriat destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Entrepreneuriat",
+        "Gestion",
+        "Commerce"
+      ],
+      "niveau_min": "Bac",
+      "competences_requises": [
+        "Business model",
+        "Entrepreneuriat",
+        "Marketing",
+        "Gestion"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-013",
+      "titre": "Bourse d'études pour étudiants",
+      "type": "Bourse",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Programme de bourse",
+      "description": "Bourse d'études pour étudiants destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Toutes filières"
+      ],
+      "niveau_min": "Bac",
+      "competences_requises": [
+        "Dossier académique",
+        "Motivation"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-014",
+      "titre": "Formation Développement Web",
+      "type": "Formation",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Programme Tech",
+      "description": "Formation Développement Web destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Informatique",
+        "Génie logiciel",
+        "Développement web"
+      ],
+      "niveau_min": "Bac",
+      "competences_requises": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Git"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-015",
+      "titre": "Formation Data Science",
+      "type": "Formation",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Programme Data",
+      "description": "Formation Data Science destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Informatique",
+        "Data Science",
+        "Mathématiques"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Python",
+        "Excel",
+        "Analyse de données",
+        "Statistiques"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-016",
+      "titre": "Projet étudiant en Intelligence Artificielle",
+      "type": "Projet",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Projet Tech Togo",
+      "description": "Projet étudiant en Intelligence Artificielle destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Informatique",
+        "Intelligence artificielle",
+        "Data Science"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Python",
+        "Machine Learning",
+        "Git",
+        "Analyse de données"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-017",
+      "titre": "Stage Assistant Administratif",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Entreprise de Services Togo",
+      "description": "Stage Assistant Administratif destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Administration",
+        "Gestion",
+        "Droit"
+      ],
+      "niveau_min": "Bac+1",
+      "competences_requises": [
+        "Bureautique",
+        "Organisation",
+        "Communication",
+        "Excel"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-018",
+      "titre": "Stage Community Manager",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Agence Digitale Togo",
+      "description": "Stage Community Manager destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Communication",
+        "Marketing",
+        "Digital"
+      ],
+      "niveau_min": "Bac+1",
+      "competences_requises": [
+        "Community management",
+        "Réseaux sociaux",
+        "Canva",
+        "Rédaction"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-019",
+      "titre": "Stage Technicien Informatique",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Entreprise IT Togo",
+      "description": "Stage Technicien Informatique destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Informatique",
+        "Réseaux",
+        "Systèmes"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Maintenance informatique",
+        "Réseaux",
+        "Windows",
+        "Support technique"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-020",
+      "titre": "Commercial de terrain",
+      "type": "Stage",
+      "source": "Opportunia",
+      "source_url": "https://www.linkedin.com/jobs/",
+      "entreprise": "Entreprise Commerciale Togo",
+      "description": "Commercial de terrain destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
+      "filiere_cible": [
+        "Commerce",
+        "Marketing",
+        "Gestion"
+      ],
+      "niveau_min": "Bac",
+      "competences_requises": [
+        "Prospection",
+        "Vente",
+        "Communication",
+        "Négociation"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://www.linkedin.com/jobs/",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-021",
+      "titre": "Stage pour étudiants en informatique",
+      "type": "Stage",
+      "source": "LinkedIn",
+      "source_url": "https://tg.linkedin.com/jobs/view/stage-pour-%25C3%25A9tudiants-informatique-at-numerum-dev-center-4248400197",
+      "entreprise": "Numerum Dev Center",
+      "description": "Stage pour étudiants en informatique à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
+      "filiere_cible": [
+        "Informatique",
+        "Génie logiciel",
+        "Réseaux",
+        "Cybersécurité",
+        "Data Science",
+        "Intelligence artificielle"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Développement web",
+        "React",
+        "Python",
+        "Cybersécurité",
+        "Réseaux",
+        "Data"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "expired",
+      "lien_candidature": "https://tg.linkedin.com/jobs/view/stage-pour-%25C3%25A9tudiants-informatique-at-numerum-dev-center-4248400197",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-022",
+      "titre": "Stagiaire Marketing",
+      "type": "Stage",
+      "source": "LinkedIn",
+      "source_url": "https://tg.linkedin.com/jobs/view/tpg-technologies-recrute-un-e-stagiaire-marketing-lom%C3%A9-togo-at-tpg-agency-4462176128",
+      "entreprise": "TPG Technologies",
+      "description": "Stagiaire Marketing à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
+      "filiere_cible": [
+        "Marketing",
+        "Communication",
+        "Commerce",
+        "Gestion"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Marketing",
+        "Communication",
+        "Réseaux sociaux",
+        "Prospection"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://tg.linkedin.com/jobs/view/tpg-technologies-recrute-un-e-stagiaire-marketing-lom%C3%A9-togo-at-tpg-agency-4462176128",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-023",
+      "titre": "Stagiaire en communication et développement",
+      "type": "Stage",
+      "source": "LinkedIn",
+      "source_url": "https://tg.linkedin.com/jobs/view/stagiaire-en-communication-et-d%C3%A9veloppement-at-a-s-e-e-d-togo-4414039322",
+      "entreprise": "A.S.E.E.D. Togo",
+      "description": "Stagiaire en communication et développement à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
+      "filiere_cible": [
+        "Communication",
+        "Développement",
+        "Sciences sociales",
+        "Gestion"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Communication",
+        "Rédaction",
+        "Organisation",
+        "Gestion de projet"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "expired",
+      "lien_candidature": "https://tg.linkedin.com/jobs/view/stagiaire-en-communication-et-d%C3%A9veloppement-at-a-s-e-e-d-togo-4414039322",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-024",
+      "titre": "Stagiaire assistant commercial",
+      "type": "Stage",
+      "source": "LinkedIn",
+      "source_url": "https://tg.linkedin.com/jobs/view/stagiaire-assistant-commercial-at-conseilux-training-and-development-4437227605",
+      "entreprise": "Conseilux Training and Development",
+      "description": "Stagiaire assistant commercial à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
+      "filiere_cible": [
+        "Commerce",
+        "Marketing",
+        "Gestion"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Prospection",
+        "Vente",
+        "Communication",
+        "Relation client"
+      ],
+      "localisation": "Lomé",
+      "deadline": "2026-07-15",
+      "status": "expired",
+      "lien_candidature": "https://tg.linkedin.com/jobs/view/stagiaire-assistant-commercial-at-conseilux-training-and-development-4437227605",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-025",
+      "titre": "Assistant production digitale - Stage",
+      "type": "Stage",
+      "source": "LinkedIn",
+      "source_url": "https://tg.linkedin.com/jobs/view/assistant-production-digitale-stage-at-go-africa-online-4440519987",
+      "entreprise": "Go Africa Online",
+      "description": "Assistant production digitale - Stage à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
+      "filiere_cible": [
+        "Informatique",
+        "Communication",
+        "Marketing",
+        "Digital"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Production digitale",
+        "Communication",
+        "Création de contenu",
+        "Outils numériques"
+      ],
+      "localisation": "Lomé",
+      "deadline": "2026-07-19",
+      "status": "expired",
+      "lien_candidature": "https://tg.linkedin.com/jobs/view/assistant-production-digitale-stage-at-go-africa-online-4440519987",
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-026",
+      "titre": "Stagiaire comptable",
+      "type": "Stage",
+      "source": "LinkedIn",
+      "source_url": "https://tg.linkedin.com/jobs/view/stagiaire-comptable-at-navy-com-4467060689",
+      "entreprise": "TASMAR DEUTSCHE GRUPPE / Navy Com",
+      "description": "Stagiaire comptable à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
+      "filiere_cible": [
+        "Comptabilité",
+        "Finance",
+        "Gestion"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Comptabilité",
+        "Excel",
+        "Gestion financière",
+        "Rigueur"
+      ],
+      "localisation": "Lomé",
+      "deadline": null,
+      "status": "active",
+      "lien_candidature": "https://tg.linkedin.com/jobs/view/stagiaire-comptable-at-navy-com-4467060689",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-027",
+      "titre": "Agents commerciaux (H/F)",
+      "type": "Stage",
+      "source": "LinkedIn",
+      "source_url": "https://tg.linkedin.com/jobs/view/agents-commerciaux-h-f-at-waadoo-technologies-4461045959",
+      "entreprise": "Waadoo Technologies",
+      "description": "Agents commerciaux (H/F) à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
+      "filiere_cible": [
+        "Commerce",
+        "Marketing",
+        "Gestion"
+      ],
+      "niveau_min": "Bac",
+      "competences_requises": [
+        "Prospection",
+        "Vente",
+        "Communication",
+        "Négociation"
+      ],
+      "localisation": "Lomé",
+      "deadline": "2026-09-08",
+      "status": "expired",
+      "lien_candidature": "https://tg.linkedin.com/jobs/view/agents-commerciaux-h-f-at-waadoo-technologies-4461045959",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-028",
+      "titre": "Stagiaires conseiller(e) clientèle",
+      "type": "Stage",
+      "source": "LinkedIn",
+      "source_url": "https://tg.linkedin.com/jobs/view/stagiaires-conseiller-e-client%C3%A8le-at-koko-international-4406481108",
+      "entreprise": "KOKO INTERNATIONAL",
+      "description": "Stagiaires conseiller(e) clientèle à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
+      "filiere_cible": [
+        "Commerce",
+        "Marketing",
+        "Gestion",
+        "Communication"
+      ],
+      "niveau_min": "Bac",
+      "competences_requises": [
+        "Relation client",
+        "Communication",
+        "Accueil",
+        "Vente"
+      ],
+      "localisation": "Lomé",
+      "deadline": "2026-05-13",
+      "status": "expired",
+      "lien_candidature": "https://tg.linkedin.com/jobs/view/stagiaires-conseiller-e-client%C3%A8le-at-koko-international-4406481108",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-029",
+      "titre": "Stagiaire Supply & Logistics",
+      "type": "Stage",
+      "source": "LinkedIn",
+      "source_url": "https://tg.linkedin.com/jobs/view/stagiaire-supply-logistics-lom%C3%A9-togo-3-mois-sur-site-at-unicef-chad-4445528639",
+      "entreprise": "UNICEF",
+      "description": "Stagiaire Supply & Logistics à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
+      "filiere_cible": [
+        "Logistique",
+        "Supply Chain",
+        "Gestion",
+        "Transport"
+      ],
+      "niveau_min": "Bac+3",
+      "competences_requises": [
+        "Logistique",
+        "Supply Chain",
+        "Gestion des stocks",
+        "Excel"
+      ],
+      "localisation": "Lomé",
+      "deadline": "2026-08-07",
+      "status": "expired",
+      "lien_candidature": "https://tg.linkedin.com/jobs/view/stagiaire-supply-logistics-lom%C3%A9-togo-3-mois-sur-site-at-unicef-chad-4445528639",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "id": "opp-030",
+      "titre": "Stage Technicien Réseaux et Vidéosurveillance",
+      "type": "Stage",
+      "source": "LinkedIn",
+      "source_url": "https://tg.linkedin.com/jobs/view/stage-technicien-r%C3%A9seaux-et-cctv-at-infini-services-4398855740",
+      "entreprise": "INFINI SERVICES",
+      "description": "Stage Technicien Réseaux et Vidéosurveillance à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
+      "filiere_cible": [
+        "Informatique",
+        "Réseaux",
+        "Télécommunications",
+        "Systèmes"
+      ],
+      "niveau_min": "Bac+2",
+      "competences_requises": [
+        "Réseaux",
+        "CCTV",
+        "Maintenance informatique",
+        "Systèmes"
+      ],
+      "localisation": "Lomé",
+      "deadline": "2026-04-24",
+      "status": "expired",
+      "lien_candidature": "https://tg.linkedin.com/jobs/view/stage-technicien-r%C3%A9seaux-et-cctv-at-infini-services-4398855740",
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
+    }
+  ]
+}
