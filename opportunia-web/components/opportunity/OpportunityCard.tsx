@@ -94,12 +94,12 @@ export function OpportunityCard({ result, showScore = true }: OpportunityCardPro
         {/* Status badge */}
         {isTrulyExpired ? (
           <div className="absolute top-3 right-3 flex items-center gap-1 bg-red-600/90 text-white text-xs font-semibold px-2.5 py-1 rounded-full">
-            🔴 Offre expirée
+            Offre expirée
           </div>
         ) : isExpiringSoon ? (
           <div className="absolute top-3 right-3 flex items-center gap-1 bg-orange-500/90 text-white text-xs font-semibold px-2.5 py-1 rounded-full">
             <AlertCircle className="w-3 h-3" />
-            ⏰ {days === 0 ? "Expire aujourd'hui" : `Plus que ${days} jour${days && days > 1 ? 's' : ''}`}
+            {days === 0 ? "Expire aujourd'hui" : `Plus que ${days} jour${days && days > 1 ? 's' : ''}`}
           </div>
         ) : null}
       </Link>
@@ -110,32 +110,32 @@ export function OpportunityCard({ result, showScore = true }: OpportunityCardPro
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
             <Link href={`/opportunites/${opportunity.id}`}>
-              <h3 className="font-semibold text-white leading-snug line-clamp-2 hover:text-blue-300 transition-colors">
+              <h3 className="font-bold text-slate-900 dark:text-white leading-snug line-clamp-2 hover:text-blue-600 dark:hover:text-blue-300 transition-colors text-base">
                 {opportunity.titre}
               </h3>
             </Link>
-            <p className="text-sm text-slate-400 mt-1 truncate">{opportunity.entreprise}</p>
+            <p className="text-sm font-semibold text-slate-600 dark:text-slate-400 mt-1 truncate">{opportunity.entreprise}</p>
           </div>
 
           {/* Score ring (compact) */}
           {showScore && (
             <div className="flex-shrink-0 text-right">
-              <ScoreRing score={score} size={56} strokeWidth={4} />
+              <ScoreRing score={score} size={54} strokeWidth={4} />
             </div>
           )}
         </div>
 
         {/* Meta info */}
-        <div className="flex flex-wrap gap-y-1.5 gap-x-3 text-xs text-slate-400">
+        <div className="flex flex-wrap gap-y-1.5 gap-x-3 text-xs font-medium text-slate-500 dark:text-slate-400">
           <span className="flex items-center gap-1">
-            <MapPin className="w-3.5 h-3.5 text-slate-500" />
+            <MapPin className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             {opportunity.localisation}
           </span>
           <span className="flex items-center gap-1">
-            <GraduationCap className="w-3.5 h-3.5 text-slate-500" />
+            <GraduationCap className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
             {opportunity.niveau_min}
           </span>
-          <span className={`flex items-center gap-1 ${isExpiringSoon ? 'text-orange-400 font-medium' : ''}`}>
+          <span className={`flex items-center gap-1 ${isExpiringSoon ? 'text-amber-600 dark:text-orange-400 font-bold' : ''}`}>
             <Clock className="w-3.5 h-3.5" />
             {formatDeadline(opportunity.deadline)}
           </span>
@@ -143,14 +143,14 @@ export function OpportunityCard({ result, showScore = true }: OpportunityCardPro
 
         {/* Missing skills preview tag */}
         {missingSkills && missingSkills.length > 0 && (
-          <div className="text-[11px] text-amber-300 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-lg flex items-center gap-1.5 truncate">
-            <span>⚠ À développer :</span>
-            <span className="font-medium truncate">{missingSkills.slice(0, 2).join(', ')}</span>
+          <div className="text-[11px] font-semibold text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 px-2.5 py-1 rounded-lg flex items-center gap-1.5 truncate">
+            <span className="text-amber-600 dark:text-amber-400 font-bold">À développer :</span>
+            <span className="truncate">{missingSkills.slice(0, 2).join(', ')}</span>
           </div>
         )}
 
         {/* Description excerpt */}
-        <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+        <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
           {opportunity.description}
         </p>
 
@@ -158,7 +158,7 @@ export function OpportunityCard({ result, showScore = true }: OpportunityCardPro
         <div className="mt-auto pt-3 flex flex-wrap items-center gap-2">
           <Link
             href={`/opportunites/${opportunity.id}`}
-            className="flex-1 min-w-[90px] flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-blue-500/15 hover:bg-blue-500/25 border border-blue-500/20 hover:border-blue-500/40 text-blue-300 text-xs font-semibold transition-all"
+            className="flex-1 min-w-[90px] flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 dark:bg-blue-500/15 dark:hover:bg-blue-500/25 dark:border-blue-500/20 dark:text-blue-300 text-xs font-semibold transition-all"
           >
             Voir l&apos;offre
           </Link>
@@ -167,7 +167,7 @@ export function OpportunityCard({ result, showScore = true }: OpportunityCardPro
             onClick={() => setPrepModalOpen(true)}
             aria-label="Préparer ma candidature"
             title="Générer email et lettre de motivation"
-            className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-500/30 text-indigo-300 text-xs font-semibold transition-all cursor-pointer"
+            className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-700 dark:bg-indigo-500/20 dark:hover:bg-indigo-500/30 dark:border-indigo-500/30 dark:text-indigo-300 text-xs font-semibold transition-all cursor-pointer"
           >
             <FileEdit className="w-3.5 h-3.5" />
             <span>Préparer</span>
@@ -177,7 +177,7 @@ export function OpportunityCard({ result, showScore = true }: OpportunityCardPro
             onClick={() => setModalOpen(true)}
             aria-label="Postuler à cette offre"
             title="Postuler directement (redirection)"
-            className="flex items-center justify-center gap-1 py-2 px-3 rounded-xl bg-blue-500 hover:bg-blue-400 text-white text-xs font-semibold transition-all shadow-md hover:shadow-blue-500/25 cursor-pointer"
+            className="flex items-center justify-center gap-1 py-2 px-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-sm hover:shadow-md cursor-pointer"
           >
             <span>Postuler</span>
             <ExternalLink className="w-3.5 h-3.5" />
@@ -188,8 +188,8 @@ export function OpportunityCard({ result, showScore = true }: OpportunityCardPro
             aria-label={favorited ? 'Retirer des favoris' : 'Ajouter aux favoris'}
             className={`p-2 rounded-xl border transition-all cursor-pointer ${
               favorited
-                ? 'bg-pink-500/20 border-pink-500/40 text-pink-400'
-                : 'bg-white/5 border-white/10 text-slate-500 hover:text-pink-400 hover:border-pink-500/30'
+                ? 'bg-rose-50 border-rose-200 text-rose-600 dark:bg-pink-500/20 dark:border-pink-500/40 dark:text-pink-400'
+                : 'border-slate-200 text-slate-400 hover:text-rose-500 hover:border-rose-200 dark:border-white/10 dark:text-slate-500 dark:hover:text-pink-400'
             }`}
           >
             <Heart className={`w-4 h-4 ${favorited ? 'fill-current' : ''}`} />

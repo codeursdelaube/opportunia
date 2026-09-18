@@ -59,7 +59,7 @@ export function ApplicationTrackerSummary() {
             </span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-white">
-            📋 Mes candidatures
+            Mes candidatures
           </h2>
         </div>
 

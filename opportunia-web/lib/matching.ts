@@ -32,7 +32,7 @@ export function normalizeText(text: string): string {
 }
 
 /**
- * Normalise a skill name (same as normalizeText but also collapses punctuation).
+ * Normalise a skill name (collapsing non-alphanumerics except + and #).
  */
 export function normalizeSkill(skill: string): string {
   if (!skill || typeof skill !== 'string') return ''
@@ -42,13 +42,11 @@ export function normalizeSkill(skill: string): string {
     .trim()
 }
 
-// ── Field proximity groups ────────────────────────────────────
+// ── Field taxonomy groups ─────────────────────────────────────
 
 /**
- * Groups of related fields. When a profile field and an opportunity field
- * belong to the same group, they get a proximity bonus.
- *
- * Key = canonical group name; Value = list of normalised synonyms / variants.
+ * Canonical groups of fields.
+ * Deterministic mapping to prevent arbitrary false positives.
  */
 const FIELD_GROUPS: Record<string, string[]> = {
   informatique: [
@@ -59,90 +57,146 @@ const FIELD_GROUPS: Record<string, string[]> = {
     'developpement mobile',
     'ingenierie logicielle',
     'intelligence artificielle',
+    'ia',
     'data science',
     'cybersecurite',
     'reseaux',
     'systemes informatiques',
     'programmation',
     'software engineering',
+    'numerique',
+    'technologie',
+    'bases en numerique',
   ],
-  marketing: [
+  marketing_communication: [
     'marketing',
     'communication',
     'digital marketing',
     'community management',
     'relation publique',
+    'relations publiques',
     'publicite',
+    'medias',
     'medias sociaux',
-    'ecommerce',
-    'e-commerce',
+    'journalisme',
+    'redaction',
   ],
-  commerce: [
+  commerce_gestion: [
     'commerce',
     'vente',
     'commercial',
     'business development',
     'entrepreneuriat',
-    'management commercial',
+    'management',
+    'gestion',
+    'administration',
+    'gestion de projet',
+    'leadership',
   ],
   finance: [
     'finance',
     'comptabilite',
-    'gestion',
     'audit',
     'tresorerie',
     'economie',
     'fiscalite',
-    'finance d entreprise',
+    'banque',
   ],
   rh: [
     'ressources humaines',
     'rh',
     'gestion du personnel',
-    'administration du personnel',
     'recrutement',
-    'formation professionnelle',
+    'administration du personnel',
   ],
-  droit: ['droit', 'juridique', 'droit des affaires', 'droit prive', 'sciences politiques'],
-  design: ['design', 'graphisme', 'ui ux', 'design graphique', 'art', 'arts visuels', 'creation'],
-  agriculture: [
+  droit_sciences_politiques: [
+    'droit',
+    'juridique',
+    'droit des affaires',
+    'sciences politiques',
+    'sciences juridiques',
+    'administration publique',
+  ],
+  sciences_sociales_relations_internationales: [
+    'sciences sociales',
+    'relations internationales',
+    'developpement international',
+    'sociologie',
+    'action humanitaire',
+    'cooperation internationale',
+    'diplomatie',
+    'paix et securite',
+    'solidarite',
+  ],
+  environnement_agriculture: [
     'agriculture',
     'agronomie',
     'environnement',
+    'agroforesterie',
+    'ecologie',
+    'sciences environnementales',
+    'biologie marine',
     'developpement rural',
-    'alimentation',
-    'agroalimentaire',
+    'ressources naturelles',
   ],
-  ingenierie: [
+  ingenierie_sciences: [
     'ingenierie',
     'genie civil',
     'genie mecanique',
     'genie electrique',
     'genie industriel',
-    'sciences',
+    'recherche',
+    'recherche scientifique',
+    'sciences appliquees',
   ],
-  sante: ['sante', 'medecine', 'pharmacie', 'biologie', 'sciences medicales'],
+  sante: [
+    'sante',
+    'sante publique',
+    'medecine',
+    'pharmacie',
+    'biologie',
+    'sciences medicales',
+    'sante mentale',
+  ],
+  education_culture: [
+    'education',
+    'sciences de l education',
+    'enseignement',
+    'culture',
+    'lettres',
+  ],
+  design: [
+    'design',
+    'graphisme',
+    'ui ux',
+    'ui/ux',
+    'design graphique',
+    'arts visuels',
+    'creation',
+  ],
 }
 
 /**
  * Find the group key for a given normalised field string.
- * Returns null if no group matches.
  */
 function findFieldGroup(normalised: string): string | null {
   for (const [group, synonyms] of Object.entries(FIELD_GROUPS)) {
-    if (synonyms.some((s) => normalised.includes(s) || s.includes(normalised))) {
-      return group
+    for (const s of synonyms) {
+      if (normalised === s) return group
+      if (s.length <= 3) {
+        // Strict boundary check for short acronyms like 'ia', 'rh'
+        const regex = new RegExp('(^|\\s)' + s + '(\\s|$)')
+        if (regex.test(normalised)) return group
+      } else {
+        if (normalised.includes(s) || s.includes(normalised)) return group
+      }
     }
   }
   return null
 }
 
-// ── Skill proximity ───────────────────────────────────────────
+// ── Skill proximity & alternatives ────────────────────────────
 
-/**
- * Maps a normalised skill to a list of normalised near-synonyms.
- * Only well-documented, reasonable relationships are included.
- */
 const SKILL_PROXIMITY: Record<string, string[]> = {
   javascript: ['typescript', 'node.js', 'nodejs', 'react', 'developpement web', 'frontend'],
   typescript: ['javascript', 'react', 'next.js', 'node.js', 'developpement web'],
@@ -156,95 +210,99 @@ const SKILL_PROXIMITY: Record<string, string[]> = {
   html: ['css', 'javascript', 'developpement web', 'frontend'],
   css: ['html', 'javascript', 'tailwind', 'bootstrap', 'developpement web'],
   tailwind: ['css', 'bootstrap', 'developpement web'],
-  python: ['django', 'flask', 'fastapi', 'data science', 'machine learning', 'statistiques', 'analyse de donnees'],
-  django: ['python', 'backend'],
-  flask: ['python', 'backend'],
-  fastapi: ['python', 'backend', 'api'],
-  java: ['spring', 'kotlin', 'backend'],
-  spring: ['java', 'backend'],
-  kotlin: ['java', 'android'],
-  android: ['kotlin', 'java', 'mobile'],
-  figma: ['ui ux', 'ui/ux', 'design', 'prototypage', 'graphisme', 'wireframing'],
-  'ui ux': ['figma', 'design', 'ui/ux', 'prototypage', 'wireframing'],
-  'ui/ux': ['figma', 'ui ux', 'design', 'prototypage'],
-  photoshop: ['illustrator', 'design', 'graphisme', 'indesign'],
-  illustrator: ['photoshop', 'design', 'graphisme', 'indesign'],
-  indesign: ['photoshop', 'illustrator', 'graphisme'],
-  graphisme: ['photoshop', 'illustrator', 'design', 'figma'],
-  design: ['figma', 'ui ux', 'ui/ux', 'graphisme', 'photoshop'],
-  marketing: ['digital marketing', 'communication', 'community management', 'reseaux sociaux'],
-  'digital marketing': ['marketing', 'community management', 'communication', 'seo'],
-  'community management': ['marketing', 'digital marketing', 'communication', 'reseaux sociaux'],
-  communication: ['marketing', 'community management', 'relations publiques'],
-  vente: ['prospection', 'negociation', 'commercial', 'relation client'],
-  prospection: ['vente', 'negociation', 'commercial'],
-  negociation: ['vente', 'prospection', 'commercial'],
-  commercial: ['vente', 'prospection', 'negociation', 'business development'],
-  finance: ['comptabilite', 'tresorerie', 'audit', 'gestion'],
-  comptabilite: ['finance', 'audit', 'gestion', 'tresorerie'],
-  audit: ['comptabilite', 'finance', 'gestion'],
-  gestion: ['management', 'administration', 'finance', 'comptabilite'],
-  management: ['gestion', 'leadership', 'gestion de projet'],
-  'gestion de projet': ['management', 'agile', 'scrum', 'leadership'],
-  sql: ['mysql', 'postgresql', 'base de donnees', 'analyse de donnees'],
-  mysql: ['sql', 'postgresql', 'base de donnees'],
-  postgresql: ['sql', 'mysql', 'base de donnees'],
-  git: ['github', 'gitlab', 'versionning'],
-  github: ['git', 'gitlab'],
-  gitlab: ['git', 'github'],
-  programmation: ['informatique', 'developpement logiciel', 'python', 'javascript', 'java'],
-  'developpement logiciel': ['programmation', 'informatique', 'ingenierie logicielle'],
-  'ingenierie logicielle': ['developpement logiciel', 'programmation'],
-  informatique: ['programmation', 'developpement logiciel', 'systemes', 'reseaux'],
-  innovation: ['entrepreneuriat', 'design thinking', 'creativite'],
-  entrepreneuriat: ['innovation', 'business development'],
+  python: ['django', 'flask', 'fastapi', 'data science', 'machine learning', 'ia', 'intelligence artificielle'],
   ia: ['intelligence artificielle', 'machine learning', 'deep learning', 'data science', 'python'],
   'intelligence artificielle': ['ia', 'machine learning', 'deep learning', 'data science', 'python'],
-  'machine learning': ['ia', 'intelligence artificielle', 'data science', 'deep learning', 'python', 'statistiques'],
-  'data science': ['machine learning', 'statistiques', 'analyse de donnees', 'python', 'sql', 'intelligence artificielle'],
-  'analyse de donnees': ['data science', 'statistiques', 'excel', 'power bi', 'sql', 'python'],
-  statistiques: ['data science', 'analyse de donnees', 'machine learning', 'python'],
-  excel: ['analyse de donnees', 'comptabilite', 'gestion', 'finance', 'bureautique'],
-  'power bi': ['tableau', 'analyse de donnees', 'business intelligence', 'excel'],
-  tableau: ['power bi', 'analyse de donnees', 'business intelligence'],
+  'machine learning': ['ia', 'intelligence artificielle', 'data science', 'python', 'statistiques'],
+  'data science': ['machine learning', 'statistiques', 'analyse de donnees', 'python', 'sql', 'ia'],
+  'bases en numerique': ['informatique', 'numerique', 'developpement web', 'web', 'outils informatiques'],
+  numerique: ['informatique', 'bases en numerique', 'developpement web', 'technologie'],
+  informatique: ['developpement web', 'bases en numerique', 'numerique', 'programmation', 'python', 'javascript'],
+  anglais: ['anglais ou francais', 'anglais ou portugais'],
+  francais: ['anglais ou francais'],
+  portugais: ['anglais ou portugais'],
+  communication: ['relations publiques', 'redaction', 'marketing', 'community management'],
+  redaction: ['redaction de rapports', 'redaction de projet', 'communication', 'journalisme'],
+  'redaction de rapports': ['redaction', 'communication', 'rapports'],
+  'redaction de projet': ['redaction', 'gestion de projet', 'conception de projet'],
+  'gestion de projet': ['management', 'leadership', 'redaction de projet', 'coordination'],
+  leadership: ['engagement communautaire', 'management', 'gestion de projet', 'plaidoyer'],
+  'engagement communautaire': ['leadership', 'vie associative', 'plaidoyer', 'action humanitaire'],
+  entrepreneuriat: ['pitch', 'innovation', 'business development', 'gestion'],
+  pitch: ['entrepreneuriat', 'communication', 'presentation'],
+  innovation: ['entrepreneuriat', 'creativite', 'design thinking', 'ia'],
+  'dossier academique': ['excellence academique', 'recherche scientifique', 'recherche'],
+  'excellence academique': ['dossier academique', 'recherche scientifique'],
+  figma: ['ui ux', 'ui/ux', 'design', 'prototypage', 'graphisme'],
+  'ui ux': ['figma', 'design', 'ui/ux', 'prototypage'],
+  marketing: ['digital marketing', 'communication', 'community management', 'reseaux sociaux'],
+  'digital marketing': ['marketing', 'community management', 'communication', 'seo'],
+  finance: ['comptabilite', 'tresorerie', 'audit', 'gestion'],
+  comptabilite: ['finance', 'audit', 'gestion'],
 }
 
 // ── Level conversion ──────────────────────────────────────────
 
 const LEVEL_MAP: Record<string, number> = {
-  bac: 0,
-  'bac+1': 1,
-  'bac+2': 2,
-  'bac+3': 3,
-  licence: 3,
-  'bac+4': 4,
-  'bac+5': 5,
-  master: 5,
-  doctorat: 8,
-  phd: 8,
+  aucun: 0,
+  sans: 0,
+  bac: 1,
+  'bac+1': 2,
+  'bac+2': 3,
+  'bac+3': 4,
+  licence: 4,
+  'bac+4': 5,
+  'bac+5': 6,
+  master: 6,
+  doctorat: 9,
+  phd: 9,
 }
 
 function levelToNumber(level: string): number {
-  if (!level) return -1
+  if (!level) return 0
   const n = normalizeText(level)
+  if (n === 'aucun' || n === 'tous' || n === 'tous niveaux' || n.includes('sans')) return 0
   if (LEVEL_MAP[n] !== undefined) return LEVEL_MAP[n]
-  // Try partial matches
   for (const [key, val] of Object.entries(LEVEL_MAP)) {
     if (n.includes(key) || key.includes(n)) return val
   }
   return -1
 }
 
-// ── Remote location detection ─────────────────────────────────
+// ── Regional & Remote Detection ───────────────────────────────
 
 const REMOTE_KEYWORDS = [
   'a distance',
   'remote',
   'teletravail',
   'distanciel',
-  'international',
   'en ligne',
   'worldwide',
+  'candidature a distance',
+]
+
+const AFRICAN_REGIONAL_KEYWORDS = [
+  'afrique',
+  'afrique de l\'ouest',
+  'afrique de l ouest',
+  'afrique francophone',
+  'afrique subsaharienne',
+  'panafricain',
+  'west africa',
+]
+
+const WEST_AFRICA_COUNTRIES = [
+  'togo',
+  'benin',
+  'cote d ivoire',
+  'cote d\'ivoire',
+  'ghana',
+  'senegal',
+  'nigeria',
+  'mali',
+  'burkina',
+  'guinee',
+  'niger',
 ]
 
 function isRemote(location: string): boolean {
@@ -252,47 +310,59 @@ function isRemote(location: string): boolean {
   return REMOTE_KEYWORDS.some((kw) => n.includes(kw))
 }
 
+function isAfricanRegional(location: string): boolean {
+  const n = normalizeText(location)
+  return AFRICAN_REGIONAL_KEYWORDS.some((kw) => n.includes(kw))
+}
+
 // ── DIMENSION A — Filière score (0-30) ───────────────────────
 
 export function getFieldMatchScore(profileField: string, opportunityFields: string[]): number {
-  if (!profileField || !opportunityFields || opportunityFields.length === 0) return 15 // neutral
+  if (!opportunityFields || opportunityFields.length === 0) return 20 // no constraint
+  if (!profileField) return 15 // neutral
 
   const normProfile = normalizeText(profileField)
   const normOppFields = opportunityFields.map(normalizeText)
 
-  // Universal fields ("toutes filières") always match
-  if (normOppFields.some((f) => f.includes('toutes filieres') || f.includes('tous'))) return 28
-
-  // Exact match
-  if (normOppFields.some((f) => f === normProfile || f.includes(normProfile) || normProfile.includes(f))) {
+  // Universal fields ("Toutes filières", "Tous") always match fully
+  if (
+    normOppFields.some(
+      (f) =>
+        f.includes('toutes filieres') ||
+        f.includes('toutes les filieres') ||
+        f === 'tous' ||
+        f === 'toutes' ||
+        f === 'generaliste'
+    )
+  ) {
     return 30
   }
 
-  // Same group proximity
-  const profileGroup = findFieldGroup(normProfile)
-  if (profileGroup) {
-    const oppGroups = normOppFields.map(findFieldGroup)
-    if (oppGroups.includes(profileGroup)) return 22
-    // Adjacent group check (e.g., informatique <-> ingénierie)
-    const ADJACENT: Record<string, string[]> = {
-      informatique: ['ingenierie', 'commerce'],
-      ingenierie: ['informatique', 'agriculture'],
-      marketing: ['commerce', 'design'],
-      commerce: ['marketing', 'finance'],
-      finance: ['commerce', 'rh'],
-      rh: ['finance', 'droit'],
-      droit: ['rh', 'finance'],
-      design: ['marketing', 'informatique'],
-      agriculture: ['ingenierie'],
-    }
-    const adjacent = ADJACENT[profileGroup] ?? []
-    if (oppGroups.some((g) => g && adjacent.includes(g))) return 10
+  // Exact or direct inclusion match
+  if (
+    normOppFields.some(
+      (f) => f === normProfile || f.includes(normProfile) || normProfile.includes(f)
+    )
+  ) {
+    return 30
   }
 
-  // Keyword partial match
-  const profileWords = normProfile.split(' ')
+  // Same domain group proximity
+  const profileGroup = findFieldGroup(normProfile)
+  if (profileGroup) {
+    const oppGroups = normOppFields.map(findFieldGroup).filter(Boolean)
+    if (oppGroups.includes(profileGroup)) {
+      return 24
+    }
+  }
+
+  // Safe keyword matching (clean words > 4 chars, excluding generic stops)
+  const STOP_WORDS = new Set(['sciences', 'etudes', 'projet', 'general', 'appliquees'])
+  const profileWords = normProfile.split(' ').filter((w) => w.length > 4 && !STOP_WORDS.has(w))
   for (const oppField of normOppFields) {
-    if (profileWords.some((w) => w.length > 3 && oppField.includes(w))) return 8
+    if (profileWords.some((w) => oppField.includes(w))) {
+      return 14
+    }
   }
 
   return 0
@@ -301,22 +371,70 @@ export function getFieldMatchScore(profileField: string, opportunityFields: stri
 // ── DIMENSION B — Niveau score (0-20) ───────────────────────
 
 export function getLevelScore(profileLevel: string, requiredLevel: string): number {
-  if (!requiredLevel) return 20 // no requirement → full score
+  if (!requiredLevel) return 20
+
+  const normReq = normalizeText(requiredLevel)
+  if (
+    normReq === 'aucun' ||
+    normReq === 'tous' ||
+    normReq === 'tous niveaux' ||
+    normReq.includes('sans condition') ||
+    normReq.includes('sans diplome')
+  ) {
+    return 20 // No degree requirement → open to everyone with full points!
+  }
 
   const profileNum = levelToNumber(profileLevel)
   const requiredNum = levelToNumber(requiredLevel)
 
-  if (profileNum < 0 || requiredNum < 0) return 10 // unknown levels → partial
+  if (profileNum < 0 || requiredNum < 0) return 12 // partial when unknown
 
   const diff = profileNum - requiredNum
 
-  if (diff >= 0) return 20           // meets or exceeds requirement
-  if (diff === -1) return 12         // one level below
-  if (diff === -2) return 5          // two levels below
-  return 0                           // too far below
+  if (diff >= 0) return 20   // Meets or exceeds requirement
+  if (diff === -1) return 12 // One level below (e.g. Bac+2 for Licence)
+  if (diff === -2) return 6  // Two levels below
+  return 0                   // Too far below
 }
 
 // ── DIMENSION C — Compétences score (0-30) ──────────────────
+
+/**
+ * Check if a required skill is matched by the profile skills,
+ * taking into account compound alternatives ("ou", "/"), exact matches, and synonyms.
+ */
+function isSkillMatched(
+  requiredSkill: string,
+  profileSkillsNorm: string[]
+): boolean {
+  const normReq = normalizeSkill(requiredSkill)
+
+  // Handle alternative requirements like "Anglais ou français" or "Anglais / portugais"
+  if (normReq.includes(' ou ') || normReq.includes(' et ou ')) {
+    const parts = normReq.split(/\bou\b|\bet\s+ou\b/).map((p) => p.trim()).filter(Boolean)
+    return parts.some((part) => isSkillMatched(part, profileSkillsNorm))
+  }
+
+  // Direct match
+  if (profileSkillsNorm.includes(normReq)) return true
+
+  // Substring inclusion if meaningful length
+  if (profileSkillsNorm.some((ps) => ps === normReq || (ps.length > 3 && normReq.includes(ps)) || (normReq.length > 3 && ps.includes(normReq)))) {
+    return true
+  }
+
+  // Synonym / Proximity match
+  const proxies = SKILL_PROXIMITY[normReq] || []
+  if (proxies.some((p) => profileSkillsNorm.includes(p))) return true
+
+  // Reverse proximity check (candidate has proxy that satisfies requirement)
+  for (const ps of profileSkillsNorm) {
+    const psProxies = SKILL_PROXIMITY[ps] || []
+    if (psProxies.includes(normReq)) return true
+  }
+
+  return false
+}
 
 export function getSkillsScore(
   profileSkills: string[],
@@ -335,39 +453,19 @@ export function getSkillsScore(
   }
 
   const normProfile = [...new Set(profileSkills.map(normalizeSkill).filter(Boolean))]
-  const normRequired = [...new Set(requiredSkills.map(normalizeSkill).filter(Boolean))]
 
   const matchedOriginal: string[] = []
   const missingOriginal: string[] = []
 
-  for (let i = 0; i < normRequired.length; i++) {
-    const req = normRequired[i]
-    const originalReq = requiredSkills[i] ?? req
-
-    // Exact match
-    const exactMatch = normProfile.includes(req)
-    if (exactMatch) {
-      matchedOriginal.push(originalReq)
-      continue
-    }
-
-    // Proximity match
-    const proxies = SKILL_PROXIMITY[req] ?? []
-    const proximityMatch = proxies.some((p) => normProfile.includes(p))
-
-    // Partial substring match (for compound skill names)
-    const partialMatch = normProfile.some(
-      (ps) => (ps.length > 3 && req.includes(ps)) || (req.length > 3 && ps.includes(req)),
-    )
-
-    if (proximityMatch || partialMatch) {
-      matchedOriginal.push(originalReq)
+  for (const req of requiredSkills) {
+    if (isSkillMatched(req, normProfile)) {
+      matchedOriginal.push(req)
     } else {
-      missingOriginal.push(originalReq)
+      missingOriginal.push(req)
     }
   }
 
-  const coverage = matchedOriginal.length / normRequired.length
+  const coverage = matchedOriginal.length / requiredSkills.length
   const score = Math.round(coverage * 30)
 
   return {
@@ -382,28 +480,57 @@ export function getSkillsScore(
 
 export function getLocationScore(profileLocation: string, opportunityLocation: string): number {
   if (!opportunityLocation) return 10
-  if (!profileLocation) return 5
+  if (!profileLocation) return 8
 
-  const normProfile = normalizeText(profileLocation)
   const normOpp = normalizeText(opportunityLocation)
+  const normProfile = normalizeText(profileLocation)
 
-  // Remote/international opportunities match everyone
+  // Remote / Telework
   if (isRemote(normOpp)) return 10
 
-  // Exact match
-  if (normProfile === normOpp || normOpp.includes(normProfile) || normProfile.includes(normOpp)) return 10
+  // Pan-African / Regional African opportunities (Direct target for students in Africa)
+  if (isAfricanRegional(normOpp)) return 10
 
-  // Same city partial
+  // Exact city or country match
+  if (normProfile === normOpp || normOpp.includes(normProfile) || normProfile.includes(normOpp)) {
+    return 10
+  }
+
+  // City extraction check
   const profileCity = normProfile.split(',')[0].trim()
   const oppCity = normOpp.split(',')[0].trim()
-  if (profileCity === oppCity) return 10
-  if (oppCity.includes(profileCity) || profileCity.includes(oppCity)) return 8
+  if (profileCity && oppCity && (profileCity === oppCity || oppCity.includes(profileCity) || profileCity.includes(oppCity))) {
+    return 10
+  }
 
-  // Foreign / different city
-  return 2
+  // International open opportunities
+  if (normOpp.includes('international') || normOpp.includes('mondial')) {
+    return 9
+  }
+
+  // West Africa cross-border (e.g. Lomé <-> Bénin or Côte d'Ivoire)
+  const isProfileWestAfrica = WEST_AFRICA_COUNTRIES.some((c) => normProfile.includes(c)) || normProfile === 'lome' || normProfile === 'cotonou'
+  const isOppWestAfrica = WEST_AFRICA_COUNTRIES.some((c) => normOpp.includes(c))
+  if (isProfileWestAfrica && isOppWestAfrica) {
+    return 8
+  }
+
+  // International on-site with mobility (scholarships / global programmes)
+  return 6
 }
 
 // ── DIMENSION E — Intérêts / Type score (0-10) ──────────────
+
+const TYPE_SYNONYMS: Record<string, string[]> = {
+  stage: ['stage', 'internship', 'apprentissage'],
+  emploi: ['emploi', 'job', 'cdi', 'cdd', 'travail', 'recrutement'],
+  job: ['emploi', 'job', 'cdi', 'cdd', 'travail', 'recrutement'],
+  bourse: ['bourse', 'scholarship', 'financement'],
+  concours: ['concours', 'competition', 'hackathon', 'challenge'],
+  formation: ['formation', 'cours', 'certification', 'apprentissage'],
+  freelance: ['freelance', 'mission', 'projet independant'],
+  projet: ['projet', 'mission', 'collaboration'],
+}
 
 export function getInterestScore(profileInterests: string[], opportunityType: string): number {
   if (!profileInterests || profileInterests.length === 0) return 5
@@ -415,32 +542,30 @@ export function getInterestScore(profileInterests: string[], opportunityType: st
   // Direct match
   if (normInterests.includes(normType)) return 10
 
-  // Near-synonym match
-  const TYPE_SYNONYMS: Record<string, string[]> = {
-    stage: ['stage', 'internship', 'apprentissage'],
-    emploi: ['emploi', 'job', 'cdi', 'cdd', 'travail'],
-    bourse: ['bourse', 'scholarship', 'financement'],
-    concours: ['concours', 'competition', 'hackathon', 'challenge'],
-    formation: ['formation', 'cours', 'certification', 'apprentissage'],
-    freelance: ['freelance', 'mission', 'projet independant'],
-    projet: ['projet', 'mission', 'collaboration'],
-  }
-
+  // Synonym match
   const synonyms = TYPE_SYNONYMS[normType] ?? [normType]
   if (normInterests.some((i) => synonyms.includes(i))) return 10
-  if (normInterests.some((i) => synonyms.some((s) => i.includes(s) || s.includes(i)))) return 6
+  if (normInterests.some((i) => synonyms.some((s) => i.includes(s) || s.includes(i)))) return 7
 
   return 0
 }
 
-// ── Deadline helpers ──────────────────────────────────────────
+// ── Deadline & Status helpers ─────────────────────────────────
 
-function computeDeadlineInfo(deadline: string | null): {
+export function computeDeadlineInfo(deadline: string | null, status?: string): {
   isExpired: boolean
   daysRemaining: number | null
   expiringSoon: boolean
 } {
-  if (!deadline) return { isExpired: false, daysRemaining: null, expiringSoon: false }
+  // If explicitly marked expired in data
+  if (status === 'expired') {
+    return { isExpired: true, daysRemaining: null, expiringSoon: false }
+  }
+
+  if (!deadline) {
+    return { isExpired: false, daysRemaining: null, expiringSoon: false }
+  }
+
   try {
     const deadlineDate = new Date(deadline)
     const now = new Date()
@@ -468,75 +593,78 @@ export function getMatchReasons(
   const reasons: MatchReason[] = []
 
   // Filière
-  if (breakdown.filiere >= 28) {
-    reasons.push({ type: 'positive', label: `Ta filière (${profile.filiere}) correspond parfaitement` })
-  } else if (breakdown.filiere >= 18) {
-    reasons.push({ type: 'positive', label: `Ta filière (${profile.filiere}) est proche du domaine ciblé` })
-  } else if (breakdown.filiere >= 8) {
-    reasons.push({ type: 'neutral', label: `Ta filière est partiellement compatible avec l'offre` })
+  if (breakdown.filiere === 30) {
+    if ((opportunity.filiere_cible || []).some((f) => normalizeText(f).includes('toutes'))) {
+      reasons.push({ type: 'positive', label: `Opportunité ouverte à toutes les filières d'études` })
+    } else {
+      reasons.push({ type: 'positive', label: `Ta filière (${profile.filiere}) correspond parfaitement aux critères` })
+    }
+  } else if (breakdown.filiere >= 20) {
+    reasons.push({ type: 'positive', label: `Ta filière (${profile.filiere}) s'inscrit directement dans le domaine visé` })
+  } else if (breakdown.filiere >= 10) {
+    reasons.push({ type: 'neutral', label: `Ta filière partage des compétences avec le domaine demandé` })
   } else {
-    reasons.push({ type: 'negative', label: `Ta filière s'éloigne des critères ciblés` })
+    reasons.push({ type: 'negative', label: `Filière ciblée différente de ta formation actuelle` })
   }
 
   // Niveau
-  const profileNum = levelToNumber(profile.niveau)
-  const reqNum = levelToNumber(opportunity.niveau_min)
-  if (!opportunity.niveau_min || breakdown.niveau === 20) {
-    reasons.push({ type: 'positive', label: `Ton niveau (${profile.niveau}) est suffisant pour cette offre` })
-  } else if (profileNum < reqNum) {
+  const normMinLevel = normalizeText(opportunity.niveau_min || '')
+  if (normMinLevel === 'aucun' || normMinLevel === 'tous' || normMinLevel.includes('sans')) {
+    reasons.push({ type: 'positive', label: `Accessible sans condition de diplôme (ouvert à tous les niveaux)` })
+  } else if (breakdown.niveau === 20) {
+    reasons.push({ type: 'positive', label: `Ton niveau (${profile.niveau}) satisfait les prérequis (${opportunity.niveau_min})` })
+  } else if (breakdown.niveau >= 12) {
+    reasons.push({ type: 'neutral', label: `Niveau requis : ${opportunity.niveau_min} (profil très proche)` })
+  } else {
     reasons.push({
       type: 'negative',
-      label: `Niveau requis : ${opportunity.niveau_min} (tu es actuellement à ${profile.niveau})`,
+      label: `Niveau requis : ${opportunity.niveau_min} (tu as actuellement ${profile.niveau})`,
     })
-  } else {
-    reasons.push({ type: 'positive', label: `Ton niveau (${profile.niveau}) est compatible` })
   }
 
   // Compétences
   const total = matchedSkills.length + missingSkills.length
   if (total === 0) {
-    reasons.push({ type: 'positive', label: 'Aucune compétence technique préalable obligatoire' })
+    reasons.push({ type: 'positive', label: 'Aucune compétence technique spécifique obligatoire' })
   } else if (matchedSkills.length === total) {
     reasons.push({ type: 'positive', label: `Toutes tes compétences requises correspondent (${total}/${total})` })
   } else if (matchedSkills.length > 0) {
     reasons.push({
       type: 'positive',
-      label: `${matchedSkills.length} de tes compétences correspondent (${matchedSkills.slice(0, 3).join(', ')}${matchedSkills.length > 3 ? '...' : ''})`,
+      label: `${matchedSkills.length} compétence${matchedSkills.length > 1 ? 's' : ''} validée${matchedSkills.length > 1 ? 's' : ''} (${matchedSkills.slice(0, 3).join(', ')}${matchedSkills.length > 3 ? '...' : ''})`,
     })
   }
 
-  // Missing skills warnings
+  // Missing skills notes
   if (missingSkills.length > 0) {
     const topMissing = missingSkills.slice(0, 2).join(' et ')
     reasons.push({
       type: 'neutral',
-      label: `Compétence${missingSkills.length > 1 ? 's' : ''} à renforcer : ${topMissing}`,
+      label: `À préparer / renforcer : ${topMissing}`,
     })
   }
 
   // Localisation
-  if (breakdown.localisation >= 8) {
-    const normOpp = normalizeText(opportunity.localisation)
-    if (isRemote(normOpp)) {
-      reasons.push({ type: 'positive', label: "Offre 100% accessible à distance / remote" })
-    } else {
-      reasons.push({ type: 'positive', label: `L'opportunité est située à ${opportunity.localisation}` })
-    }
-  } else if (breakdown.localisation > 0) {
-    reasons.push({ type: 'neutral', label: `Localisation (${opportunity.localisation}) différente de ta ville (${profile.localisation})` })
+  const normOpp = normalizeText(opportunity.localisation)
+  if (isRemote(normOpp)) {
+    reasons.push({ type: 'positive', label: 'Offre 100% accessible à distance / télétravail' })
+  } else if (isAfricanRegional(normOpp)) {
+    reasons.push({ type: 'positive', label: `Programme ouvert aux candidats d'Afrique (${opportunity.localisation})` })
+  } else if (breakdown.localisation >= 8) {
+    reasons.push({ type: 'positive', label: `Localisation adaptée : ${opportunity.localisation}` })
   } else {
-    reasons.push({ type: 'negative', label: 'Localisation géographique éloignée' })
+    reasons.push({ type: 'neutral', label: `Localisation : ${opportunity.localisation} (mobilité ou séjour requis)` })
   }
 
   // Intérêts
-  if (breakdown.interets === 10) {
-    reasons.push({ type: 'positive', label: `Le format (${opportunity.type}) correspond à tes objectifs recherchés` })
+  if (breakdown.interets >= 8) {
+    reasons.push({ type: 'positive', label: `Format (${opportunity.type}) aligné avec tes préférences` })
   }
 
   return reasons
 }
 
-// ── Missing skills actionable advice ──────────────────────────
+// ── Actionable missing skills advice ──────────────────────────
 
 export function getMissingSkillsAdvice(
   profile: UserProfile,
@@ -551,16 +679,29 @@ export function getMissingSkillsAdvice(
   const coveragePercent = total > 0 ? Math.round((matchedSkills.length / total) * 100) : 100
 
   const recommendations: string[] = []
+
   if (missingSkills.length > 0) {
-    recommendations.push(`Apprendre les fondamentaux de ${missingSkills[0]}`)
-    if (missingSkills.length > 1) {
-      recommendations.push(`Réaliser un mini-projet combinant ${matchedSkills[0] || profile.filiere} et ${missingSkills[1]}`)
-    } else {
-      recommendations.push(`Créer un projet pratique utilisant ${missingSkills[0]}`)
+    for (const skill of missingSkills.slice(0, 2)) {
+      const normS = normalizeText(skill)
+      if (normS.includes('dossier academique') || normS.includes('excellence')) {
+        recommendations.push(`Constituer un dossier académique soigné (relevés de notes officiels, attestations, recommandations)`)
+      } else if (normS.includes('recherche') || normS.includes('proposition')) {
+        recommendations.push(`Rédiger une note d'intention ou un projet de recherche clair et structuré`)
+      } else if (normS.includes('pitch')) {
+        recommendations.push(`Préparer une présentation / pitch percutant (problème, solution, impact)`)
+      } else if (normS.includes('engagement') || normS.includes('leadership')) {
+        recommendations.push(`Mettre en avant tes engagements associatifs, bénévolats ou réalisations collectives`)
+      } else if (normS.includes('anglais')) {
+        recommendations.push(`Soigner ton CV et ta lettre de motivation en anglais`)
+      } else if (normS.includes('rapport')) {
+        recommendations.push(`Valoriser des exemples concrets de comptes-rendus ou synthèses rédigés`)
+      } else {
+        recommendations.push(`Approfondir les notions clés de "${skill}" à travers un projet concret ou un tutoriel`)
+      }
     }
-    recommendations.push(`Ajouter cette réalisation sur ton profil et ton CV avant d'envoyer`)
+    recommendations.push(`Mettre à jour ton profil et ton CV avant d'envoyer ta candidature`)
   } else {
-    recommendations.push(`Ton profil technique couvre 100% des compétences demandées !`)
+    recommendations.push(`Ton profil couvre parfaitement les attentes demandées !`)
     recommendations.push(`Prépare ta candidature en valorisant tes réalisations récentes`)
     recommendations.push(`Postule rapidement pour maximiser tes chances d'être retenu`)
   }
@@ -576,7 +717,10 @@ export function getMissingSkillsAdvice(
 // ── Master function ───────────────────────────────────────────
 
 export function calculateMatchScore(profile: UserProfile, opportunity: Opportunity): MatchResult {
-  const { isExpired, daysRemaining, expiringSoon } = computeDeadlineInfo(opportunity.deadline)
+  const { isExpired, daysRemaining, expiringSoon } = computeDeadlineInfo(
+    opportunity.deadline,
+    opportunity.status
+  )
 
   const filiereScore = getFieldMatchScore(profile.filiere ?? '', opportunity.filiere_cible ?? [])
   const niveauScore = getLevelScore(profile.niveau ?? '', opportunity.niveau_min ?? '')
@@ -617,7 +761,7 @@ export function calculateMatchScore(profile: UserProfile, opportunity: Opportuni
 
 /**
  * Rank all opportunities for a given profile.
- * Expired opportunities are filtered out from the top list but still ranked.
+ * Expired opportunities are filtered out from the top list but still ranked when includeExpired is true.
  */
 export function rankOpportunities(
   profile: UserProfile,

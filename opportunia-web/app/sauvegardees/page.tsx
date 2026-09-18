@@ -6,10 +6,8 @@ import { Heart, ArrowRight } from 'lucide-react'
 import { loadFavorites, loadProfile, toggleFavorite } from '@/lib/storage'
 import { calculateMatchScore } from '@/lib/matching'
 import { OpportunityCard } from '@/components/opportunity/OpportunityCard'
-import opportunitiesData from '@/data/opportunities.json'
-import type { Opportunity, UserProfile, MatchResult } from '@/types'
-
-const ALL_OPPORTUNITIES = (opportunitiesData as { opportunities: Opportunity[] }).opportunities
+import { ALL_OPPORTUNITIES } from '@/lib/opportunities'
+import type { UserProfile, MatchResult } from '@/types'
 
 export default function SaveeesPage() {
   const [favorites, setFavorites] = useState<string[]>([])

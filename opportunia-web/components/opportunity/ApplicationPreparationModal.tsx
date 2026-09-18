@@ -36,7 +36,6 @@ export function ApplicationPreparationModal({
       competences: ['JavaScript', 'React', 'Git'],
       localisation: 'Lomé',
       interets: ['Stage', 'Emploi'],
-      objectif_pro: 'Développeur Fullstack',
       createdAt: new Date().toISOString(),
     }
   }, [profile])
@@ -191,19 +190,31 @@ export function ApplicationPreparationModal({
             }`}
           >
             <BookmarkCheck className="w-4 h-4" />
-            {markedAsPrepared ? '✓ Ajouté à "Candidatures préparées"' : 'Enregistrer dans mon tracker'}
+            {markedAsPrepared ? 'Ajouté à "Candidatures préparées"' : 'Enregistrer dans mon tracker'}
           </button>
 
-          <a
-            href={opportunity.lien_candidature || opportunity.source_url || 'https://www.linkedin.com/jobs/'}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackApplication(opportunity.id, 'sent')}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-blue-500/25 transition-all cursor-pointer"
-          >
-            <span>Candidater maintenant</span>
-            <Send className="w-4 h-4" />
-          </a>
+          {opportunity.lien_candidature && opportunity.lien_candidature.trim() !== '' ? (
+            <a
+              href={opportunity.lien_candidature}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackApplication(opportunity.id, 'sent')}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-blue-500/25 transition-all cursor-pointer"
+            >
+              <span>Candidater maintenant</span>
+              <Send className="w-4 h-4" />
+            </a>
+          ) : (
+            <button
+              type="button"
+              disabled
+              title="Lien de candidature indisponible"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/60 text-slate-500 text-xs sm:text-sm font-semibold cursor-not-allowed opacity-60"
+            >
+              <span>Lien de candidature indisponible</span>
+              <Send className="w-4 h-4 opacity-40" />
+            </button>
+          )}
         </div>
       </div>
     </div>

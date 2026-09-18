@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 import './globals.css'
 import { Navbar } from '@/components/navbar/Navbar'
 import { PwaRegister } from '@/components/pwa/PwaRegister'
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0f1e' },
+    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
+    { media: '(prefers-color-scheme: dark)', color: '#0b1329' },
   ],
   width: 'device-width',
   initialScale: 1,
@@ -14,14 +15,14 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Opportunia — Trouvez les opportunités qui vous correspondent',
+  title: 'Opportunia — Le tremplin des opportunités pour étudiants (Togo & Afrique)',
   description:
-    'Opportunia analyse votre profil étudiant et vous recommande les stages, bourses, concours et emplois qui correspondent à vos compétences et ambitions.',
-  keywords: ['stages', 'bourses', 'emploi', 'étudiants', 'Togo', 'opportunités', 'matching'],
+    'Opportunia connecte les étudiants et jeunes diplômés du Togo et de la sous-région avec les stages, bourses, concours et emplois adaptés à leur profil et leurs ambitions.',
+  keywords: ['stages Lomé', 'bourses Togo', 'premier emploi Afrique', 'étudiants Togo', 'opportunités Togo', 'orientation professionnelle'],
   manifest: '/manifest.webmanifest',
   appleWebApp: {
     capable: true,
-    statusBarStyle: 'black-translucent',
+    statusBarStyle: 'default',
     title: 'Opportunia',
   },
   icons: {
@@ -29,25 +30,32 @@ export const metadata: Metadata = {
     apple: '/icons/apple-touch-icon.png',
   },
   openGraph: {
-    title: 'Opportunia',
-    description: 'Les opportunités existent. Trouvez celles qui vous correspondent.',
+    title: 'Opportunia — Campus & Avenir',
+    description: 'Ne cherche plus au hasard. Trouve les opportunités qui correspondent à ton parcours.',
     type: 'website',
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" data-theme="opportunia" className="h-full" suppressHydrationWarning>
+    <html lang="fr" data-theme="light" className="h-full light" suppressHydrationWarning>
       <head>
-        <script
+        <Script
+          id="theme-initializer"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
                   var saved = localStorage.getItem('opp_theme');
-                  if (saved === 'light') {
+                  if (saved === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                  } else {
                     document.documentElement.setAttribute('data-theme', 'light');
                     document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
                   }
                 } catch (e) {}
               })();

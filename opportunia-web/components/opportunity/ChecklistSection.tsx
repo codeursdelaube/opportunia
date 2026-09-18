@@ -48,7 +48,7 @@ export function ChecklistSection({ opportunityId }: ChecklistSectionProps) {
           </div>
           <div>
             <h3 className="font-bold text-white text-sm sm:text-base">
-              📋 Avant de candidater
+              Avant de candidater
             </h3>
             <p className="text-xs text-slate-400">
               Vérifie et coche les documents indispensables avant d&apos;envoyer ton dossier

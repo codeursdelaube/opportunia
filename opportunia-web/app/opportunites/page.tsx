@@ -2,17 +2,17 @@
 
 import { useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Search, SlidersHorizontal, X, Sparkles, Filter, AlertCircle, ArrowRight } from 'lucide-react'
+import { Search, SlidersHorizontal, X, Sparkles, AlertCircle, ArrowRight } from 'lucide-react'
 import { OpportunityCard } from '@/components/opportunity/OpportunityCard'
 import { loadProfile } from '@/lib/storage'
-import { rankOpportunities } from '@/lib/matching'
+import { rankOpportunities, computeDeadlineInfo } from '@/lib/matching'
 import { getTypeLabel } from '@/lib/utils'
 import { ALL_OPPORTUNITIES } from '@/lib/opportunities'
-import type { Opportunity, MatchResult, UserProfile } from '@/types'
+import type { MatchResult, UserProfile } from '@/types'
 
 const TYPES = ['Tous', 'stage', 'emploi', 'bourse', 'concours', 'formation', 'projet', 'freelance']
-const NIVEAUX = ['Tous', 'Bac', 'Bac+1', 'Bac+2', 'Bac+3', 'Bac+4', 'Bac+5', 'Master']
-const LOCALISATIONS = ['Toutes', 'Lomé', 'International', 'À distance']
+const NIVEAUX = ['Tous', 'Aucun', 'Bac', 'Licence / Bac+3', 'Master', 'Doctorat']
+const LOCALISATIONS = ['Toutes', 'À distance', 'Afrique / Régional', 'International']
 const SORTS = ['Pertinence', 'Deadline', 'Plus récent']
 
 export default function OpportunitesPage() {
@@ -25,11 +25,9 @@ export default function OpportunitesPage() {
   const [sortBy, setSortBy] = useState('Pertinence')
   const [showFilters, setShowFilters] = useState(false)
   const [profile, setProfile] = useState<UserProfile | null>(null)
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setProfile(loadProfile())
-    setMounted(true)
   }, [])
 
   // Build match results for all opportunities
@@ -37,18 +35,21 @@ export default function OpportunitesPage() {
     if (profile) {
       return rankOpportunities(profile, ALL_OPPORTUNITIES, true)
     }
-    // No profile → neutral results with score 0
-    return ALL_OPPORTUNITIES.map((opp) => ({
-      opportunity: opp,
-      score: 0,
-      breakdown: { filiere: 0, niveau: 0, competences: 0, localisation: 0, interets: 0 },
-      matchedSkills: [],
-      missingSkills: opp.competences_requises,
-      reasons: [],
-      isExpired: opp.status === 'expired',
-      daysRemaining: null,
-      expiringSoon: false,
-    }))
+    // No profile → neutral results with score 0 and accurate deadline calculations
+    return ALL_OPPORTUNITIES.map((opp) => {
+      const deadlineInfo = computeDeadlineInfo(opp.deadline, opp.status)
+      return {
+        opportunity: opp,
+        score: 0,
+        breakdown: { filiere: 0, niveau: 0, competences: 0, localisation: 0, interets: 0 },
+        matchedSkills: [],
+        missingSkills: opp.competences_requises,
+        reasons: [],
+        isExpired: deadlineInfo.isExpired,
+        daysRemaining: deadlineInfo.daysRemaining,
+        expiringSoon: deadlineInfo.expiringSoon,
+      }
+    })
   }, [profile])
 
   const filtered = useMemo(() => {
@@ -85,25 +86,57 @@ export default function OpportunitesPage() {
 
     // Type filter
     if (typeFilter !== 'Tous') {
-      results = results.filter((r) => r.opportunity.type?.toLowerCase() === typeFilter.toLowerCase())
+      const tf = typeFilter.toLowerCase()
+      results = results.filter((r) => {
+        const oppType = (r.opportunity.type || '').toLowerCase()
+        if (tf === 'emploi') return oppType === 'emploi' || oppType === 'job'
+        return oppType === tf
+      })
     }
 
     // Niveau filter
     if (niveauFilter !== 'Tous') {
-      results = results.filter((r) => r.opportunity.niveau_min?.toLowerCase() === niveauFilter.toLowerCase())
+      if (niveauFilter === 'Licence / Bac+3') {
+        results = results.filter((r) => {
+          const niv = (r.opportunity.niveau_min || '').toLowerCase()
+          return niv.includes('licence') || niv.includes('bac+3')
+        })
+      } else if (niveauFilter === 'Aucun') {
+        results = results.filter((r) => {
+          const niv = (r.opportunity.niveau_min || '').toLowerCase()
+          return niv === 'aucun' || niv === '' || niv.includes('sans')
+        })
+      } else {
+        results = results.filter((r) =>
+          (r.opportunity.niveau_min || '').toLowerCase().includes(niveauFilter.toLowerCase())
+        )
+      }
     }
 
     // Location filter
     if (locFilter !== 'Toutes') {
-      const q = locFilter.toLowerCase()
-      results = results.filter(
-        (r) =>
-          r.opportunity.localisation.toLowerCase().includes(q) ||
-          (locFilter === 'À distance' &&
-            ['distance', 'remote', 'international'].some((kw) =>
-              r.opportunity.localisation.toLowerCase().includes(kw)
-            ))
-      )
+      if (locFilter === 'À distance') {
+        results = results.filter((r) =>
+          ['distance', 'remote', 'en ligne', 'teletravail'].some((kw) =>
+            r.opportunity.localisation.toLowerCase().includes(kw)
+          )
+        )
+      } else if (locFilter === 'Afrique / Régional') {
+        results = results.filter((r) =>
+          ['afrique', 'benin', 'togo', 'cote d ivoire', 'senegal', 'ethiopie', 'kenya'].some((kw) =>
+            r.opportunity.localisation.toLowerCase().includes(kw)
+          )
+        )
+      } else if (locFilter === 'International') {
+        results = results.filter((r) =>
+          ['international', 'mondial', 'canada', 'saoudite', 'turkiye', 'portugal', 'cambodge'].some((kw) =>
+            r.opportunity.localisation.toLowerCase().includes(kw)
+          )
+        )
+      } else {
+        const q = locFilter.toLowerCase()
+        results = results.filter((r) => r.opportunity.localisation.toLowerCase().includes(q))
+      }
     }
 
     // Sort

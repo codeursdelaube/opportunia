@@ -6,22 +6,16 @@ import Link from 'next/link'
 import {
   ArrowRight,
   RefreshCw,
-  Sparkles,
   Flame,
-  BookmarkCheck,
   Heart,
-  Compass,
 } from 'lucide-react'
-import { loadProfile, loadFavorites, clearProfile } from '@/lib/storage'
+import { loadProfile, loadFavorites } from '@/lib/storage'
 import { rankOpportunities } from '@/lib/matching'
 import { OpportunityCard } from '@/components/opportunity/OpportunityCard'
-import { CareerReadinessCard } from '@/components/career/CareerReadinessCard'
-import { CareerPathView } from '@/components/career/CareerPathView'
-import { DailyOpportunity } from '@/components/dashboard/DailyOpportunity'
 import { ApplicationTrackerSummary } from '@/components/dashboard/ApplicationTrackerSummary'
 import { StatsBar } from '@/components/dashboard/StatsBar'
 import { ALL_OPPORTUNITIES } from '@/lib/opportunities'
-import type { Opportunity, UserProfile } from '@/types'
+import type { UserProfile } from '@/types'
 
 export default function DashboardPage() {
   const router = useRouter()
@@ -55,12 +49,6 @@ export default function DashboardPage() {
     })
   }, [profile, favorites, ranked])
 
-  // Daily opportunity: highest score active opportunity
-  const dailyOpp = useMemo(() => {
-    if (ranked.length === 0) return null
-    return ranked[0]
-  }, [ranked])
-
   const expiringSoon = useMemo(
     () => ranked.filter((r) => r.expiringSoon).length,
     [ranked]
@@ -81,27 +69,25 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen hero-gradient pt-20 pb-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
         {/* ── Welcome Header ── */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <p className="text-blue-400 font-semibold text-sm mb-1">
-              Bonjour {prenom} 👋
-            </p>
-            <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              Voici les opportunités qui correspondent à ton profil
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 dark:bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30 mb-2">
+              <span>Espace Étudiant</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+              Bonjour {prenom}, voici tes opportunités
             </h1>
-            <p className="text-slate-400 text-sm sm:text-base mt-1">
-              Objectif ciblé :{' '}
-              <span className="text-purple-300 font-semibold">{profile.objectif_pro}</span> ·{' '}
-              <span className="text-white font-medium">{profile.filiere} ({profile.niveau})</span> à {profile.localisation}
+            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-1">
+              Filière : <span className="font-semibold text-blue-700 dark:text-blue-400">{profile.filiere}</span> ({profile.niveau}) · Ville : <span className="font-semibold text-slate-800 dark:text-slate-200">{profile.localisation}</span>
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <Link
               href="/profil"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition-all"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-white text-xs font-bold transition-all shadow-xs"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               Modifier mon profil
@@ -109,19 +95,15 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* ── SECTION 1 : Ton Career Readiness ── */}
-        <section aria-label="Career Readiness">
-          <CareerReadinessCard profile={profile} />
-        </section>
+        {/* ── Stats Bar ── */}
+        <StatsBar
+          totalMatches={ranked.length}
+          savedCount={favorites.length}
+          expiringSoonCount={expiringSoon}
+          profileComplete={Boolean(profile.filiere && profile.niveau && profile.competences?.length > 0)}
+        />
 
-        {/* ── SECTION 2 : Ton opportunité du jour ── */}
-        {dailyOpp && (
-          <section aria-label="Opportunité du jour">
-            <DailyOpportunity result={dailyOpp} />
-          </section>
-        )}
-
-        {/* ── SECTION 3 : Meilleures opportunités pour toi ── */}
+        {/* ── SECTION 1 : Meilleures opportunités pour toi ── */}
         <section aria-label="Meilleures opportunités">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-2.5">
@@ -130,7 +112,7 @@ export default function DashboardPage() {
               </div>
               <div>
                 <h2 className="text-xl sm:text-2xl font-bold text-white">
-                  🔥 Meilleures opportunités pour toi
+                  Meilleures opportunités pour toi
                 </h2>
                 <p className="text-xs text-slate-400">
                   Classées par ordre de compatibilité avec ton profil et tes compétences
@@ -176,17 +158,12 @@ export default function DashboardPage() {
           )}
         </section>
 
-        {/* ── SECTION 4 : Ton Career Path ── */}
-        <section aria-label="Career Path">
-          <CareerPathView profile={profile} showOpportunities={false} />
-        </section>
-
-        {/* ── SECTION 5 : Mes candidatures ── */}
+        {/* ── SECTION 2 : Mes candidatures ── */}
         <section aria-label="Mes candidatures">
           <ApplicationTrackerSummary />
         </section>
 
-        {/* ── SECTION 6 : Opportunités sauvegardées ── */}
+        {/* ── SECTION 3 : Opportunités sauvegardées ── */}
         <section aria-label="Opportunités sauvegardées">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2.5">
@@ -194,7 +171,7 @@ export default function DashboardPage() {
                 <Heart className="w-4 h-4 fill-current" />
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-white">
-                ❤️ Opportunités sauvegardées ({favorites.length})
+                Opportunités sauvegardées ({favorites.length})
               </h2>
             </div>
             {favorites.length > 0 && (

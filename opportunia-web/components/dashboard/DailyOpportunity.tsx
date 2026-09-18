@@ -26,7 +26,7 @@ export function DailyOpportunity({ result }: DailyOpportunityProps) {
       <div className="flex items-center gap-2 mb-4">
         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
           <Star className="w-3.5 h-3.5 fill-current" />
-          ⭐ Ton opportunité du jour
+          Ton opportunité du jour
         </span>
         <span className="text-xs text-slate-400 hidden sm:inline">
           Sélectionnée spécialement selon tes points forts
@@ -73,7 +73,7 @@ export function DailyOpportunity({ result }: DailyOpportunityProps) {
                   key={i}
                   className="text-xs px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300"
                 >
-                  ✓ {r.label}
+                  {r.label}
                 </span>
               ))}
             </div>

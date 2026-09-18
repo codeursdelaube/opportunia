@@ -44,7 +44,6 @@ export function loadProfile(): UserProfile | null {
     // Backwards compatibility fallback for older profiles
     if (!parsed.prenom) parsed.prenom = 'Étudiant'
     if (!parsed.nom) parsed.nom = ''
-    if (!parsed.objectif_pro) parsed.objectif_pro = 'Découvrir des opportunités'
     return parsed
   } catch {
     return null

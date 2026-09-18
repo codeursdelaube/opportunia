@@ -1,7 +1,6 @@
 'use client'
 
 import { use, useEffect, useState, useMemo } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import {
@@ -16,8 +15,6 @@ import {
   ShieldCheck,
   AlertCircle,
   CheckCircle2,
-  Share2,
-  Sparkles,
 } from 'lucide-react'
 import { TypeBadge } from '@/components/ui/Badge'
 import { ScoreRing } from '@/components/ui/ScoreRing'
@@ -30,7 +27,7 @@ import { loadProfile, toggleFavorite, isFavorite, trackApplication, loadApplicat
 import { calculateMatchScore } from '@/lib/matching'
 import { formatDeadline } from '@/lib/utils'
 import { ALL_OPPORTUNITIES } from '@/lib/opportunities'
-import type { Opportunity, UserProfile, MatchResult } from '@/types'
+import type { UserProfile, MatchResult } from '@/types'
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -70,9 +67,16 @@ export default function OpportunityDetailPage({ params }: PageProps) {
     setFavorited(newState)
   }
 
+  const hasLien = Boolean(opportunity.lien_candidature && opportunity.lien_candidature.trim() !== '')
+
   function handleApplyDirect() {
-    trackApplication(id, 'sent')
-    setAppStatus('sent')
+    try {
+      trackApplication(id, 'sent')
+    } catch {}
+    // Defer state update slightly so browser begins navigation smoothly
+    setTimeout(() => {
+      setAppStatus('sent')
+    }, 50)
   }
 
   const days = matchResult?.daysRemaining
@@ -116,12 +120,12 @@ export default function OpportunityDetailPage({ params }: PageProps) {
                 )}
                 {isExpired ? (
                   <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-red-600/90 text-white">
-                    🔴 Offre expirée
+                    Offre expirée
                   </span>
                 ) : isExpiringSoon ? (
                   <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-orange-500 text-white">
                     <AlertCircle className="w-3.5 h-3.5" />
-                    ⏰ {days === 0 ? "Expire aujourd'hui" : `Plus que ${days} jour(s)`}
+                    {days === 0 ? "Expire aujourd'hui" : `Plus que ${days} jour(s)`}
                   </span>
                 ) : null}
               </div>
@@ -170,17 +174,30 @@ export default function OpportunityDetailPage({ params }: PageProps) {
           {/* Action CTAs */}
           <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center gap-3">
             {/* Bouton Candidater : lien direct officiel */}
-            <a
-              href={opportunity.lien_candidature || opportunity.source_url || 'https://www.linkedin.com/jobs/'}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleApplyDirect}
-              id="btn-candidater-direct"
-              className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-blue-500/25 transition-all cursor-pointer"
-            >
-              <span>Candidater</span>
-              <ExternalLink className="w-4 h-4" />
-            </a>
+            {hasLien ? (
+              <a
+                href={opportunity.lien_candidature}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleApplyDirect}
+                id="btn-candidater-direct"
+                className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-blue-500/25 transition-all cursor-pointer"
+              >
+                <span>Candidater</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            ) : (
+              <button
+                type="button"
+                disabled
+                title="Lien de candidature indisponible"
+                id="btn-candidater-disabled"
+                className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-slate-800/60 border border-slate-700/60 text-slate-500 font-bold text-sm cursor-not-allowed opacity-60"
+              >
+                <span>Lien de candidature indisponible</span>
+                <ExternalLink className="w-4 h-4 opacity-40" />
+              </button>
+            )}
 
             {/* Bouton Préparer ma candidature */}
             <button
@@ -250,7 +267,7 @@ export default function OpportunityDetailPage({ params }: PageProps) {
                       }`}
                     >
                       <span className="font-bold flex-shrink-0">
-                        {reason.type === 'positive' ? '✓' : reason.type === 'neutral' ? '⚠' : '○'}
+                        {reason.type === 'positive' ? '+' : reason.type === 'neutral' ? '~' : '–'}
                       </span>
                       <span className="leading-snug">{reason.label}</span>
                     </div>
@@ -294,7 +311,7 @@ export default function OpportunityDetailPage({ params }: PageProps) {
                           : 'bg-white/5 border-white/10 text-slate-300'
                       }`}
                     >
-                      {isMatched && <span className="text-emerald-400 font-bold">✓</span>}
+                      {isMatched && <span className="text-emerald-400 font-bold">+</span>}
                       {skill}
                     </span>
                   )

@@ -25,7 +25,7 @@ export function MissingSkillsSection({ advice, score }: MissingSkillsSectionProp
           </div>
           <div>
             <h3 className="font-bold text-white text-base sm:text-lg">
-              🚀 Ce qu&apos;il te manque pour cette offre
+              Ce qu&apos;il te manque pour cette offre
             </h3>
             <p className="text-xs text-slate-400">
               Analyse détaillée de l&apos;écart entre ton profil et les exigences du recruteur
@@ -53,7 +53,7 @@ export function MissingSkillsSection({ advice, score }: MissingSkillsSectionProp
                   key={skill}
                   className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
                 >
-                  <span className="text-[10px]">✓</span> {skill}
+                  <span className="text-[10px] text-emerald-400">✓</span> {skill}
                 </span>
               ))}
             </div>
@@ -79,13 +79,13 @@ export function MissingSkillsSection({ advice, score }: MissingSkillsSectionProp
                   key={skill}
                   className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-500/15 text-amber-300 border border-amber-500/30"
                 >
-                  <span className="text-[10px]">○</span> {skill}
+                  <span className="text-[10px]">–</span> {skill}
                 </span>
               ))}
             </div>
           ) : (
             <p className="text-xs text-emerald-400 font-medium flex items-center gap-1">
-              ✓ Aucune compétence manquante ! Tu as le profil idéal.
+              Aucune compétence manquante — Tu as le profil idéal.
             </p>
           )}
         </div>
@@ -95,7 +95,7 @@ export function MissingSkillsSection({ advice, score }: MissingSkillsSectionProp
       <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 border border-blue-500/20">
         <div className="flex items-center gap-2 mb-2.5 text-blue-300 font-semibold text-xs sm:text-sm">
           <Lightbulb className="w-4 h-4 text-amber-400" />
-          <span>💡 Pour augmenter tes chances de décrocher cette offre :</span>
+          <span>Pour augmenter tes chances de décrocher cette offre :</span>
         </div>
         <ol className="space-y-1.5 pl-2 text-xs sm:text-sm text-slate-300">
           {recommendations.map((rec, idx) => (

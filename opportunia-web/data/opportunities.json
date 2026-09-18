@@ -1,793 +1,475 @@
-{
-  "project": "Opportunia",
-  "opportunities": [
-    {
-      "id": "opp-001",
-      "titre": "Stage Développeur Web",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Entreprise Tech Togo",
-      "description": "Stage Développeur Web destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Informatique",
-        "Génie logiciel",
-        "Développement web"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "React"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-002",
-      "titre": "Stage Développeur Mobile",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Startup Digitale Togo",
-      "description": "Stage Développeur Mobile destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Informatique",
-        "Génie logiciel",
-        "Développement mobile"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "JavaScript",
-        "React Native",
-        "Git",
-        "API REST"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-003",
-      "titre": "Stage Assistant Marketing Digital",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Agence Digitale Togo",
-      "description": "Stage Assistant Marketing Digital destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Marketing",
-        "Communication",
-        "Commerce"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Marketing digital",
-        "Réseaux sociaux",
-        "Canva",
-        "Communication"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-004",
-      "titre": "Stage Assistant Comptable",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Cabinet Comptable Togo",
-      "description": "Stage Assistant Comptable destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Comptabilité",
-        "Finance",
-        "Gestion"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Comptabilité",
-        "Excel",
-        "Gestion financière",
-        "Rigueur"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-005",
-      "titre": "Stage Assistant Ressources Humaines",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Entreprise de Services Togo",
-      "description": "Stage Assistant Ressources Humaines destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Ressources humaines",
-        "Gestion",
-        "Administration"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Administration",
-        "Communication",
-        "Excel",
-        "Organisation"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-006",
-      "titre": "Stage Assistant Commercial",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Entreprise Commerciale Togo",
-      "description": "Stage Assistant Commercial destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Commerce",
-        "Marketing",
-        "Gestion"
-      ],
-      "niveau_min": "Bac+1",
-      "competences_requises": [
-        "Prospection",
-        "Communication",
-        "Vente",
-        "Relation client"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-007",
-      "titre": "Stage Communication Digitale",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Agence de Communication Togo",
-      "description": "Stage Communication Digitale destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Communication",
-        "Marketing",
-        "Journalisme"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Rédaction",
-        "Réseaux sociaux",
-        "Canva",
-        "Création de contenu"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-008",
-      "titre": "Stage Assistant Logistique",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Entreprise Logistique Togo",
-      "description": "Stage Assistant Logistique destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Logistique",
-        "Gestion",
-        "Transport"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Logistique",
-        "Gestion des stocks",
-        "Excel",
-        "Organisation"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-009",
-      "titre": "Stage Assistant Projet",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Organisation Togo",
-      "description": "Stage Assistant Projet destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Gestion de projet",
-        "Gestion",
-        "Administration"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Gestion de projet",
-        "Organisation",
-        "Communication",
-        "Excel"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-010",
-      "titre": "Stage Design Graphique",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Studio Créatif Togo",
-      "description": "Stage Design Graphique destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Design",
-        "Communication",
-        "Arts graphiques"
-      ],
-      "niveau_min": "Bac+1",
-      "competences_requises": [
-        "Photoshop",
-        "Illustrator",
-        "Canva",
-        "Créativité"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-011",
-      "titre": "Concours Jeunes Entrepreneurs",
-      "type": "Concours",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Programme Entrepreneuriat Togo",
-      "description": "Concours Jeunes Entrepreneurs destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Entrepreneuriat",
-        "Gestion",
-        "Commerce",
-        "Informatique"
-      ],
-      "niveau_min": "Bac",
-      "competences_requises": [
-        "Entrepreneuriat",
-        "Business plan",
-        "Pitch",
-        "Innovation"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-012",
-      "titre": "Formation en Entrepreneuriat",
-      "type": "Formation",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Programme de Formation Togo",
-      "description": "Formation en Entrepreneuriat destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Entrepreneuriat",
-        "Gestion",
-        "Commerce"
-      ],
-      "niveau_min": "Bac",
-      "competences_requises": [
-        "Business model",
-        "Entrepreneuriat",
-        "Marketing",
-        "Gestion"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-013",
-      "titre": "Bourse d'études pour étudiants",
-      "type": "Bourse",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Programme de bourse",
-      "description": "Bourse d'études pour étudiants destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Toutes filières"
-      ],
-      "niveau_min": "Bac",
-      "competences_requises": [
-        "Dossier académique",
-        "Motivation"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-014",
-      "titre": "Formation Développement Web",
-      "type": "Formation",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Programme Tech",
-      "description": "Formation Développement Web destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Informatique",
-        "Génie logiciel",
-        "Développement web"
-      ],
-      "niveau_min": "Bac",
-      "competences_requises": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Git"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-015",
-      "titre": "Formation Data Science",
-      "type": "Formation",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Programme Data",
-      "description": "Formation Data Science destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Informatique",
-        "Data Science",
-        "Mathématiques"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Python",
-        "Excel",
-        "Analyse de données",
-        "Statistiques"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-016",
-      "titre": "Projet étudiant en Intelligence Artificielle",
-      "type": "Projet",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Projet Tech Togo",
-      "description": "Projet étudiant en Intelligence Artificielle destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Informatique",
-        "Intelligence artificielle",
-        "Data Science"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Python",
-        "Machine Learning",
-        "Git",
-        "Analyse de données"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-017",
-      "titre": "Stage Assistant Administratif",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Entreprise de Services Togo",
-      "description": "Stage Assistant Administratif destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Administration",
-        "Gestion",
-        "Droit"
-      ],
-      "niveau_min": "Bac+1",
-      "competences_requises": [
-        "Bureautique",
-        "Organisation",
-        "Communication",
-        "Excel"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-018",
-      "titre": "Stage Community Manager",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Agence Digitale Togo",
-      "description": "Stage Community Manager destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Communication",
-        "Marketing",
-        "Digital"
-      ],
-      "niveau_min": "Bac+1",
-      "competences_requises": [
-        "Community management",
-        "Réseaux sociaux",
-        "Canva",
-        "Rédaction"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-019",
-      "titre": "Stage Technicien Informatique",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Entreprise IT Togo",
-      "description": "Stage Technicien Informatique destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Informatique",
-        "Réseaux",
-        "Systèmes"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Maintenance informatique",
-        "Réseaux",
-        "Windows",
-        "Support technique"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-020",
-      "titre": "Commercial de terrain",
-      "type": "Stage",
-      "source": "Opportunia",
-      "source_url": "https://www.linkedin.com/jobs/",
-      "entreprise": "Entreprise Commerciale Togo",
-      "description": "Commercial de terrain destiné aux étudiants et jeunes diplômés au Togo, avec une expérience pratique dans le domaine concerné.",
-      "filiere_cible": [
-        "Commerce",
-        "Marketing",
-        "Gestion"
-      ],
-      "niveau_min": "Bac",
-      "competences_requises": [
-        "Prospection",
-        "Vente",
-        "Communication",
-        "Négociation"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://www.linkedin.com/jobs/",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-021",
-      "titre": "Stage pour étudiants en informatique",
-      "type": "Stage",
-      "source": "LinkedIn",
-      "source_url": "https://tg.linkedin.com/jobs/view/stage-pour-%25C3%25A9tudiants-informatique-at-numerum-dev-center-4248400197",
-      "entreprise": "Numerum Dev Center",
-      "description": "Stage pour étudiants en informatique à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
-      "filiere_cible": [
-        "Informatique",
-        "Génie logiciel",
-        "Réseaux",
-        "Cybersécurité",
-        "Data Science",
-        "Intelligence artificielle"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Développement web",
-        "React",
-        "Python",
-        "Cybersécurité",
-        "Réseaux",
-        "Data"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "expired",
-      "lien_candidature": "https://tg.linkedin.com/jobs/view/stage-pour-%25C3%25A9tudiants-informatique-at-numerum-dev-center-4248400197",
-      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-022",
-      "titre": "Stagiaire Marketing",
-      "type": "Stage",
-      "source": "LinkedIn",
-      "source_url": "https://tg.linkedin.com/jobs/view/tpg-technologies-recrute-un-e-stagiaire-marketing-lom%C3%A9-togo-at-tpg-agency-4462176128",
-      "entreprise": "TPG Technologies",
-      "description": "Stagiaire Marketing à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
-      "filiere_cible": [
-        "Marketing",
-        "Communication",
-        "Commerce",
-        "Gestion"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Marketing",
-        "Communication",
-        "Réseaux sociaux",
-        "Prospection"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://tg.linkedin.com/jobs/view/tpg-technologies-recrute-un-e-stagiaire-marketing-lom%C3%A9-togo-at-tpg-agency-4462176128",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-023",
-      "titre": "Stagiaire en communication et développement",
-      "type": "Stage",
-      "source": "LinkedIn",
-      "source_url": "https://tg.linkedin.com/jobs/view/stagiaire-en-communication-et-d%C3%A9veloppement-at-a-s-e-e-d-togo-4414039322",
-      "entreprise": "A.S.E.E.D. Togo",
-      "description": "Stagiaire en communication et développement à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
-      "filiere_cible": [
-        "Communication",
-        "Développement",
-        "Sciences sociales",
-        "Gestion"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Communication",
-        "Rédaction",
-        "Organisation",
-        "Gestion de projet"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "expired",
-      "lien_candidature": "https://tg.linkedin.com/jobs/view/stagiaire-en-communication-et-d%C3%A9veloppement-at-a-s-e-e-d-togo-4414039322",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-024",
-      "titre": "Stagiaire assistant commercial",
-      "type": "Stage",
-      "source": "LinkedIn",
-      "source_url": "https://tg.linkedin.com/jobs/view/stagiaire-assistant-commercial-at-conseilux-training-and-development-4437227605",
-      "entreprise": "Conseilux Training and Development",
-      "description": "Stagiaire assistant commercial à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
-      "filiere_cible": [
-        "Commerce",
-        "Marketing",
-        "Gestion"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Prospection",
-        "Vente",
-        "Communication",
-        "Relation client"
-      ],
-      "localisation": "Lomé",
-      "deadline": "2026-07-15",
-      "status": "expired",
-      "lien_candidature": "https://tg.linkedin.com/jobs/view/stagiaire-assistant-commercial-at-conseilux-training-and-development-4437227605",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-025",
-      "titre": "Assistant production digitale - Stage",
-      "type": "Stage",
-      "source": "LinkedIn",
-      "source_url": "https://tg.linkedin.com/jobs/view/assistant-production-digitale-stage-at-go-africa-online-4440519987",
-      "entreprise": "Go Africa Online",
-      "description": "Assistant production digitale - Stage à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
-      "filiere_cible": [
-        "Informatique",
-        "Communication",
-        "Marketing",
-        "Digital"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Production digitale",
-        "Communication",
-        "Création de contenu",
-        "Outils numériques"
-      ],
-      "localisation": "Lomé",
-      "deadline": "2026-07-19",
-      "status": "expired",
-      "lien_candidature": "https://tg.linkedin.com/jobs/view/assistant-production-digitale-stage-at-go-africa-online-4440519987",
-      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-026",
-      "titre": "Stagiaire comptable",
-      "type": "Stage",
-      "source": "LinkedIn",
-      "source_url": "https://tg.linkedin.com/jobs/view/stagiaire-comptable-at-navy-com-4467060689",
-      "entreprise": "TASMAR DEUTSCHE GRUPPE / Navy Com",
-      "description": "Stagiaire comptable à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
-      "filiere_cible": [
-        "Comptabilité",
-        "Finance",
-        "Gestion"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Comptabilité",
-        "Excel",
-        "Gestion financière",
-        "Rigueur"
-      ],
-      "localisation": "Lomé",
-      "deadline": null,
-      "status": "active",
-      "lien_candidature": "https://tg.linkedin.com/jobs/view/stagiaire-comptable-at-navy-com-4467060689",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-027",
-      "titre": "Agents commerciaux (H/F)",
-      "type": "Stage",
-      "source": "LinkedIn",
-      "source_url": "https://tg.linkedin.com/jobs/view/agents-commerciaux-h-f-at-waadoo-technologies-4461045959",
-      "entreprise": "Waadoo Technologies",
-      "description": "Agents commerciaux (H/F) à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
-      "filiere_cible": [
-        "Commerce",
-        "Marketing",
-        "Gestion"
-      ],
-      "niveau_min": "Bac",
-      "competences_requises": [
-        "Prospection",
-        "Vente",
-        "Communication",
-        "Négociation"
-      ],
-      "localisation": "Lomé",
-      "deadline": "2026-09-08",
-      "status": "expired",
-      "lien_candidature": "https://tg.linkedin.com/jobs/view/agents-commerciaux-h-f-at-waadoo-technologies-4461045959",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-028",
-      "titre": "Stagiaires conseiller(e) clientèle",
-      "type": "Stage",
-      "source": "LinkedIn",
-      "source_url": "https://tg.linkedin.com/jobs/view/stagiaires-conseiller-e-client%C3%A8le-at-koko-international-4406481108",
-      "entreprise": "KOKO INTERNATIONAL",
-      "description": "Stagiaires conseiller(e) clientèle à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
-      "filiere_cible": [
-        "Commerce",
-        "Marketing",
-        "Gestion",
-        "Communication"
-      ],
-      "niveau_min": "Bac",
-      "competences_requises": [
-        "Relation client",
-        "Communication",
-        "Accueil",
-        "Vente"
-      ],
-      "localisation": "Lomé",
-      "deadline": "2026-05-13",
-      "status": "expired",
-      "lien_candidature": "https://tg.linkedin.com/jobs/view/stagiaires-conseiller-e-client%C3%A8le-at-koko-international-4406481108",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-029",
-      "titre": "Stagiaire Supply & Logistics",
-      "type": "Stage",
-      "source": "LinkedIn",
-      "source_url": "https://tg.linkedin.com/jobs/view/stagiaire-supply-logistics-lom%C3%A9-togo-3-mois-sur-site-at-unicef-chad-4445528639",
-      "entreprise": "UNICEF",
-      "description": "Stagiaire Supply & Logistics à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
-      "filiere_cible": [
-        "Logistique",
-        "Supply Chain",
-        "Gestion",
-        "Transport"
-      ],
-      "niveau_min": "Bac+3",
-      "competences_requises": [
-        "Logistique",
-        "Supply Chain",
-        "Gestion des stocks",
-        "Excel"
-      ],
-      "localisation": "Lomé",
-      "deadline": "2026-08-07",
-      "status": "expired",
-      "lien_candidature": "https://tg.linkedin.com/jobs/view/stagiaire-supply-logistics-lom%C3%A9-togo-3-mois-sur-site-at-unicef-chad-4445528639",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-    },
-    {
-      "id": "opp-030",
-      "titre": "Stage Technicien Réseaux et Vidéosurveillance",
-      "type": "Stage",
-      "source": "LinkedIn",
-      "source_url": "https://tg.linkedin.com/jobs/view/stage-technicien-r%C3%A9seaux-et-cctv-at-infini-services-4398855740",
-      "entreprise": "INFINI SERVICES",
-      "description": "Stage Technicien Réseaux et Vidéosurveillance à Lomé, destiné aux étudiants intéressés par le domaine concerné.",
-      "filiere_cible": [
-        "Informatique",
-        "Réseaux",
-        "Télécommunications",
-        "Systèmes"
-      ],
-      "niveau_min": "Bac+2",
-      "competences_requises": [
-        "Réseaux",
-        "CCTV",
-        "Maintenance informatique",
-        "Systèmes"
-      ],
-      "localisation": "Lomé",
-      "deadline": "2026-04-24",
-      "status": "expired",
-      "lien_candidature": "https://tg.linkedin.com/jobs/view/stage-technicien-r%C3%A9seaux-et-cctv-at-infini-services-4398855740",
-      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
-    }
-  ]
-}
+[
+  {
+    "id": "opp-025",
+    "titre": "Stage rémunéré à distance - Section Ressources Humaines",
+    "type": "Stage",
+    "source": "Opportunités du Monde",
+    "source_url": "https://www.lesopportunites.com/opportunite/afrique/stages/communication/programme-de-stage-remunere-a-distance-du-pnud-2026-destine-aux-etudiants-et-jeunes-diplomes/",
+    "entreprise": "PNUD - Programme des Volontaires des Nations Unies (UNV)",
+    "description": "Stage rémunéré de 6 mois entièrement en télétravail au sein de l'équipe de développement des capacités, participant à la conception de programmes de formation pour les volontaires de l'ONU dans plus de 130 pays.",
+    "filiere_cible": [
+      "Ressources humaines",
+      "Communication",
+      "Gestion de projet"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Anglais",
+      "Communication",
+      "Gestion de projet"
+    ],
+    "localisation": "À distance",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://www.lesopportunites.com/opportunite/afrique/stages/communication/programme-de-stage-remunere-a-distance-du-pnud-2026-destine-aux-etudiants-et-jeunes-diplomes/",
+    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-026",
+    "titre": "Programme de stage rémunéré à distance",
+    "type": "Stage",
+    "source": "Afri-Carrières",
+    "source_url": "https://afri-carrieres.com/2026/01/programme-de-stage-remunere.html",
+    "entreprise": "CARE International",
+    "description": "Stage à distance dans le développement international et l'action humanitaire : projets liés à la justice sociale, l'égalité des genres, la sécurité alimentaire et la résilience climatique.",
+    "filiere_cible": [
+      "Développement international",
+      "Sciences sociales",
+      "Relations internationales"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Anglais",
+      "Rédaction de rapports"
+    ],
+    "localisation": "À distance",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://afri-carrieres.com/2026/01/programme-de-stage-remunere.html",
+    "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-027",
+    "titre": "Programme de Stages 2026 de l'Union Africaine",
+    "type": "Stage",
+    "source": "Opportunités du Monde",
+    "source_url": "https://www.lesopportunites.com/opportunite/afrique/stages/sciences-sociales/appel-a-candidatures-programme-de-stages-remuneres-2026-de-lunion-africaine-candidatures-des-pays-membres-vivement-encouragees/",
+    "entreprise": "Commission de l'Union Africaine",
+    "description": "Stage au sein d'une institution panafricaine de premier plan à Addis-Abeba, permettant aux étudiants et jeunes diplômés des États membres d'acquérir une expérience professionnelle institutionnelle.",
+    "filiere_cible": [
+      "Relations internationales",
+      "Sciences politiques",
+      "Administration publique"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Anglais ou français",
+      "Rédaction"
+    ],
+    "localisation": "Addis-Abeba, Éthiopie",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://www.lesopportunites.com/opportunite/afrique/stages/sciences-sociales/appel-a-candidatures-programme-de-stages-remuneres-2026-de-lunion-africaine-candidatures-des-pays-membres-vivement-encouragees/",
+    "image": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-028",
+    "titre": "Programme de stages UNESCO",
+    "type": "Stage",
+    "source": "Afri-Carrières",
+    "source_url": "https://afri-carrieres.com/offres-demplois/stages",
+    "entreprise": "UNESCO",
+    "description": "Programme de stage international permettant aux étudiants de découvrir les enjeux mondiaux de l'éducation, de la culture et des sciences au sein d'une agence des Nations Unies.",
+    "filiere_cible": [
+      "Relations internationales",
+      "Éducation",
+      "Culture"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Anglais",
+      "Français"
+    ],
+    "localisation": "International",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://afri-carrieres.com/offres-demplois/stages",
+    "image": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-029",
+    "titre": "Stage de recherche pour étudiants invités (VSRP)",
+    "type": "Stage",
+    "source": "Afri-Carrières",
+    "source_url": "https://afri-carrieres.com/offres-demplois/stages",
+    "entreprise": "KAUST (King Abdullah University of Science and Technology)",
+    "description": "Programme de stage de recherche scientifique pour étudiants internationaux invités dans les domaines des sciences et de l'ingénierie.",
+    "filiere_cible": [
+      "Sciences",
+      "Ingénierie",
+      "Recherche"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Anglais",
+      "Recherche scientifique"
+    ],
+    "localisation": "Arabie Saoudite",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://afri-carrieres.com/offres-demplois/stages",
+    "image": "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-030",
+    "titre": "Bourse SERA - Agriculture et Environnement",
+    "type": "Bourse",
+    "source": "Setondji",
+    "source_url": "https://www.setondji.org/blog/bourses/bourse-sera-100-financees-pour-etudier-en-afrique",
+    "entreprise": "Programme SERA (financé par l'Union Européenne)",
+    "description": "Bourses complètes pour Master et Doctorat en agroforesterie et environnement dans des universités africaines partenaires, couvrant scolarité, allocation mensuelle, voyage et assurance santé.",
+    "filiere_cible": [
+      "Agriculture",
+      "Environnement",
+      "Agroforesterie"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Dossier académique",
+      "Proposition de recherche (doctorat)"
+    ],
+    "localisation": "Afrique (Kenya et autres)",
+    "deadline": "2026-05-15",
+    "status": "expired",
+    "lien_candidature": "https://www.setondji.org/blog/bourses/bourse-sera-100-financees-pour-etudier-en-afrique",
+    "image": "https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-031",
+    "titre": "Bourse Mastercard Foundation Scholars Program - UBC",
+    "type": "Bourse",
+    "source": "Afri-Carrières",
+    "source_url": "https://afri-carrieres.com/type/bourses-detudes/",
+    "entreprise": "Mastercard Foundation / University of British Columbia",
+    "description": "Bourse entièrement financée pour un Master à l'Université de Colombie-Britannique au Canada, avec possibilité de dispense des frais de candidature pour certains profils.",
+    "filiere_cible": [
+      "Toutes filières"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Excellence académique",
+      "Anglais"
+    ],
+    "localisation": "Canada",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://afri-carrieres.com/type/bourses-detudes/",
+    "image": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-032",
+    "titre": "Princeton in Africa Fellowship 2027-2028",
+    "type": "Job",
+    "source": "Afri-Carrières",
+    "source_url": "https://afri-carrieres.com/type/bourses-detudes/",
+    "entreprise": "Princeton in Africa",
+    "description": "Programme de fellowship rémunéré de 12 mois avec logement, pour travailler sur des projets de développement au sein d'organisations partenaires en Afrique.",
+    "filiere_cible": [
+      "Développement international",
+      "Sciences sociales",
+      "Santé publique"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Anglais",
+      "Engagement communautaire"
+    ],
+    "localisation": "Afrique",
+    "deadline": "2026-10-26",
+    "status": "active",
+    "lien_candidature": "https://afri-carrieres.com/type/bourses-detudes/",
+    "image": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-033",
+    "titre": "Bourses Jean Monnet 2027-2028",
+    "type": "Bourse",
+    "source": "Afri-Carrières",
+    "source_url": "https://afri-carrieres.com/type/bourses-detudes/",
+    "entreprise": "Programme de bourses Jean Monnet (Türkiye)",
+    "description": "Bourse pour poursuivre des études de Master en Türkiye pour l'année universitaire 2027-2028, ouverte aux étudiants internationaux.",
+    "filiere_cible": [
+      "Toutes filières"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Dossier académique"
+    ],
+    "localisation": "Türkiye",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://afri-carrieres.com/type/bourses-detudes/",
+    "image": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-034",
+    "titre": "Bourse Mandela Rhodes 2026",
+    "type": "Bourse",
+    "source": "Setondji",
+    "source_url": "https://www.setondji.org/blog/bourses",
+    "entreprise": "Mandela Rhodes Foundation",
+    "description": "Formation entièrement financée en Afrique du Sud destinée aux jeunes leaders africains, avec accompagnement au développement du leadership.",
+    "filiere_cible": [
+      "Toutes filières",
+      "Leadership"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Leadership",
+      "Engagement communautaire"
+    ],
+    "localisation": "Afrique du Sud",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://www.setondji.org/blog/bourses",
+    "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-035",
+    "titre": "Evora Ecology Scholarship 2027",
+    "type": "Bourse",
+    "source": "Afri-Carrières",
+    "source_url": "https://afri-carrieres.com/type/bourses-detudes/",
+    "entreprise": "Université d'Évora (Portugal)",
+    "description": "Bourse couvrant frais de scolarité, allocation mensuelle, assurance santé et financement de recherche pour étudier l'écologie, les sciences environnementales ou la biologie marine au Portugal.",
+    "filiere_cible": [
+      "Écologie",
+      "Sciences environnementales",
+      "Biologie marine"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Dossier académique",
+      "Anglais ou portugais"
+    ],
+    "localisation": "Portugal",
+    "deadline": "2026-08-24",
+    "status": "expired",
+    "lien_candidature": "https://afri-carrieres.com/type/bourses-detudes/",
+    "image": "https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-036",
+    "titre": "Student Innovation Competition 2026",
+    "type": "Concours",
+    "source": "Afri-Carrières",
+    "source_url": "https://afri-carrieres.com/opportunites/student-innovation-competition/",
+    "entreprise": "ESG Africa Conference",
+    "description": "Concours récompensant les projets étudiants africains dans les domaines des droits humains, de l'IA responsable, de l'inclusion numérique et de la biodiversité.",
+    "filiere_cible": [
+      "Droit",
+      "Informatique",
+      "Sciences sociales",
+      "Environnement"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Innovation",
+      "Rédaction de projet"
+    ],
+    "localisation": "International",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://afri-carrieres.com/opportunites/student-innovation-competition/",
+    "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-037",
+    "titre": "Les Nouveaux Boss - Saison 2",
+    "type": "Concours",
+    "source": "TV5MONDE",
+    "source_url": "https://casting.tv5monde.com/candidature",
+    "entreprise": "TV5MONDE",
+    "description": "Concours panafricain d'entrepreneuriat destiné aux entrepreneurs francophones basés en Afrique, offrant visibilité internationale, mentorat et opportunités de financement.",
+    "filiere_cible": [
+      "Entrepreneuriat",
+      "Gestion",
+      "Toutes filières"
+    ],
+    "niveau_min": "Aucun",
+    "competences_requises": [
+      "Entrepreneuriat",
+      "Pitch"
+    ],
+    "localisation": "Afrique",
+    "deadline": "2026-06-15",
+    "status": "expired",
+    "lien_candidature": "https://casting.tv5monde.com/candidature",
+    "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-038",
+    "titre": "Small AI for Development Hackathon Challenge 2026",
+    "type": "Concours",
+    "source": "Afri-Carrières",
+    "source_url": "https://afri-carrieres.com/",
+    "entreprise": "Small AI for Development",
+    "description": "Hackathon mondial pour jeunes innovateurs de 18 à 35 ans autour de l'intelligence artificielle au service du développement, avec invitation au Global AI & Digital Summit à Séoul pour les finalistes.",
+    "filiere_cible": [
+      "Informatique",
+      "Intelligence artificielle",
+      "Innovation"
+    ],
+    "niveau_min": "Aucun",
+    "competences_requises": [
+      "IA",
+      "Développement de projet"
+    ],
+    "localisation": "International (à distance possible)",
+    "deadline": "2026-09-03",
+    "status": "expired",
+    "lien_candidature": "https://afri-carrieres.com/",
+    "image": "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-039",
+    "titre": "Master Francophone de Journalisme International (MFJI)",
+    "type": "Formation",
+    "source": "EPJT / DW Akademie",
+    "source_url": "https://epjt.fr/master-epjt-le-recrutement-2026-est-lance/",
+    "entreprise": "DW Akademie",
+    "description": "Master de journalisme international pour l'Afrique francophone, accessible aux titulaires d'un diplôme bac+3 minimum, toutes disciplines confondues.",
+    "filiere_cible": [
+      "Journalisme",
+      "Communication",
+      "Sciences sociales"
+    ],
+    "niveau_min": "Bac+3",
+    "competences_requises": [
+      "Rédaction",
+      "Culture générale"
+    ],
+    "localisation": "Afrique francophone",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://epjt.fr/master-epjt-le-recrutement-2026-est-lance/",
+    "image": "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-040",
+    "titre": "Programme Musso Tech",
+    "type": "Formation",
+    "source": "Comms & Marketing Africa",
+    "source_url": "https://communicant.news.blog/2026/05/03/opportunites-en-afrique-formations-concours-et-programmes-pour-les-talents-des-medias-et-du-digital/",
+    "entreprise": "Orange Digital Center",
+    "description": "Formation d'un mois dédiée aux jeunes femmes souhaitant développer des compétences dans le numérique.",
+    "filiere_cible": [
+      "Informatique",
+      "Numérique"
+    ],
+    "niveau_min": "Aucun",
+    "competences_requises": [
+      "Motivation",
+      "Bases en numérique"
+    ],
+    "localisation": "Afrique de l'Ouest",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://communicant.news.blog/2026/05/03/opportunites-en-afrique-formations-concours-et-programmes-pour-les-talents-des-medias-et-du-digital/",
+    "image": "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-041",
+    "titre": "Formation en leadership, plaidoyer et santé mentale",
+    "type": "Formation",
+    "source": "Comms & Marketing Africa",
+    "source_url": "https://communicant.news.blog/2026/07/22/opportunites-evenements-communication-leadership-sante-medias-et-numerique-en-afrique-juillet-a-septembre-2026/",
+    "entreprise": "Université Alassane Ouattara (Bouaké)",
+    "description": "Formation destinée à renforcer les compétences des futurs leaders en plaidoyer, réforme des politiques publiques et santé mentale en Afrique, avec bourses disponibles.",
+    "filiere_cible": [
+      "Santé publique",
+      "Sciences politiques",
+      "Sciences sociales"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Leadership",
+      "Plaidoyer"
+    ],
+    "localisation": "Bouaké, Côte d'Ivoire",
+    "deadline": "2026-07-28",
+    "status": "expired",
+    "lien_candidature": "https://communicant.news.blog/2026/07/22/opportunites-evenements-communication-leadership-sante-medias-et-numerique-en-afrique-juillet-a-septembre-2026/",
+    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-042",
+    "titre": "Concours d'Innovation FrancoTech 2026",
+    "type": "Concours",
+    "source": "Afri-Carrières",
+    "source_url": "https://afri-carrieres.com/",
+    "entreprise": "FrancoTech",
+    "description": "Concours d'innovation à Phnom Penh ouvert aux start-up et innovateurs francophones, avec des prix allant jusqu'à 3000 USD.",
+    "filiere_cible": [
+      "Entrepreneuriat",
+      "Informatique",
+      "Innovation"
+    ],
+    "niveau_min": "Aucun",
+    "competences_requises": [
+      "Innovation",
+      "Pitch"
+    ],
+    "localisation": "Cambodge (candidature à distance)",
+    "deadline": "2026-09-21",
+    "status": "active",
+    "lien_candidature": "https://afri-carrieres.com/",
+    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-043",
+    "titre": "Sociology on Stage Program 2026",
+    "type": "Bourse",
+    "source": "Afri-Carrières",
+    "source_url": "https://afri-carrieres.com/",
+    "entreprise": "International Sociological Association",
+    "description": "Subvention de 2000€ pour organiser des événements de vulgarisation de la sociologie destinés au grand public.",
+    "filiere_cible": [
+      "Sociologie",
+      "Sciences sociales"
+    ],
+    "niveau_min": "Licence",
+    "competences_requises": [
+      "Organisation d'événements",
+      "Sociologie"
+    ],
+    "localisation": "International",
+    "deadline": "2026-08-13",
+    "status": "expired",
+    "lien_candidature": "https://afri-carrieres.com/",
+    "image": "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-044",
+    "titre": "Programme HWY4PS - Femmes et jeunes pour la paix et la sécurité",
+    "type": "Formation",
+    "source": "Setondji",
+    "source_url": "https://www.setondji.org/blog/bourses",
+    "entreprise": "RAMP-BENIN",
+    "description": "Programme de formation pour 100 femmes et jeunes sur les enjeux de paix et de sécurité en Afrique de l'Ouest.",
+    "filiere_cible": [
+      "Sciences politiques",
+      "Relations internationales",
+      "Sciences sociales"
+    ],
+    "niveau_min": "Aucun",
+    "competences_requises": [
+      "Engagement communautaire"
+    ],
+    "localisation": "Bénin",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://www.setondji.org/blog/bourses",
+    "image": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
+  }
+]

@@ -16,14 +16,14 @@ import {
   Plus,
   Sparkles,
 } from 'lucide-react'
-import { loadApplications, updateApplicationStatus, removeApplication, loadProfile } from '@/lib/storage'
+import { loadApplications, updateApplicationStatus, removeApplication } from '@/lib/storage'
 import { ALL_OPPORTUNITIES } from '@/lib/opportunities'
-import type { ApplicationItem, ApplicationStatus, UserProfile } from '@/types'
+import type { ApplicationItem, ApplicationStatus } from '@/types'
 import { formatDeadline } from '@/lib/utils'
 
 const STATUS_CONFIG: Record<
   ApplicationStatus,
-  { label: string; icon: any; color: string; bg: string }
+  { label: string; icon: React.ComponentType<{ className?: string }>; color: string; bg: string }
 > = {
   saved: { label: 'Sauvegardée', icon: Heart, color: 'text-pink-400', bg: 'bg-pink-500/15 border-pink-500/30' },
   prepared: { label: 'Candidature préparée', icon: FileEdit, color: 'text-indigo-400', bg: 'bg-indigo-500/15 border-indigo-500/30' },
@@ -36,12 +36,10 @@ const STATUS_CONFIG: Record<
 
 export default function CandidaturesPage() {
   const [apps, setApps] = useState<ApplicationItem[]>([])
-  const [profile, setProfile] = useState<UserProfile | null>(null)
   const [selectedFilter, setSelectedFilter] = useState<string>('all')
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setProfile(loadProfile())
     setApps(loadApplications())
     setMounted(true)
   }, [])
@@ -97,7 +95,7 @@ export default function CandidaturesPage() {
                 </span>
               </div>
               <h1 className="text-3xl font-extrabold text-white mt-1">
-                📋 Suivi de mes candidatures
+                Suivi de mes candidatures
               </h1>
               <p className="text-slate-400 text-sm mt-1">
                 Pilote chaque étape de tes démarches, de la préparation jusqu&apos;à l&apos;acceptation.
