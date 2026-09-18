@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import {
   GraduationCap,
@@ -13,48 +13,27 @@ import {
   ArrowLeft,
   User,
   Sparkles,
+  Search,
+  Plus,
+  X,
+  Tag,
+  Check,
 } from 'lucide-react'
-import { saveProfile, generateUserId } from '@/lib/storage'
+import { saveProfile, loadProfile, generateUserId } from '@/lib/storage'
 import type { UserProfile } from '@/types'
+import {
+  DOMAINS,
+  ALL_FILIERES,
+  TRANSVERSAL_SKILLS,
+  ALL_SKILLS,
+  getSkillsForFiliere,
+} from '@/lib/skillsData'
 
-// ── Lists ────────────────────────────────────────────────────
-
-const FILIERES = [
-  'Informatique', 'Génie logiciel', 'Développement web', 'Data Science',
-  'Intelligence artificielle', 'Cybersécurité', 'Réseaux',
-  'Marketing', 'Communication', 'Design graphique', 'UI/UX Design',
-  'Commerce', 'Gestion', 'Entrepreneuriat', 'Management',
-  'Finance', 'Comptabilité', 'Audit', 'Économie',
-  'Ressources humaines', 'Droit', 'Sciences politiques',
-  'Agronomie', 'Agriculture', 'Environnement',
-  'Médecine', 'Pharmacie', 'Biologie',
-  'Ingénierie', 'Génie civil', 'Génie électrique',
-  'Lettres', 'Journalisme', 'Sciences de l\'éducation',
-]
+// ── Step config ───────────────────────────────────────────────
 
 const NIVEAUX = [
   'Bac', 'Bac+1', 'Bac+2', 'Bac+3', 'Bac+4', 'Bac+5',
   'Master', 'Doctorat',
-]
-
-const COMPETENCES_LIST = [
-  // Dev
-  'JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue.js', 'Angular',
-  'Node.js', 'Python', 'Django', 'Java', 'Spring', 'PHP', 'Laravel',
-  'SQL', 'MySQL', 'PostgreSQL', 'MongoDB', 'Git', 'Docker', 'Linux',
-  'HTML', 'CSS', 'REST', 'GraphQL', 'Figma', 'UI/UX',
-  // Data
-  'Machine Learning', 'Data Science', 'TensorFlow', 'Excel', 'Tableau', 'Power BI',
-  // Marketing
-  'Marketing', 'Digital Marketing', 'SEO', 'Community Management', 'Communication',
-  'Photoshop', 'Illustrator', 'InDesign', 'Design', 'Graphisme',
-  // Business
-  'Vente', 'Négociation', 'Prospection', 'Gestion de projet', 'Management',
-  // Finance
-  'Comptabilité', 'Finance', 'Audit', 'Fiscalité', 'Gestion',
-  // Soft
-  'Travail en équipe', 'Leadership', 'Entrepreneuriat', 'Innovation',
-  'Anglais', 'Français',
 ]
 
 const LOCALISATIONS = [
@@ -67,8 +46,6 @@ const INTERETS = [
   'Formation', 'Entrepreneuriat', 'Projet',
 ]
 
-// ── Step config ───────────────────────────────────────────────
-
 const STEPS = [
   { id: 'identite', label: 'Identité', icon: User, description: 'Entre ton prénom et ton nom' },
   { id: 'filiere', label: 'Filière', icon: GraduationCap, description: 'Ton domaine d\'études principal' },
@@ -79,7 +56,7 @@ const STEPS = [
   { id: 'resume', label: 'Validation', icon: CheckCircle2, description: 'Récapitulatif de ton profil' },
 ]
 
-// ── Form state ────────────────────────────────────────────────
+// ── Form state (zéro présélection par défaut) ─────────────────
 
 interface FormData {
   prenom: string
@@ -92,24 +69,92 @@ interface FormData {
 }
 
 const INITIAL_FORM: FormData = {
-  prenom: 'Éric',
-  nom: 'Koffi',
-  filiere: 'Informatique',
-  niveau: 'Bac+3',
-  competences: ['JavaScript', 'React', 'TypeScript', 'Git'],
-  localisation: 'Lomé',
-  interets: ['Stage', 'Projet', 'Formation'],
+  prenom: '',
+  nom: '',
+  filiere: '',
+  niveau: '',
+  competences: [],
+  localisation: '',
+  interets: [],
 }
 
 export default function ProfilPage() {
   const router = useRouter()
   const [currentStep, setCurrentStep] = useState(0)
   const [form, setForm] = useState<FormData>(INITIAL_FORM)
-  const [searchSkill, setSearchSkill] = useState('')
   const [saving, setSaving] = useState(false)
+
+  // Charger le profil existant si l'étudiant revient sur la page
+  useEffect(() => {
+    const existing = loadProfile()
+    if (existing) {
+      setForm({
+        prenom: existing.prenom || '',
+        nom: existing.nom || '',
+        filiere: existing.filiere || '',
+        niveau: existing.niveau || '',
+        competences: existing.competences || [],
+        localisation: existing.localisation || '',
+        interets: existing.interets || [],
+      })
+    }
+  }, [])
+
+  // Filtres filières
+  const [searchFiliere, setSearchFiliere] = useState('')
+  const [selectedDomainId, setSelectedDomainId] = useState<string>('all')
+
+  // Filtres compétences
+  const [searchSkill, setSearchSkill] = useState('')
+  const [skillTab, setSkillTab] = useState<'recommended' | 'transversal' | 'all'>('recommended')
 
   const totalSteps = STEPS.length
   const progressPercent = (currentStep / (totalSteps - 1)) * 100
+
+  // ── Compétences recommandées selon la filière choisie ─────────
+  const { recommended: recommendedSkills, domainName } = useMemo(() => {
+    return getSkillsForFiliere(form.filiere)
+  }, [form.filiere])
+
+  // ── Filières filtrées ─────────────────────────────────────────
+  const filteredFilieres = useMemo(() => {
+    let list = ALL_FILIERES
+
+    if (selectedDomainId !== 'all') {
+      const domain = DOMAINS.find((d) => d.id === selectedDomainId)
+      if (domain) {
+        list = domain.filieres
+      }
+    }
+
+    if (searchFiliere.trim()) {
+      const query = searchFiliere.toLowerCase().trim()
+      list = list.filter((f) => f.toLowerCase().includes(query))
+    }
+
+    return list
+  }, [searchFiliere, selectedDomainId])
+
+  // ── Compétences affichées selon l'onglet actif ────────────────
+  const displayedSkills = useMemo(() => {
+    let list: string[] = []
+
+    if (skillTab === 'recommended') {
+      list = recommendedSkills
+    } else if (skillTab === 'transversal') {
+      list = TRANSVERSAL_SKILLS
+    } else {
+      list = ALL_SKILLS
+    }
+
+    if (searchSkill.trim()) {
+      const q = searchSkill.toLowerCase().trim()
+      // Chercher dans l'ensemble des compétences si recherche active
+      list = ALL_SKILLS.filter((s) => s.toLowerCase().includes(q))
+    }
+
+    return list
+  }, [skillTab, recommendedSkills, searchSkill])
 
   function canGoNext(): boolean {
     if (currentStep === 0) return form.prenom.trim().length > 0
@@ -133,6 +178,33 @@ export default function ProfilPage() {
     return list.includes(item) ? list.filter((x) => x !== item) : [...list, item]
   }
 
+  function addCustomSkill(name: string) {
+    const trimmed = name.trim()
+    if (!trimmed) return
+    if (!form.competences.includes(trimmed)) {
+      setForm((prev) => ({
+        ...prev,
+        competences: [...prev.competences, trimmed],
+      }))
+    }
+    setSearchSkill('')
+  }
+
+  function removeSkill(name: string) {
+    setForm((prev) => ({
+      ...prev,
+      competences: prev.competences.filter((c) => c !== name),
+    }))
+  }
+
+  function selectFiliere(filiereName: string) {
+    setForm((prev) => {
+      // Si la filière change, on garde les compétences actuelles mais on bascule vers l'onglet recommandé
+      return { ...prev, filiere: filiereName }
+    })
+    setSkillTab('recommended')
+  }
+
   function handleSave() {
     setSaving(true)
     const profile: UserProfile = {
@@ -150,10 +222,6 @@ export default function ProfilPage() {
     saveProfile(profile)
     setTimeout(() => router.push('/dashboard'), 600)
   }
-
-  const filteredSkills = COMPETENCES_LIST.filter(
-    (s) => !searchSkill || s.toLowerCase().includes(searchSkill.toLowerCase())
-  )
 
   return (
     <div className="min-h-screen hero-gradient flex flex-col items-center justify-center pt-20 px-4 pb-16">
@@ -259,22 +327,100 @@ export default function ProfilPage() {
 
           {/* ── Step 1: Filière ── */}
           {currentStep === 1 && (
-            <div>
-              <p className="text-slate-900 dark:text-slate-200 text-xs mb-3 font-bold">Sélectionne ta filière :</p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-72 overflow-y-auto pr-1">
-                {FILIERES.map((f) => (
+            <div className="space-y-4">
+              {/* Barre de recherche de filière */}
+              <div className="relative">
+                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="text"
+                  value={searchFiliere}
+                  onChange={(e) => setSearchFiliere(e.target.value)}
+                  placeholder="Rechercher ta filière (ex: Biologie, Agronomie, Droit, Informatique...)"
+                  className="w-full pl-9 pr-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-600 text-sm font-semibold shadow-xs"
+                />
+                {searchFiliere && (
                   <button
-                    key={f}
-                    onClick={() => setForm({ ...form, filiere: f })}
-                    className={`px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border text-left transition-all cursor-pointer ${
-                      form.filiere === f
-                        ? 'bg-blue-50 border-2 border-blue-600 text-blue-700 font-bold dark:bg-blue-600/30 dark:border-blue-400 dark:text-blue-100 shadow-sm'
-                        : 'bg-white dark:bg-slate-800/80 border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-blue-400 dark:hover:border-slate-500'
+                    onClick={() => setSearchFiliere('')}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+
+              {/* Filtres par grand domaine */}
+              <div>
+                <p className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                  Filtrer par domaine :
+                </p>
+                <div className="flex gap-1.5 overflow-x-auto pb-1.5 scrollbar-none">
+                  <button
+                    onClick={() => setSelectedDomainId('all')}
+                    className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
+                      selectedDomainId === 'all'
+                        ? 'bg-blue-600 text-white shadow-xs'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200'
                     }`}
                   >
-                    {f}
+                    Tous les domaines
                   </button>
-                ))}
+                  {DOMAINS.map((domain) => (
+                    <button
+                      key={domain.id}
+                      onClick={() => setSelectedDomainId(domain.id)}
+                      className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
+                        selectedDomainId === domain.id
+                          ? 'bg-blue-600 text-white shadow-xs'
+                          : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200'
+                      }`}
+                    >
+                      {domain.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Grille des filières */}
+              <div>
+                <p className="text-slate-900 dark:text-slate-200 text-xs mb-2 font-bold flex items-center justify-between">
+                  <span>Sélectionne ta filière :</span>
+                  {form.filiere && (
+                    <span className="text-blue-600 dark:text-blue-400 font-extrabold text-xs">
+                      Choisie : {form.filiere}
+                    </span>
+                  )}
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-64 overflow-y-auto pr-1">
+                  {filteredFilieres.map((f) => (
+                    <button
+                      key={f}
+                      onClick={() => selectFiliere(f)}
+                      className={`px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border text-left transition-all cursor-pointer flex items-center justify-between gap-1.5 ${
+                        form.filiere === f
+                          ? 'bg-blue-50 border-2 border-blue-600 text-blue-700 font-bold dark:bg-blue-600/30 dark:border-blue-400 dark:text-blue-100 shadow-sm'
+                          : 'bg-white dark:bg-slate-800/80 border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-blue-400 dark:hover:border-slate-500'
+                      }`}
+                    >
+                      <span className="truncate">{f}</span>
+                      {form.filiere === f && <Check className="w-3.5 h-3.5 flex-shrink-0 text-blue-600 dark:text-blue-300" />}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Option filière personnalisée si non trouvée */}
+                {searchFiliere.trim() && !filteredFilieres.some(f => f.toLowerCase() === searchFiliere.trim().toLowerCase()) && (
+                  <div className="mt-3 p-3 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 flex items-center justify-between gap-2">
+                    <span className="text-xs text-blue-900 dark:text-blue-200 font-semibold">
+                      Ta filière n&apos;est pas listée ?
+                    </span>
+                    <button
+                      onClick={() => selectFiliere(searchFiliere.trim())}
+                      className="px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-all"
+                    >
+                      Utiliser &quot;{searchFiliere.trim()}&quot;
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -298,37 +444,149 @@ export default function ProfilPage() {
             </div>
           )}
 
-          {/* ── Step 3: Compétences ── */}
+          {/* ── Step 3: Compétences adaptatives ── */}
           {currentStep === 3 && (
-            <div>
-              <input
-                type="text"
-                value={searchSkill}
-                onChange={(e) => setSearchSkill(e.target.value)}
-                placeholder="Rechercher une compétence..."
-                className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-600 text-sm mb-3 font-semibold shadow-xs"
-              />
-              <div className="flex flex-wrap gap-1.5 max-h-64 overflow-y-auto pr-1">
-                {filteredSkills.map((s) => {
+            <div className="space-y-4">
+              {/* Compétences déjà sélectionnées */}
+              {form.competences.length > 0 && (
+                <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                      <Tag className="w-3.5 h-3.5 text-blue-600" />
+                      Tes compétences sélectionnées ({form.competences.length}) :
+                    </span>
+                    <button
+                      onClick={() => setForm({ ...form, competences: [] })}
+                      className="text-[11px] text-red-500 hover:underline font-semibold"
+                    >
+                      Tout effacer
+                    </button>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5 max-h-28 overflow-y-auto pr-1">
+                    {form.competences.map((c) => (
+                      <span
+                        key={c}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-600 text-white text-xs font-bold shadow-xs"
+                      >
+                        {c}
+                        <button
+                          onClick={() => removeSkill(c)}
+                          className="hover:bg-blue-700 rounded p-0.5 transition-colors cursor-pointer"
+                          title="Retirer"
+                        >
+                          <X className="w-3 h-3" />
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Champ de recherche / ajout de compétence personnalisée */}
+              <div className="space-y-2">
+                <div className="relative">
+                  <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                  <input
+                    type="text"
+                    value={searchSkill}
+                    onChange={(e) => setSearchSkill(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault()
+                        addCustomSkill(searchSkill)
+                      }
+                    }}
+                    placeholder={`Rechercher une compétence pour ${form.filiere || 'ta filière'}...`}
+                    className="w-full pl-9 pr-24 py-2.5 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-600 text-sm font-semibold shadow-xs"
+                  />
+                  {searchSkill.trim() && (
+                    <button
+                      onClick={() => addCustomSkill(searchSkill)}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-all flex items-center gap-1"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      Ajouter
+                    </button>
+                  )}
+                </div>
+
+                {/* Onglets de navigation entre types de compétences */}
+                {!searchSkill.trim() && (
+                  <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl">
+                    <button
+                      onClick={() => setSkillTab('recommended')}
+                      className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                        skillTab === 'recommended'
+                          ? 'bg-white dark:bg-slate-700 text-blue-700 dark:text-blue-300 shadow-xs'
+                          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+                      }`}
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                      <span className="truncate">Pour {form.filiere || 'ta filière'}</span>
+                    </button>
+
+                    <button
+                      onClick={() => setSkillTab('transversal')}
+                      className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                        skillTab === 'transversal'
+                          ? 'bg-white dark:bg-slate-700 text-blue-700 dark:text-blue-300 shadow-xs'
+                          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+                      }`}
+                    >
+                      <span>Transversales</span>
+                    </button>
+
+                    <button
+                      onClick={() => setSkillTab('all')}
+                      className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                        skillTab === 'all'
+                          ? 'bg-white dark:bg-slate-700 text-blue-700 dark:text-blue-300 shadow-xs'
+                          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+                      }`}
+                    >
+                      <span>Toutes</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Bannière de contexte filière */}
+              {skillTab === 'recommended' && !searchSkill.trim() && (
+                <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-800/50 text-xs font-semibold text-blue-800 dark:text-blue-200">
+                  <Sparkles className="w-4 h-4 flex-shrink-0 text-blue-600 dark:text-blue-400" />
+                  <span>
+                    Compétences clés suggérées pour <strong>{form.filiere}</strong> ({domainName}) :
+                  </span>
+                </div>
+              )}
+
+              {/* Grille des compétences à cocher */}
+              <div className="flex flex-wrap gap-1.5 max-h-60 overflow-y-auto pr-1">
+                {displayedSkills.map((s) => {
                   const selected = form.competences.includes(s)
                   return (
                     <button
                       key={s}
                       onClick={() => setForm({ ...form, competences: toggleItem(form.competences, s) })}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                      className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center gap-1.5 ${
                         selected
-                          ? 'bg-blue-600 border-blue-600 text-white shadow-xs'
-                          : 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-blue-400'
+                          ? 'bg-blue-600 border-blue-600 text-white shadow-xs scale-[1.02]'
+                          : 'bg-slate-100 dark:bg-slate-800/90 border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-blue-400 dark:hover:border-slate-500'
                       }`}
                     >
-                      {s}
+                      {selected && <Check className="w-3 h-3 text-white" />}
+                      <span>{s}</span>
                     </button>
                   )
                 })}
               </div>
-              <p className="text-xs text-slate-700 dark:text-slate-300 mt-3 font-semibold">
-                {form.competences.length} compétence(s) sélectionnée(s)
-              </p>
+
+              <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400 pt-1 font-medium">
+                <span>Sélectionne au moins une compétence pour continuer</span>
+                <span className="font-bold text-blue-600 dark:text-blue-400">
+                  {form.competences.length} sélectionnée(s)
+                </span>
+              </div>
             </div>
           )}
 
@@ -339,7 +597,7 @@ export default function ProfilPage() {
                 <button
                   key={loc}
                   onClick={() => setForm({ ...form, localisation: loc })}
-                  className={`p-3.5 rounded-xl text-sm font-bold border text-center transition-all cursor-pointer ${
+                  className={`p-4 rounded-xl text-sm font-bold border text-center transition-all cursor-pointer ${
                     form.localisation === loc
                       ? 'bg-blue-600 border-2 border-blue-600 text-white shadow-md'
                       : 'bg-white dark:bg-slate-800/80 border-2 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-blue-400'
@@ -351,26 +609,26 @@ export default function ProfilPage() {
             </div>
           )}
 
-          {/* ── Step 5: Intérêts / Types ── */}
+          {/* ── Step 5: Objectifs / Intérêts ── */}
           {currentStep === 5 && (
             <div>
               <p className="text-slate-900 dark:text-slate-200 text-xs mb-3 font-bold">
-                Sélectionne les types d&apos;opportunités qui t&apos;intéressent :
+                Quels types d&apos;opportunités t&apos;intéressent ? (sélection multiple)
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                {INTERETS.map((it) => {
-                  const sel = form.interets.includes(it)
+                {INTERETS.map((item) => {
+                  const selected = form.interets.includes(item)
                   return (
                     <button
-                      key={it}
-                      onClick={() => setForm({ ...form, interets: toggleItem(form.interets, it) })}
-                      className={`p-3.5 rounded-xl text-sm font-bold border text-center transition-all cursor-pointer ${
-                        sel
-                          ? 'bg-amber-500 border-2 border-amber-500 text-white shadow-md'
-                          : 'bg-white dark:bg-slate-800/80 border-2 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-amber-400'
+                      key={item}
+                      onClick={() => setForm({ ...form, interets: toggleItem(form.interets, item) })}
+                      className={`p-4 rounded-xl text-sm font-bold border text-center transition-all cursor-pointer ${
+                        selected
+                          ? 'bg-blue-600 border-2 border-blue-600 text-white shadow-md'
+                          : 'bg-white dark:bg-slate-800/80 border-2 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-blue-400'
                       }`}
                     >
-                      {it}
+                      {item}
                     </button>
                   )
                 })}
@@ -378,28 +636,43 @@ export default function ProfilPage() {
             </div>
           )}
 
-          {/* ── Step 6: Résumé & Validation ── */}
+          {/* ── Step 6: Récapitulatif ── */}
           {currentStep === 6 && (
             <div className="space-y-4">
-              <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 space-y-3">
-                <div className="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-white/10">
-                  <span className="text-xs text-slate-600 dark:text-slate-400 font-medium">Étudiant</span>
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-3">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700">
+                  <span className="text-xs text-slate-700 dark:text-slate-300 font-bold">Étudiant :</span>
                   <span className="text-sm font-bold text-slate-900 dark:text-white">
                     {form.prenom} {form.nom}
                   </span>
                 </div>
-                <div className="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-white/10">
-                  <span className="text-xs text-slate-600 dark:text-slate-400 font-medium">Filière &amp; Niveau</span>
-                  <span className="text-sm font-bold text-blue-700 dark:text-blue-300">
-                    {form.filiere} ({form.niveau})
+                <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700">
+                  <span className="text-xs text-slate-700 dark:text-slate-300 font-bold">Filière &amp; Niveau :</span>
+                  <span className="text-sm font-bold text-slate-900 dark:text-white">
+                    {form.filiere} · {form.niveau}
                   </span>
                 </div>
-                <div className="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-white/10">
-                  <span className="text-xs text-slate-600 dark:text-slate-400 font-medium">Ville</span>
+                <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700">
+                  <span className="text-xs text-slate-700 dark:text-slate-300 font-bold">Ville :</span>
                   <span className="text-sm font-bold text-slate-900 dark:text-white">{form.localisation}</span>
                 </div>
+                <div className="pb-3 border-b border-slate-200 dark:border-slate-700">
+                  <span className="text-xs text-slate-700 dark:text-slate-300 block mb-1.5 font-bold">Types recherchés :</span>
+                  <div className="flex flex-wrap gap-1">
+                    {form.interets.map((i) => (
+                      <span
+                        key={i}
+                        className="text-xs px-2.5 py-1 rounded-full bg-blue-100 text-blue-900 dark:bg-blue-900/40 dark:text-blue-300 font-bold"
+                      >
+                        {i}
+                      </span>
+                    ))}
+                  </div>
+                </div>
                 <div>
-                  <span className="text-xs text-slate-700 dark:text-slate-300 block mb-1.5 font-bold">Compétences :</span>
+                  <span className="text-xs text-slate-700 dark:text-slate-300 block mb-1.5 font-bold">
+                    Compétences ({form.competences.length}) :
+                  </span>
                   <div className="flex flex-wrap gap-1.5">
                     {form.competences.map((c) => (
                       <span

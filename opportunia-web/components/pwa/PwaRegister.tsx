@@ -50,17 +50,17 @@ export function PwaRegister() {
   return (
     <aside
       aria-label="Installation de l'application"
-      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 p-4 rounded-2xl bg-[#0f1629]/95 dark:bg-[#0f1629]/95 light:bg-white/95 backdrop-blur-xl border border-blue-500/30 shadow-2xl flex items-center justify-between gap-3 animate-in fade-in slide-in-from-bottom-5 duration-300"
+      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 p-4 rounded-2xl bg-white dark:bg-[#0f1629] border border-slate-200 dark:border-blue-500/30 shadow-2xl flex items-center justify-between gap-3 animate-in fade-in slide-in-from-bottom-5 duration-300"
     >
       <div className="flex items-center gap-3 min-w-0">
-        <div className="w-10 h-10 rounded-xl bg-blue-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+        <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0 shadow-md">
           <Download className="w-5 h-5 text-white" />
         </div>
         <div className="min-w-0">
-          <p className="text-sm font-semibold text-white dark:text-white light:text-slate-900 truncate">
+          <p className="text-sm font-bold text-slate-900 dark:text-white truncate">
             Installer Opportunia
           </p>
-          <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 truncate">
+          <p className="text-xs text-slate-600 dark:text-slate-400 truncate">
             Accédez à vos offres hors-ligne
           </p>
         </div>
@@ -69,13 +69,13 @@ export function PwaRegister() {
       <div className="flex items-center gap-2 flex-shrink-0">
         <button
           onClick={handleInstallClick}
-          className="px-3.5 py-1.5 rounded-lg bg-blue-500 hover:bg-blue-400 text-white text-xs font-semibold shadow-md transition-colors cursor-pointer"
+          className="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md transition-colors cursor-pointer"
         >
           Installer
         </button>
         <button
           onClick={() => setShowInstallBanner(false)}
-          className="p-1.5 rounded-lg text-slate-400 hover:text-white dark:hover:text-white light:hover:text-slate-700 transition-colors"
+          className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors cursor-pointer"
           aria-label="Fermer"
         >
           <X className="w-4 h-4" />
