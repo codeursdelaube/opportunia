@@ -1,475 +1,1469 @@
 [
   {
-    "id": "opp-025",
-    "titre": "Stage rémunéré à distance - Section Ressources Humaines",
+    "id": "opp-045",
+    "titre": "Vacances Actives en Entreprise 2026 – 1 200 stages",
     "type": "Stage",
-    "source": "Opportunités du Monde",
-    "source_url": "https://www.lesopportunites.com/opportunite/afrique/stages/communication/programme-de-stage-remunere-a-distance-du-pnud-2026-destine-aux-etudiants-et-jeunes-diplomes/",
-    "entreprise": "PNUD - Programme des Volontaires des Nations Unies (UNV)",
-    "description": "Stage rémunéré de 6 mois entièrement en télétravail au sein de l'équipe de développement des capacités, participant à la conception de programmes de formation pour les volontaires de l'ONU dans plus de 130 pays.",
+    "source": "ANPE Togo / TogoTalents",
+    "source_url": "https://www.togotalents.com/jobs/214/",
+    "entreprise": "ANPE Togo et secteur privé partenaire",
+    "description": "Programme de 1 200 stages d’immersion d’un mois entre septembre et octobre 2026 pour des étudiants togolais.",
     "filiere_cible": [
-      "Ressources humaines",
+      "Toutes filières",
+      "Gestion",
+      "Informatique",
+      "Commerce",
       "Communication",
-      "Gestion de projet"
+      "Agriculture"
     ],
-    "niveau_min": "Licence",
+    "niveau_min": "Étudiant de l’enseignement supérieur",
     "competences_requises": [
-      "Anglais",
+      "Être étudiant togolais de 18 à 35 ans",
+      "Dossier universitaire",
+      "Lettre de motivation"
+    ],
+    "localisation": "Togo",
+    "deadline": "2026-09-30",
+    "status": "active",
+    "lien_candidature": "https://www.vae.anpetogo.org/",
+    "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-046",
+    "titre": "Stage – Numerum Dev Center : Web, IA et Cybersécurité",
+    "type": "Stage",
+    "source": "LinkedIn / Numerum Dev Center",
+    "source_url": "https://tg.linkedin.com/jobs/view/offre-de-stage-%E2%80%93-numerum-dev-center-h-f-at-numerum-dev-center-4465222800",
+    "entreprise": "Numerum Dev Center",
+    "description": "Cohorte de stages de 3 à 6 mois à Lomé en développement web, IA appliquée et cybersécurité.",
+    "filiere_cible": [
+      "Développement web",
+      "Intelligence artificielle",
+      "Cybersécurité"
+    ],
+    "niveau_min": "Étudiant, jeune diplômé ou reconversion en numérique",
+    "competences_requises": [
+      "Bases en informatique",
+      "Motivation",
+      "Travail sur projets numériques"
+    ],
+    "localisation": "Lomé, Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://tg.linkedin.com/jobs/view/offre-de-stage-%E2%80%93-numerum-dev-center-h-f-at-numerum-dev-center-4465222800",
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-047",
+    "titre": "Stage pour étudiants en informatique – Numerum",
+    "type": "Stage",
+    "source": "LinkedIn / Numerum Dev Center",
+    "source_url": "https://tg.linkedin.com/jobs/view/stage-pour-%25C3%25A9tudiants-informatique-at-numerum-dev-center-4248400197",
+    "entreprise": "Numerum Dev Center",
+    "description": "Stage de 2 à 6 mois pour étudiants en web/mobile, programmation, cybersécurité, IA, réseaux et analyse de données.",
+    "filiere_cible": [
+      "Informatique",
+      "Développement web et mobile",
+      "Cybersécurité",
+      "IA",
+      "Réseaux",
+      "Data"
+    ],
+    "niveau_min": "Étudiant en informatique",
+    "competences_requises": [
+      "Programmation",
+      "Projet de fin de cycle",
+      "Compétences numériques"
+    ],
+    "localisation": "Lomé, Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://tg.linkedin.com/jobs/view/stage-pour-%25C3%25A9tudiants-informatique-at-numerum-dev-center-4248400197",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-048",
+    "titre": "Stagiaire Développeur Web – JAXE-COMMUNICATION",
+    "type": "Stage",
+    "source": "LinkedIn",
+    "source_url": "https://tg.linkedin.com/jobs/view/d%C3%A9veloppeur-web-at-jaxe-communication-4116583094",
+    "entreprise": "JAXE-COMMUNICATION",
+    "description": "Stage de 3 à 6 mois en développement web à Lomé, avec télétravail partiel possible.",
+    "filiere_cible": [
+      "Informatique",
+      "Développement web",
+      "Web design"
+    ],
+    "niveau_min": "Étudiant ou jeune diplômé",
+    "competences_requises": [
+      "HTML",
+      "CSS",
+      "PHP",
+      "JavaScript",
+      "WordPress"
+    ],
+    "localisation": "Lomé, Togo – télétravail partiel possible",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://tg.linkedin.com/jobs/view/d%C3%A9veloppeur-web-at-jaxe-communication-4116583094",
+    "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-049",
+    "titre": "Stagiaire Marketing – TPG TECHNOLOGIES",
+    "type": "Stage",
+    "source": "LinkedIn / TPG Agency",
+    "source_url": "https://tg.linkedin.com/jobs/view/tpg-technologies-recrute-un-e-stagiaire-marketing-lom%C3%A9-togo-at-tpg-agency-4462176128",
+    "entreprise": "TPG TECHNOLOGIES SARL U",
+    "description": "Stage en télétravail consacré au marketing digital, contenu, campagnes, reporting et études de marché.",
+    "filiere_cible": [
+      "Marketing",
       "Communication",
-      "Gestion de projet"
+      "Marketing digital"
     ],
-    "localisation": "À distance",
+    "niveau_min": "Étudiant ou jeune diplômé",
+    "competences_requises": [
+      "Rédaction web",
+      "Réseaux sociaux",
+      "Analyse de performance"
+    ],
+    "localisation": "À distance depuis Lomé, Togo",
     "deadline": null,
     "status": "active",
-    "lien_candidature": "https://www.lesopportunites.com/opportunite/afrique/stages/communication/programme-de-stage-remunere-a-distance-du-pnud-2026-destine-aux-etudiants-et-jeunes-diplomes/",
-    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+    "lien_candidature": "https://tg.linkedin.com/jobs/view/tpg-technologies-recrute-un-e-stagiaire-marketing-lom%C3%A9-togo-at-tpg-agency-4462176128",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    "id": "opp-026",
-    "titre": "Programme de stage rémunéré à distance",
-    "type": "Stage",
-    "source": "Afri-Carrières",
-    "source_url": "https://afri-carrieres.com/2026/01/programme-de-stage-remunere.html",
-    "entreprise": "CARE International",
-    "description": "Stage à distance dans le développement international et l'action humanitaire : projets liés à la justice sociale, l'égalité des genres, la sécurité alimentaire et la résilience climatique.",
-    "filiere_cible": [
-      "Développement international",
-      "Sciences sociales",
-      "Relations internationales"
-    ],
-    "niveau_min": "Licence",
-    "competences_requises": [
-      "Anglais",
-      "Rédaction de rapports"
-    ],
-    "localisation": "À distance",
-    "deadline": null,
-    "status": "active",
-    "lien_candidature": "https://afri-carrieres.com/2026/01/programme-de-stage-remunere.html",
-    "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    "id": "opp-027",
-    "titre": "Programme de Stages 2026 de l'Union Africaine",
-    "type": "Stage",
-    "source": "Opportunités du Monde",
-    "source_url": "https://www.lesopportunites.com/opportunite/afrique/stages/sciences-sociales/appel-a-candidatures-programme-de-stages-remuneres-2026-de-lunion-africaine-candidatures-des-pays-membres-vivement-encouragees/",
-    "entreprise": "Commission de l'Union Africaine",
-    "description": "Stage au sein d'une institution panafricaine de premier plan à Addis-Abeba, permettant aux étudiants et jeunes diplômés des États membres d'acquérir une expérience professionnelle institutionnelle.",
-    "filiere_cible": [
-      "Relations internationales",
-      "Sciences politiques",
-      "Administration publique"
-    ],
-    "niveau_min": "Licence",
-    "competences_requises": [
-      "Anglais ou français",
-      "Rédaction"
-    ],
-    "localisation": "Addis-Abeba, Éthiopie",
-    "deadline": null,
-    "status": "active",
-    "lien_candidature": "https://www.lesopportunites.com/opportunite/afrique/stages/sciences-sociales/appel-a-candidatures-programme-de-stages-remuneres-2026-de-lunion-africaine-candidatures-des-pays-membres-vivement-encouragees/",
-    "image": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    "id": "opp-028",
-    "titre": "Programme de stages UNESCO",
-    "type": "Stage",
-    "source": "Afri-Carrières",
-    "source_url": "https://afri-carrieres.com/offres-demplois/stages",
-    "entreprise": "UNESCO",
-    "description": "Programme de stage international permettant aux étudiants de découvrir les enjeux mondiaux de l'éducation, de la culture et des sciences au sein d'une agence des Nations Unies.",
-    "filiere_cible": [
-      "Relations internationales",
-      "Éducation",
-      "Culture"
-    ],
-    "niveau_min": "Licence",
-    "competences_requises": [
-      "Anglais",
-      "Français"
-    ],
-    "localisation": "International",
-    "deadline": null,
-    "status": "active",
-    "lien_candidature": "https://afri-carrieres.com/offres-demplois/stages",
-    "image": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    "id": "opp-029",
-    "titre": "Stage de recherche pour étudiants invités (VSRP)",
-    "type": "Stage",
-    "source": "Afri-Carrières",
-    "source_url": "https://afri-carrieres.com/offres-demplois/stages",
-    "entreprise": "KAUST (King Abdullah University of Science and Technology)",
-    "description": "Programme de stage de recherche scientifique pour étudiants internationaux invités dans les domaines des sciences et de l'ingénierie.",
-    "filiere_cible": [
-      "Sciences",
-      "Ingénierie",
-      "Recherche"
-    ],
-    "niveau_min": "Licence",
-    "competences_requises": [
-      "Anglais",
-      "Recherche scientifique"
-    ],
-    "localisation": "Arabie Saoudite",
-    "deadline": null,
-    "status": "active",
-    "lien_candidature": "https://afri-carrieres.com/offres-demplois/stages",
-    "image": "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    "id": "opp-030",
-    "titre": "Bourse SERA - Agriculture et Environnement",
-    "type": "Bourse",
-    "source": "Setondji",
-    "source_url": "https://www.setondji.org/blog/bourses/bourse-sera-100-financees-pour-etudier-en-afrique",
-    "entreprise": "Programme SERA (financé par l'Union Européenne)",
-    "description": "Bourses complètes pour Master et Doctorat en agroforesterie et environnement dans des universités africaines partenaires, couvrant scolarité, allocation mensuelle, voyage et assurance santé.",
-    "filiere_cible": [
-      "Agriculture",
-      "Environnement",
-      "Agroforesterie"
-    ],
-    "niveau_min": "Licence",
-    "competences_requises": [
-      "Dossier académique",
-      "Proposition de recherche (doctorat)"
-    ],
-    "localisation": "Afrique (Kenya et autres)",
-    "deadline": "2026-05-15",
-    "status": "expired",
-    "lien_candidature": "https://www.setondji.org/blog/bourses/bourse-sera-100-financees-pour-etudier-en-afrique",
-    "image": "https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    "id": "opp-031",
-    "titre": "Bourse Mastercard Foundation Scholars Program - UBC",
-    "type": "Bourse",
-    "source": "Afri-Carrières",
-    "source_url": "https://afri-carrieres.com/type/bourses-detudes/",
-    "entreprise": "Mastercard Foundation / University of British Columbia",
-    "description": "Bourse entièrement financée pour un Master à l'Université de Colombie-Britannique au Canada, avec possibilité de dispense des frais de candidature pour certains profils.",
-    "filiere_cible": [
-      "Toutes filières"
-    ],
-    "niveau_min": "Licence",
-    "competences_requises": [
-      "Excellence académique",
-      "Anglais"
-    ],
-    "localisation": "Canada",
-    "deadline": null,
-    "status": "active",
-    "lien_candidature": "https://afri-carrieres.com/type/bourses-detudes/",
-    "image": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    "id": "opp-032",
-    "titre": "Princeton in Africa Fellowship 2027-2028",
+    "id": "opp-050",
+    "titre": "Community Manager & Digital Marketing",
     "type": "Job",
-    "source": "Afri-Carrières",
-    "source_url": "https://afri-carrieres.com/type/bourses-detudes/",
-    "entreprise": "Princeton in Africa",
-    "description": "Programme de fellowship rémunéré de 12 mois avec logement, pour travailler sur des projets de développement au sein d'organisations partenaires en Afrique.",
+    "source": "LinkedIn / BUAME GROUP",
+    "source_url": "https://tg.linkedin.com/jobs/view/community-manager-digital-marketing-at-buame-group-4463864652",
+    "entreprise": "BUAME GROUP",
+    "description": "Poste récent en marketing digital et community management à Lomé, avec format remote mentionné.",
     "filiere_cible": [
+      "Communication",
+      "Marketing digital",
+      "Médias"
+    ],
+    "niveau_min": "Entry level",
+    "competences_requises": [
+      "Réseaux sociaux",
+      "Création de contenu",
+      "Marketing digital"
+    ],
+    "localisation": "Lomé / Remote",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://tg.linkedin.com/jobs/view/community-manager-digital-marketing-at-buame-group-4463864652",
+    "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-051",
+    "titre": "Créateur·rice de Contenu – BUAME Médias",
+    "type": "Job",
+    "source": "LinkedIn / BUAME GROUP",
+    "source_url": "https://tg.linkedin.com/jobs/view/cr%C3%A9ateur%C2%B7rice-de-contenu-%E2%80%94-buame-m%C3%A9dias-at-buame-group-4463864652",
+    "entreprise": "BUAME Médias / BUAME GROUP",
+    "description": "Opportunité récente en création de contenu et médias numériques à Lomé.",
+    "filiere_cible": [
+      "Communication",
+      "Audiovisuel",
+      "Médias",
+      "Marketing digital"
+    ],
+    "niveau_min": "Entry level",
+    "competences_requises": [
+      "Création de contenu",
+      "Communication digitale",
+      "Réseaux sociaux"
+    ],
+    "localisation": "Lomé, Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://tg.linkedin.com/jobs/view/cr%C3%A9ateur%C2%B7rice-de-contenu-%E2%80%94-buame-m%C3%A9dias-at-buame-group-4463864652",
+    "image": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-052",
+    "titre": "Spécialiste en marketing et relations publiques",
+    "type": "Job",
+    "source": "LinkedIn / Doctagne",
+    "source_url": "https://tg.linkedin.com/jobs/view/sp%C3%A9cialiste-en-marketing-et-relations-publiques-at-doctagne-4466062657",
+    "entreprise": "Doctagne",
+    "description": "Campagnes marketing multicanal, relations publiques, contenu, reporting et événements.",
+    "filiere_cible": [
+      "Marketing",
+      "Relations publiques",
+      "Communication"
+    ],
+    "niveau_min": "Non précisé",
+    "competences_requises": [
+      "Marketing multicanal",
+      "Communication",
+      "Gestion de contenu"
+    ],
+    "localisation": "Lomé, Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://tg.linkedin.com/jobs/view/sp%C3%A9cialiste-en-marketing-et-relations-publiques-at-doctagne-4466062657",
+    "image": "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-053",
+    "titre": "Comptable financier – SOYCAIN",
+    "type": "Job",
+    "source": "LinkedIn / SOYCAIN SAU",
+    "source_url": "https://tg.linkedin.com/jobs/view/comptable-financier-at-soycain-sau-official-page-4466074352",
+    "entreprise": "SOYCAIN SAU",
+    "description": "CDI à Lomé en comptabilité générale et analytique, états financiers, trésorerie et fiscalité.",
+    "filiere_cible": [
+      "Comptabilité",
+      "Finance",
+      "Gestion"
+    ],
+    "niveau_min": "Expérience en comptabilité",
+    "competences_requises": [
+      "Comptabilité générale",
+      "Analyse financière",
+      "Trésorerie",
+      "Fiscalité"
+    ],
+    "localisation": "Lomé, Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://tg.linkedin.com/jobs/view/comptable-financier-at-soycain-sau-official-page-4466074352",
+    "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-054",
+    "titre": "Chef de mission / Chef de projet AEP",
+    "type": "Job",
+    "source": "LinkedIn / GPC SA",
+    "source_url": "https://www.linkedin.com/jobs/view/chef-de-mission-chef-de-projet-aep-h-f-at-gpc-sa-4463007536",
+    "entreprise": "GPC SA / client au Togo",
+    "description": "Pilotage d’un projet d’alimentation en eau potable : contrôle des travaux, coordination et reporting.",
+    "filiere_cible": [
+      "Génie civil",
+      "Hydraulique",
+      "Gestion de projet"
+    ],
+    "niveau_min": "Bac+5",
+    "competences_requises": [
+      "Génie civil/hydraulique",
+      "Gestion de projet",
+      "Supervision AEP"
+    ],
+    "localisation": "Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://www.linkedin.com/jobs/view/chef-de-mission-chef-de-projet-aep-h-f-at-gpc-sa-4463007536",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-055",
+    "titre": "Spécialiste de programme P3 – UNFPA",
+    "type": "Job",
+    "source": "UNFPA / EmploiTogo",
+    "source_url": "https://www.emploitogo.info/lunfpa-recrute-07-10-2026/",
+    "entreprise": "UNFPA",
+    "description": "Poste de spécialiste de programme au bureau pays de l’UNFPA à Lomé, publié le 15 septembre 2026.",
+    "filiere_cible": [
+      "Gestion de programme",
       "Développement international",
       "Sciences sociales",
       "Santé publique"
     ],
-    "niveau_min": "Licence",
+    "niveau_min": "Master",
     "competences_requises": [
-      "Anglais",
-      "Engagement communautaire"
+      "5 ans d’expérience",
+      "Français",
+      "Anglais souhaité",
+      "Coordination"
     ],
-    "localisation": "Afrique",
-    "deadline": "2026-10-26",
+    "localisation": "Lomé, Togo",
+    "deadline": "2026-10-07",
     "status": "active",
-    "lien_candidature": "https://afri-carrieres.com/type/bourses-detudes/",
-    "image": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
+    "lien_candidature": "https://www.emploitogo.info/lunfpa-recrute-07-10-2026/",
+    "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    "id": "opp-033",
-    "titre": "Bourses Jean Monnet 2027-2028",
-    "type": "Bourse",
-    "source": "Afri-Carrières",
-    "source_url": "https://afri-carrieres.com/type/bourses-detudes/",
-    "entreprise": "Programme de bourses Jean Monnet (Türkiye)",
-    "description": "Bourse pour poursuivre des études de Master en Türkiye pour l'année universitaire 2027-2028, ouverte aux étudiants internationaux.",
+    "id": "opp-056",
+    "titre": "FAO Representative in Togo",
+    "type": "Job",
+    "source": "FAO",
+    "source_url": "https://jobs.fao.org/careersection/fao_external/jobdetail.ftl?job=2601913",
+    "entreprise": "FAO",
+    "description": "Poste de représentant de la FAO au Togo, basé à Lomé, sur le portail officiel FAO.",
     "filiere_cible": [
-      "Toutes filières"
+      "Agriculture",
+      "Développement international",
+      "Gestion de programme"
     ],
-    "niveau_min": "Licence",
-    "competences_requises": [
-      "Dossier académique"
-    ],
-    "localisation": "Türkiye",
-    "deadline": null,
-    "status": "active",
-    "lien_candidature": "https://afri-carrieres.com/type/bourses-detudes/",
-    "image": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    "id": "opp-034",
-    "titre": "Bourse Mandela Rhodes 2026",
-    "type": "Bourse",
-    "source": "Setondji",
-    "source_url": "https://www.setondji.org/blog/bourses",
-    "entreprise": "Mandela Rhodes Foundation",
-    "description": "Formation entièrement financée en Afrique du Sud destinée aux jeunes leaders africains, avec accompagnement au développement du leadership.",
-    "filiere_cible": [
-      "Toutes filières",
-      "Leadership"
-    ],
-    "niveau_min": "Licence",
+    "niveau_min": "Senior / P-5",
     "competences_requises": [
       "Leadership",
-      "Engagement communautaire"
+      "Gestion de programme",
+      "Expérience internationale"
     ],
-    "localisation": "Afrique du Sud",
-    "deadline": null,
+    "localisation": "Lomé, Togo",
+    "deadline": "2026-10-08",
     "status": "active",
-    "lien_candidature": "https://www.setondji.org/blog/bourses",
-    "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80"
+    "lien_candidature": "https://jobs.fao.org/careersection/fao_external/jobdetail.ftl?job=2601913",
+    "image": "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    "id": "opp-035",
-    "titre": "Evora Ecology Scholarship 2027",
-    "type": "Bourse",
-    "source": "Afri-Carrières",
-    "source_url": "https://afri-carrieres.com/type/bourses-detudes/",
-    "entreprise": "Université d'Évora (Portugal)",
-    "description": "Bourse couvrant frais de scolarité, allocation mensuelle, assurance santé et financement de recherche pour étudier l'écologie, les sciences environnementales ou la biologie marine au Portugal.",
+    "id": "opp-057",
+    "titre": "Coordonnateur(trice) de projet – SOS Villages d’Enfants",
+    "type": "Job",
+    "source": "EmploiTogo / SOS Villages d’Enfants",
+    "source_url": "https://www.emploitogo.info/une-coordonnateurtrice-de-projet/",
+    "entreprise": "SOS Villages d’Enfants au Togo",
+    "description": "Coordination d’un projet de lutte contre l’exploitation sexuelle des enfants dans la préfecture du Haho.",
     "filiere_cible": [
-      "Écologie",
-      "Sciences environnementales",
-      "Biologie marine"
-    ],
-    "niveau_min": "Licence",
-    "competences_requises": [
-      "Dossier académique",
-      "Anglais ou portugais"
-    ],
-    "localisation": "Portugal",
-    "deadline": "2026-08-24",
-    "status": "expired",
-    "lien_candidature": "https://afri-carrieres.com/type/bourses-detudes/",
-    "image": "https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    "id": "opp-036",
-    "titre": "Student Innovation Competition 2026",
-    "type": "Concours",
-    "source": "Afri-Carrières",
-    "source_url": "https://afri-carrieres.com/opportunites/student-innovation-competition/",
-    "entreprise": "ESG Africa Conference",
-    "description": "Concours récompensant les projets étudiants africains dans les domaines des droits humains, de l'IA responsable, de l'inclusion numérique et de la biodiversité.",
-    "filiere_cible": [
-      "Droit",
-      "Informatique",
+      "Gestion de projet",
       "Sciences sociales",
-      "Environnement"
+      "Protection de l’enfance",
+      "Développement communautaire"
     ],
-    "niveau_min": "Licence",
+    "niveau_min": "Selon les termes du poste",
     "competences_requises": [
-      "Innovation",
-      "Rédaction de projet"
+      "Coordination",
+      "Protection de l’enfance",
+      "Gestion de projet"
     ],
-    "localisation": "International",
+    "localisation": "Haho, Togo",
+    "deadline": "2026-09-27",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/une-coordonnateurtrice-de-projet/",
+    "image": "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-058",
+    "titre": "Animateur(rice) de Projet HPP SSR – Haho",
+    "type": "Job",
+    "source": "EmploiTogo / SOS Villages d’Enfants",
+    "source_url": "https://www.emploitogo.info/03-animateursrices-de-projet-27-09-2026/",
+    "entreprise": "SOS Villages d’Enfants au Togo",
+    "description": "Trois postes d’animateurs de projet pour un projet de protection des enfants et jeunes dans le Haho.",
+    "filiere_cible": [
+      "Sciences sociales",
+      "Animation communautaire",
+      "Protection de l’enfance"
+    ],
+    "niveau_min": "Selon les termes du poste",
+    "competences_requises": [
+      "Animation",
+      "Sensibilisation",
+      "Travail communautaire"
+    ],
+    "localisation": "Haho, Togo",
+    "deadline": "2026-09-27",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/03-animateursrices-de-projet-27-09-2026/",
+    "image": "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-059",
+    "titre": "Directeur(trice) des Opérations – ADTPME",
+    "type": "Job",
+    "source": "EmploiTogo / ADTPME",
+    "source_url": "https://www.emploitogo.info/lagence-de-developpement-des-tres-petites-petites-et-moyennes-entreprises-adtpme-recrute-02-10-2026/",
+    "entreprise": "ADTPME",
+    "description": "Direction des opérations et gestion des activités de l’Agence de Développement des TPME.",
+    "filiere_cible": [
+      "Gestion",
+      "Management",
+      "Développement des PME"
+    ],
+    "niveau_min": "Non précisé",
+    "competences_requises": [
+      "Management",
+      "Gestion opérationnelle",
+      "Développement TPME"
+    ],
+    "localisation": "Lomé avec déplacements au Togo",
+    "deadline": "2026-10-02",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/lagence-de-developpement-des-tres-petites-petites-et-moyennes-entreprises-adtpme-recrute-02-10-2026/",
+    "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-060",
+    "titre": "Directeur(trice) des Acquisitions – ADTPME",
+    "type": "Job",
+    "source": "EmploiTogo / ADTPME",
+    "source_url": "https://www.emploitogo.info/lagence-de-developpement-des-tres-petites-petites-et-moyennes-entreprises-adtpme-recrute-02-10-2026/",
+    "entreprise": "ADTPME",
+    "description": "Poste de direction en acquisitions dans le cadre du renforcement de l’ADTPME.",
+    "filiere_cible": [
+      "Achats",
+      "Gestion",
+      "Administration",
+      "Développement des PME"
+    ],
+    "niveau_min": "Non précisé",
+    "competences_requises": [
+      "Gestion des acquisitions",
+      "Management",
+      "Organisation"
+    ],
+    "localisation": "Lomé avec déplacements au Togo",
+    "deadline": "2026-10-02",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/lagence-de-developpement-des-tres-petites-petites-et-moyennes-entreprises-adtpme-recrute-02-10-2026/",
+    "image": "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-061",
+    "titre": "Directeur(trice) Administratif et Financier – ADTPME",
+    "type": "Job",
+    "source": "EmploiTogo / ADTPME",
+    "source_url": "https://www.emploitogo.info/lagence-de-developpement-des-tres-petites-petites-et-moyennes-entreprises-adtpme-recrute-02-10-2026/",
+    "entreprise": "ADTPME",
+    "description": "Poste de direction administrative et financière basé à Lomé avec déplacements au pays.",
+    "filiere_cible": [
+      "Finance",
+      "Comptabilité",
+      "Gestion",
+      "Administration"
+    ],
+    "niveau_min": "Non précisé",
+    "competences_requises": [
+      "Gestion financière",
+      "Administration",
+      "Management"
+    ],
+    "localisation": "Lomé avec déplacements au Togo",
+    "deadline": "2026-10-02",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/lagence-de-developpement-des-tres-petites-petites-et-moyennes-entreprises-adtpme-recrute-02-10-2026/",
+    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-062",
+    "titre": "Conseillers en Assurances – SUNU Assurances Vie Togo",
+    "type": "Job",
+    "source": "EmploiTogo / SUNU",
+    "source_url": "https://www.emploitogo.info/sunu-assurances-vie-togo-recrute-09-10-2026/",
+    "entreprise": "SUNU Assurances Vie Togo",
+    "description": "Recrutement de conseillers en assurances pour développer et fidéliser un portefeuille clients.",
+    "filiere_cible": [
+      "Banque & Assurance",
+      "Commerce",
+      "Marketing"
+    ],
+    "niveau_min": "Bac+2",
+    "competences_requises": [
+      "Communication",
+      "Vente",
+      "Relation client",
+      "Marketing"
+    ],
+    "localisation": "Grand Lomé et préfectures environnantes",
+    "deadline": "2026-10-09",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/sunu-assurances-vie-togo-recrute-09-10-2026/",
+    "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-063",
+    "titre": "Assistant(e) administratif(ve) en charge de l’accueil – Ascencia Keyce",
+    "type": "Job",
+    "source": "EmploiTogo / Ascencia Keyce",
+    "source_url": "https://www.emploitogo.info/un-e-assistant-e-administrative-en-charge-de-laccueil/",
+    "entreprise": "Ascencia Keyce",
+    "description": "Accueil des visiteurs et étudiants, appels, courriers, rendez-vous et suivi administratif.",
+    "filiere_cible": [
+      "Administration",
+      "Secrétariat",
+      "Communication"
+    ],
+    "niveau_min": "Non précisé",
+    "competences_requises": [
+      "Accueil",
+      "Organisation",
+      "Bureautique",
+      "Communication"
+    ],
+    "localisation": "Lomé, Togo",
     "deadline": null,
     "status": "active",
-    "lien_candidature": "https://afri-carrieres.com/opportunites/student-innovation-competition/",
-    "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80"
+    "lien_candidature": "https://www.emploitogo.info/un-e-assistant-e-administrative-en-charge-de-laccueil/",
+    "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    "id": "opp-037",
-    "titre": "Les Nouveaux Boss - Saison 2",
-    "type": "Concours",
-    "source": "TV5MONDE",
-    "source_url": "https://casting.tv5monde.com/candidature",
-    "entreprise": "TV5MONDE",
-    "description": "Concours panafricain d'entrepreneuriat destiné aux entrepreneurs francophones basés en Afrique, offrant visibilité internationale, mentorat et opportunités de financement.",
+    "id": "opp-064",
+    "titre": "Stage professionnel – Chargée de l’Excellence Client",
+    "type": "Stage",
+    "source": "EmploiTogo",
+    "source_url": "https://www.emploitogo.info/stage-professionnel-chargee-de-lexcellence-client/",
+    "entreprise": "Entreprise confidentielle – Département Excellence Client",
+    "description": "Stage professionnel rémunéré à Kégué avec déplacements pris en charge et entrée au plus tard le 15 octobre 2026.",
     "filiere_cible": [
-      "Entrepreneuriat",
+      "Relation client",
       "Gestion",
-      "Toutes filières"
+      "Fiscalité",
+      "Administration"
     ],
-    "niveau_min": "Aucun",
+    "niveau_min": "Début de carrière",
     "competences_requises": [
-      "Entrepreneuriat",
-      "Pitch"
+      "Communication",
+      "Organisation",
+      "Relation client"
     ],
-    "localisation": "Afrique",
-    "deadline": "2026-06-15",
-    "status": "expired",
-    "lien_candidature": "https://casting.tv5monde.com/candidature",
-    "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
+    "localisation": "Kégué, Lomé",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/stage-professionnel-chargee-de-lexcellence-client/",
+    "image": "https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    "id": "opp-038",
-    "titre": "Small AI for Development Hackathon Challenge 2026",
-    "type": "Concours",
-    "source": "Afri-Carrières",
-    "source_url": "https://afri-carrieres.com/",
-    "entreprise": "Small AI for Development",
-    "description": "Hackathon mondial pour jeunes innovateurs de 18 à 35 ans autour de l'intelligence artificielle au service du développement, avec invitation au Global AI & Digital Summit à Séoul pour les finalistes.",
+    "id": "opp-065",
+    "titre": "Agent(e) de communication – DKOM HAS VOYAGE",
+    "type": "Job",
+    "source": "EmploiTogo",
+    "source_url": "https://www.emploitogo.info/une-agente-de-communication/",
+    "entreprise": "DKOM HAS VOYAGE",
+    "description": "Création de contenu, animation des réseaux sociaux et promotion des services de l’entreprise.",
+    "filiere_cible": [
+      "Communication",
+      "Marketing",
+      "Médias",
+      "Journalisme"
+    ],
+    "niveau_min": "Formation en communication ou domaine pertinent",
+    "competences_requises": [
+      "Réseaux sociaux",
+      "Création de contenu",
+      "Canva",
+      "Montage vidéo"
+    ],
+    "localisation": "Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/une-agente-de-communication/",
+    "image": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-066",
+    "titre": "Monteur(se) vidéo professionnel(le) – DKOM GROUP",
+    "type": "Job",
+    "source": "EmploiTogo",
+    "source_url": "https://www.emploitogo.info/une-monteurse-video-professionnelle/",
+    "entreprise": "DKOM GROUP",
+    "description": "Production et montage de contenus audiovisuels promotionnels, institutionnels, informatifs et éducatifs.",
+    "filiere_cible": [
+      "Audiovisuel",
+      "Montage vidéo",
+      "Motion design",
+      "Communication"
+    ],
+    "niveau_min": "Non précisé",
+    "competences_requises": [
+      "Premiere Pro",
+      "After Effects",
+      "DaVinci Resolve",
+      "Photoshop",
+      "CapCut"
+    ],
+    "localisation": "Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/une-monteurse-video-professionnelle/",
+    "image": "https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-067",
+    "titre": "Responsable des travaux pratiques en français – DKOM HAS VOYAGE",
+    "type": "Job",
+    "source": "EmploiTogo",
+    "source_url": "https://www.emploitogo.info/une-responsable-des-travaux-pratiques-en-francais/",
+    "entreprise": "DKOM HAS VOYAGE",
+    "description": "Encadrement pratique d’apprenants en français, avec début annoncé au 1er octobre 2026 et 10 heures par semaine.",
+    "filiere_cible": [
+      "Français",
+      "Enseignement",
+      "Éducation"
+    ],
+    "niveau_min": "Non précisé",
+    "competences_requises": [
+      "Maîtrise du français",
+      "Pédagogie",
+      "Encadrement"
+    ],
+    "localisation": "Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/une-responsable-des-travaux-pratiques-en-francais/",
+    "image": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-068",
+    "titre": "Personnes ressources – projet agroalimentaire ANVA/PAM",
+    "type": "Mission",
+    "source": "EmploiTogo / ANVA",
+    "source_url": "https://www.emploitogo.info/togo-long-anva-recrute-plusieurs-personnes-ressources-a-dapaong/",
+    "entreprise": "Association Nouveau Visage pour l’Afrique (ANVA)",
+    "description": "Personnes ressources pour des sessions du projet d’autonomisation des femmes dans la chaîne de valeur agroalimentaire, en partenariat avec le PAM.",
+    "filiere_cible": [
+      "Agriculture",
+      "Agroalimentaire",
+      "Agroécologie",
+      "Développement communautaire"
+    ],
+    "niveau_min": "Expérience de conduite de sessions similaires",
+    "competences_requises": [
+      "Animation",
+      "Agroalimentaire",
+      "Langues locales",
+      "Rapports"
+    ],
+    "localisation": "Dapaong et zones concernées au Togo",
+    "deadline": "2026-09-24",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/togo-long-anva-recrute-plusieurs-personnes-ressources-a-dapaong/",
+    "image": "https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-069",
+    "titre": "Responsable Qualité – GEBANA TOGO",
+    "type": "Job",
+    "source": "EmploiTogo / GEBANA",
+    "source_url": "https://www.emploitogo.info/gebana-togo-recrute-22-09-2026-05-postes/",
+    "entreprise": "GEBANA TOGO",
+    "description": "Responsable qualité dans une entreprise de produits agricoles biologiques.",
+    "filiere_cible": [
+      "Qualité",
+      "Agriculture",
+      "Agroalimentaire"
+    ],
+    "niveau_min": "Selon annonce détaillée",
+    "competences_requises": [
+      "Management qualité",
+      "Rigueur",
+      "Organisation"
+    ],
+    "localisation": "Togo",
+    "deadline": "2026-09-22",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/gebana-togo-recrute-22-09-2026-05-postes/",
+    "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-070",
+    "titre": "Assistant(e) Qualité – GEBANA TOGO",
+    "type": "Job",
+    "source": "EmploiTogo / GEBANA",
+    "source_url": "https://www.emploitogo.info/gebana-togo-recrute-22-09-2026-05-postes/",
+    "entreprise": "GEBANA TOGO",
+    "description": "Assistant(e) qualité dans le cadre du recrutement de cinq profils.",
+    "filiere_cible": [
+      "Qualité",
+      "Agroalimentaire",
+      "Agriculture"
+    ],
+    "niveau_min": "Selon annonce détaillée",
+    "competences_requises": [
+      "Contrôle qualité",
+      "Organisation",
+      "Rigueur"
+    ],
+    "localisation": "Togo",
+    "deadline": "2026-09-22",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/gebana-togo-recrute-22-09-2026-05-postes/",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-071",
+    "titre": "Assistant(e) Qualité Saisonnier – GEBANA TOGO",
+    "type": "Job",
+    "source": "EmploiTogo / GEBANA",
+    "source_url": "https://www.emploitogo.info/gebana-togo-recrute-22-09-2026-05-postes/",
+    "entreprise": "GEBANA TOGO",
+    "description": "Poste saisonnier en qualité dans la campagne de recrutement GEBANA.",
+    "filiere_cible": [
+      "Qualité",
+      "Agroalimentaire",
+      "Agriculture"
+    ],
+    "niveau_min": "Selon annonce détaillée",
+    "competences_requises": [
+      "Contrôle qualité",
+      "Organisation",
+      "Travail d’équipe"
+    ],
+    "localisation": "Togo",
+    "deadline": "2026-09-22",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/gebana-togo-recrute-22-09-2026-05-postes/",
+    "image": "https://images.unsplash.com/photo-1584727638096-042c45049ebe?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-072",
+    "titre": "Magasinier – GEBANA TOGO",
+    "type": "Job",
+    "source": "EmploiTogo / GEBANA",
+    "source_url": "https://www.emploitogo.info/gebana-togo-recrute-22-09-2026-05-postes/",
+    "entreprise": "GEBANA TOGO",
+    "description": "Poste de magasinier basé à Kpalimé.",
+    "filiere_cible": [
+      "Logistique",
+      "Gestion des stocks",
+      "Agriculture"
+    ],
+    "niveau_min": "Selon annonce détaillée",
+    "competences_requises": [
+      "Gestion de stock",
+      "Organisation",
+      "Rigueur"
+    ],
+    "localisation": "Kpalimé, Togo",
+    "deadline": "2026-09-22",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/gebana-togo-recrute-22-09-2026-05-postes/",
+    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-073",
+    "titre": "Technicien Agricole Activités Cacao – GEBANA TOGO",
+    "type": "Job",
+    "source": "EmploiTogo / GEBANA",
+    "source_url": "https://www.emploitogo.info/gebana-togo-recrute-22-09-2026-05-postes/",
+    "entreprise": "GEBANA TOGO",
+    "description": "Technicien agricole pour les activités cacao, basé à Kpalimé.",
+    "filiere_cible": [
+      "Agronomie",
+      "Agriculture",
+      "Cacao",
+      "Agroécologie"
+    ],
+    "niveau_min": "Selon annonce détaillée",
+    "competences_requises": [
+      "Production agricole",
+      "Cacao",
+      "Travail de terrain"
+    ],
+    "localisation": "Kpalimé, Togo",
+    "deadline": "2026-09-22",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/gebana-togo-recrute-22-09-2026-05-postes/",
+    "image": "https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-074",
+    "titre": "Responsable Technique & Développeur Full Stack",
+    "type": "Job",
+    "source": "EmploiTogo / CentralResource",
+    "source_url": "https://www.emploitogo.info/un-responsable-technique-developpeur-full-stack-18-09-2026/",
+    "entreprise": "CentralResource pour une société partenaire",
+    "description": "Développement Full Stack, solutions techniques, systèmes/réseaux et avant-vente.",
     "filiere_cible": [
       "Informatique",
-      "Intelligence artificielle",
-      "Innovation"
+      "Développement Full Stack",
+      "Systèmes et réseaux",
+      "Data"
     ],
-    "niveau_min": "Aucun",
+    "niveau_min": "Non précisé",
     "competences_requises": [
-      "IA",
-      "Développement de projet"
+      "Full Stack",
+      "API",
+      "Bases de données",
+      "TCP/IP",
+      "SQL",
+      "Power BI"
     ],
-    "localisation": "International (à distance possible)",
-    "deadline": "2026-09-03",
-    "status": "expired",
-    "lien_candidature": "https://afri-carrieres.com/",
-    "image": "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=1200&q=80"
+    "localisation": "Lomé, Togo",
+    "deadline": "2026-09-18",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/un-responsable-technique-developpeur-full-stack-18-09-2026/",
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    "id": "opp-039",
-    "titre": "Master Francophone de Journalisme International (MFJI)",
-    "type": "Formation",
-    "source": "EPJT / DW Akademie",
-    "source_url": "https://epjt.fr/master-epjt-le-recrutement-2026-est-lance/",
-    "entreprise": "DW Akademie",
-    "description": "Master de journalisme international pour l'Afrique francophone, accessible aux titulaires d'un diplôme bac+3 minimum, toutes disciplines confondues.",
+    "id": "opp-075",
+    "titre": "Chef(fe) de Projet – corpus de données linguistiques IA",
+    "type": "Job",
+    "source": "EmploiTogo / CentralResource",
+    "source_url": "https://www.emploitogo.info/une-cheffe-de-projet-18-09-2026/",
+    "entreprise": "CentralResource pour une société partenaire",
+    "description": "Pilotage d’un projet national de corpus vocal et textuel dans les 50 langues locales du Togo destiné à l’IA.",
     "filiere_cible": [
-      "Journalisme",
-      "Communication",
-      "Sciences sociales"
+      "Gestion de projet",
+      "IA",
+      "Linguistique",
+      "Data"
+    ],
+    "niveau_min": "Selon le poste",
+    "competences_requises": [
+      "Pilotage",
+      "Coordination",
+      "Contrôle qualité"
+    ],
+    "localisation": "Lomé, Togo",
+    "deadline": "2026-09-18",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/une-cheffe-de-projet-18-09-2026/",
+    "image": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-076",
+    "titre": "Expert(e) Linguiste – 6 postes",
+    "type": "Job",
+    "source": "EmploiTogo / CentralResource",
+    "source_url": "https://www.emploitogo.info/6-experts-linguistes-18-09-2026/",
+    "entreprise": "CentralResource pour une société partenaire",
+    "description": "Six experts linguistes pour contrôler et valider des données audio, textes et transcriptions destinés à l’IA.",
+    "filiere_cible": [
+      "Linguistique",
+      "Langues",
+      "IA",
+      "Data annotation"
+    ],
+    "niveau_min": "Expertise linguistique",
+    "competences_requises": [
+      "Validation de corpus",
+      "Langues locales",
+      "Contrôle qualité"
+    ],
+    "localisation": "Lomé, Togo",
+    "deadline": "2026-09-18",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/6-experts-linguistes-18-09-2026/",
+    "image": "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-077",
+    "titre": "UX/UI Designer Senior",
+    "type": "Job",
+    "source": "EmploiTogo / CentralResource",
+    "source_url": "https://www.emploitogo.info/ux-ui-designer-senior-h-f-18-09-2026/",
+    "entreprise": "CentralResource pour une société partenaire",
+    "description": "CDI à Lomé en UX/UI, prototypage, design system et projets numériques.",
+    "filiere_cible": [
+      "Design",
+      "UX/UI",
+      "Informatique",
+      "Produit numérique"
     ],
     "niveau_min": "Bac+3",
     "competences_requises": [
+      "UX research",
+      "UI design",
+      "Figma",
+      "WCAG",
+      "Motion Design"
+    ],
+    "localisation": "Lomé, Togo",
+    "deadline": "2026-09-18",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/ux-ui-designer-senior-h-f-18-09-2026/",
+    "image": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-078",
+    "titre": "50 Locuteurs Natifs – projet IA",
+    "type": "Job",
+    "source": "EmploiTogo / CentralResource",
+    "source_url": "https://www.emploitogo.info/50-locuteurs-natifs-h-f-30-09-2026/",
+    "entreprise": "CentralResource pour une société partenaire",
+    "description": "50 locuteurs natifs, un par langue locale, pour un corpus vocal et textuel destiné à l’entraînement de modèles d’IA.",
+    "filiere_cible": [
+      "Langues",
+      "Linguistique",
+      "IA",
+      "Data"
+    ],
+    "niveau_min": "Maîtrise d’une langue locale du Togo",
+    "competences_requises": [
+      "Langue locale",
+      "Validation linguistique",
+      "Attention aux détails"
+    ],
+    "localisation": "Lomé, Togo",
+    "deadline": "2026-09-30",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/50-locuteurs-natifs-h-f-30-09-2026/",
+    "image": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-079",
+    "titre": "Réceptionnistes-vendeurs en boutique – 3 postes",
+    "type": "Job",
+    "source": "EmploiTogo / Cabinet Rassurt Job",
+    "source_url": "https://www.emploitogo.info/job/emploi-receptionnistes-vendeurs-en-boutique/",
+    "entreprise": "Entreprise commerciale d’appareils électroniques",
+    "description": "Trois postes à Avedji limousine et Assigamé. Expérience non exigée et formation de base gratuite annoncée.",
+    "filiere_cible": [
+      "Commerce",
+      "Vente",
+      "Administration",
+      "Relation client"
+    ],
+    "niveau_min": "BAC 2 minimum; BEPC avec formation complémentaire accepté",
+    "competences_requises": [
+      "Accueil",
+      "Vente",
+      "Relation client"
+    ],
+    "localisation": "Lomé",
+    "deadline": "2026-09-30",
+    "status": "active",
+    "lien_candidature": "https://www.emploitogo.info/job/emploi-receptionnistes-vendeurs-en-boutique/",
+    "image": "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-080",
+    "titre": "Annotateurs de données linguistiques",
+    "type": "Job",
+    "source": "TogoTalents",
+    "source_url": "https://togotalents.com/jobs/",
+    "entreprise": "Entreprise partenaire de TogoTalents",
+    "description": "Offre publiée le 14 septembre 2026 pour des annotateurs de données linguistiques.",
+    "filiere_cible": [
+      "Linguistique",
+      "Langues",
+      "Data",
+      "IA"
+    ],
+    "niveau_min": "Non précisé",
+    "competences_requises": [
+      "Langues",
+      "Annotation de données",
+      "Attention aux détails"
+    ],
+    "localisation": "Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://togotalents.com/jobs/",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-081",
+    "titre": "Ingénieur(e) AI/NLP – Recherche & Développement",
+    "type": "Job",
+    "source": "TogoTalents",
+    "source_url": "https://togotalents.com/jobs/",
+    "entreprise": "Entreprise partenaire de TogoTalents",
+    "description": "Offre publiée le 14 septembre 2026 pour un ingénieur AI/NLP en R&D.",
+    "filiere_cible": [
+      "IA",
+      "NLP",
+      "Informatique",
+      "Recherche"
+    ],
+    "niveau_min": "Profil ingénieur",
+    "competences_requises": [
+      "IA",
+      "NLP",
+      "Programmation",
+      "R&D"
+    ],
+    "localisation": "Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://togotalents.com/jobs/",
+    "image": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-082",
+    "titre": "Assistante de communication – stage / emploi",
+    "type": "Stage / Job",
+    "source": "TogoTalents",
+    "source_url": "https://togotalents.com/jobs/",
+    "entreprise": "Entreprise partenaire de TogoTalents",
+    "description": "Offre publiée le 14 septembre 2026 sous forme de stage ou emploi.",
+    "filiere_cible": [
+      "Communication",
+      "Marketing",
+      "Médias"
+    ],
+    "niveau_min": "Non précisé",
+    "competences_requises": [
+      "Communication",
       "Rédaction",
-      "Culture générale"
+      "Réseaux sociaux"
     ],
-    "localisation": "Afrique francophone",
+    "localisation": "Togo",
     "deadline": null,
     "status": "active",
-    "lien_candidature": "https://epjt.fr/master-epjt-le-recrutement-2026-est-lance/",
-    "image": "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1200&q=80"
+    "lien_candidature": "https://togotalents.com/jobs/",
+    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    "id": "opp-040",
-    "titre": "Programme Musso Tech",
-    "type": "Formation",
-    "source": "Comms & Marketing Africa",
-    "source_url": "https://communicant.news.blog/2026/05/03/opportunites-en-afrique-formations-concours-et-programmes-pour-les-talents-des-medias-et-du-digital/",
-    "entreprise": "Orange Digital Center",
-    "description": "Formation d'un mois dédiée aux jeunes femmes souhaitant développer des compétences dans le numérique.",
+    "id": "opp-083",
+    "titre": "Agents commerciaux (H/F)",
+    "type": "Job",
+    "source": "TogoTalents",
+    "source_url": "https://togotalents.com/jobs/",
+    "entreprise": "Entreprise partenaire de TogoTalents",
+    "description": "Offre commerciale publiée le 14 septembre 2026 au Togo.",
     "filiere_cible": [
-      "Informatique",
-      "Numérique"
+      "Commerce",
+      "Vente",
+      "Marketing"
     ],
-    "niveau_min": "Aucun",
+    "niveau_min": "Non précisé",
     "competences_requises": [
-      "Motivation",
-      "Bases en numérique"
+      "Prospection",
+      "Communication",
+      "Relation client"
     ],
-    "localisation": "Afrique de l'Ouest",
+    "localisation": "Togo",
     "deadline": null,
     "status": "active",
-    "lien_candidature": "https://communicant.news.blog/2026/05/03/opportunites-en-afrique-formations-concours-et-programmes-pour-les-talents-des-medias-et-du-digital/",
-    "image": "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80"
+    "lien_candidature": "https://togotalents.com/jobs/",
+    "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    "id": "opp-041",
-    "titre": "Formation en leadership, plaidoyer et santé mentale",
-    "type": "Formation",
-    "source": "Comms & Marketing Africa",
-    "source_url": "https://communicant.news.blog/2026/07/22/opportunites-evenements-communication-leadership-sante-medias-et-numerique-en-afrique-juillet-a-septembre-2026/",
-    "entreprise": "Université Alassane Ouattara (Bouaké)",
-    "description": "Formation destinée à renforcer les compétences des futurs leaders en plaidoyer, réforme des politiques publiques et santé mentale en Afrique, avec bourses disponibles.",
+    "id": "opp-084",
+    "titre": "Deux Coordinateurs des opérations et de l’administration",
+    "type": "Job",
+    "source": "TogoTalents",
+    "source_url": "https://togotalents.com/jobs/",
+    "entreprise": "Entreprise partenaire de TogoTalents",
+    "description": "Deux postes publiés le 14 septembre 2026, avec affectation possible à Notse au Togo.",
     "filiere_cible": [
-      "Santé publique",
-      "Sciences politiques",
-      "Sciences sociales"
+      "Administration",
+      "Gestion",
+      "Opérations"
     ],
-    "niveau_min": "Licence",
+    "niveau_min": "Non précisé",
     "competences_requises": [
-      "Leadership",
-      "Plaidoyer"
+      "Organisation",
+      "Administration",
+      "Coordination"
     ],
-    "localisation": "Bouaké, Côte d'Ivoire",
-    "deadline": "2026-07-28",
-    "status": "expired",
-    "lien_candidature": "https://communicant.news.blog/2026/07/22/opportunites-evenements-communication-leadership-sante-medias-et-numerique-en-afrique-juillet-a-septembre-2026/",
-    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    "id": "opp-042",
-    "titre": "Concours d'Innovation FrancoTech 2026",
-    "type": "Concours",
-    "source": "Afri-Carrières",
-    "source_url": "https://afri-carrieres.com/",
-    "entreprise": "FrancoTech",
-    "description": "Concours d'innovation à Phnom Penh ouvert aux start-up et innovateurs francophones, avec des prix allant jusqu'à 3000 USD.",
-    "filiere_cible": [
-      "Entrepreneuriat",
-      "Informatique",
-      "Innovation"
-    ],
-    "niveau_min": "Aucun",
-    "competences_requises": [
-      "Innovation",
-      "Pitch"
-    ],
-    "localisation": "Cambodge (candidature à distance)",
-    "deadline": "2026-09-21",
+    "localisation": "Notse, Togo / Abomey, Bénin",
+    "deadline": null,
     "status": "active",
-    "lien_candidature": "https://afri-carrieres.com/",
-    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
+    "lien_candidature": "https://togotalents.com/jobs/",
+    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    "id": "opp-043",
-    "titre": "Sociology on Stage Program 2026",
-    "type": "Bourse",
-    "source": "Afri-Carrières",
-    "source_url": "https://afri-carrieres.com/",
-    "entreprise": "International Sociological Association",
-    "description": "Subvention de 2000€ pour organiser des événements de vulgarisation de la sociologie destinés au grand public.",
+    "id": "opp-085",
+    "titre": "Quatre Ingénieurs de service régional (H/F)",
+    "type": "Job",
+    "source": "TogoTalents",
+    "source_url": "https://togotalents.com/jobs/",
+    "entreprise": "Entreprise partenaire de TogoTalents",
+    "description": "Quatre postes d’ingénieurs de service régional publiés le 14 septembre 2026.",
     "filiere_cible": [
-      "Sociologie",
-      "Sciences sociales"
+      "Ingénierie",
+      "Maintenance",
+      "Services techniques"
     ],
-    "niveau_min": "Licence",
+    "niveau_min": "Profil ingénieur",
     "competences_requises": [
-      "Organisation d'événements",
-      "Sociologie"
+      "Compétences techniques",
+      "Maintenance",
+      "Service régional"
     ],
-    "localisation": "International",
-    "deadline": "2026-08-13",
-    "status": "expired",
-    "lien_candidature": "https://afri-carrieres.com/",
-    "image": "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80"
+    "localisation": "Notse, Togo / Abomey, Bénin",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://togotalents.com/jobs/",
+    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    "id": "opp-044",
-    "titre": "Programme HWY4PS - Femmes et jeunes pour la paix et la sécurité",
-    "type": "Formation",
-    "source": "Setondji",
-    "source_url": "https://www.setondji.org/blog/bourses",
-    "entreprise": "RAMP-BENIN",
-    "description": "Programme de formation pour 100 femmes et jeunes sur les enjeux de paix et de sécurité en Afrique de l'Ouest.",
+    "id": "opp-086",
+    "titre": "Douze Gestionnaires de Hub (H/F)",
+    "type": "Job",
+    "source": "TogoTalents",
+    "source_url": "https://togotalents.com/jobs/",
+    "entreprise": "Entreprise partenaire de TogoTalents",
+    "description": "Douze postes de gestionnaires de hub, dont des affectations annoncées à Notse.",
     "filiere_cible": [
-      "Sciences politiques",
+      "Gestion",
+      "Logistique",
+      "Opérations"
+    ],
+    "niveau_min": "Non précisé",
+    "competences_requises": [
+      "Gestion opérationnelle",
+      "Organisation",
+      "Coordination"
+    ],
+    "localisation": "Notse, Togo / Abomey, Bénin",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://togotalents.com/jobs/",
+    "image": "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-087",
+    "titre": "Deux Chefs de projet bilingues (H/F)",
+    "type": "Job",
+    "source": "TogoTalents / Talents Plus Afrique",
+    "source_url": "https://www.togotalents.com/jobs/search/",
+    "entreprise": "Entreprise partenaire / Talents Plus Afrique",
+    "description": "Deux postes de chefs de projet bilingues, dont un à Notse au Togo.",
+    "filiere_cible": [
+      "Gestion de projet",
+      "Administration",
+      "Management"
+    ],
+    "niveau_min": "Non précisé",
+    "competences_requises": [
+      "Gestion de projet",
+      "Français",
+      "Anglais",
+      "Coordination"
+    ],
+    "localisation": "Notse, Togo / Abomey, Bénin",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://talentsplusafrique.com/job-details/514",
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-088",
+    "titre": "Remote Market Development Assistant",
+    "type": "Job",
+    "source": "LinkedIn",
+    "source_url": "https://tg.linkedin.com/jobs/search?keywords=Recherche&locationId=tg%3A0",
+    "entreprise": "O.J. Beer",
+    "description": "Poste récent de Market Development Assistant en télétravail accessible depuis le Togo dans les résultats LinkedIn consultés.",
+    "filiere_cible": [
+      "Marketing",
+      "Développement commercial",
+      "Commerce"
+    ],
+    "niveau_min": "Non précisé",
+    "competences_requises": [
+      "Développement commercial",
+      "Marketing",
+      "Travail à distance"
+    ],
+    "localisation": "Remote – Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://tg.linkedin.com/jobs/search?keywords=Recherche&locationId=tg%3A0",
+    "image": "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-089",
+    "titre": "Child Protection Officer, NO-2 – UNICEF Togo",
+    "type": "Job",
+    "source": "UNICEF Careers",
+    "source_url": "https://jobs.unicef.org/",
+    "entreprise": "UNICEF",
+    "description": "Poste de Child Protection Officer basé à Lomé, affiché comme activement recruté dans les résultats consultés.",
+    "filiere_cible": [
+      "Protection de l’enfance",
+      "Sciences sociales",
+      "Développement international"
+    ],
+    "niveau_min": "Selon l’avis UNICEF",
+    "competences_requises": [
+      "Protection de l’enfance",
+      "Gestion de programme",
+      "Partenariats"
+    ],
+    "localisation": "Lomé, Togo",
+    "deadline": null,
+    "status": "active",
+    "lien_candidature": "https://jobs.unicef.org/",
+    "image": "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-090",
+    "titre": "INTERNSHIP: Priority Africa and External Relations",
+    "type": "Stage",
+    "source": "UNESCO Careers",
+    "source_url": "https://careers.unesco.org/search/?q=remote+internships",
+    "entreprise": "UNESCO",
+    "description": "Stage officiel UNESCO publié le 4 septembre 2026 et indiqué avec clôture au 31 décembre 2026.",
+    "filiere_cible": [
       "Relations internationales",
+      "Développement international",
+      "Sciences sociales",
+      "Afrique"
+    ],
+    "niveau_min": "Selon UNESCO",
+    "competences_requises": [
+      "Relations internationales",
+      "Analyse",
+      "Rédaction"
+    ],
+    "localisation": "Multiple / International",
+    "deadline": "2026-12-31",
+    "status": "active",
+    "lien_candidature": "https://careers.unesco.org/search/?q=remote+internships",
+    "image": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-091",
+    "titre": "INTERNSHIP: Sciences",
+    "type": "Stage",
+    "source": "UNESCO Careers",
+    "source_url": "https://careers.unesco.org/go/All-jobs-openings/784002/?sortColumn=sort_title&sortDirection=desc&title=INTERNSHIP",
+    "entreprise": "UNESCO",
+    "description": "Stage officiel UNESCO dans les sciences, publié le 4 septembre 2026 et indiqué avec clôture au 31 décembre 2026.",
+    "filiere_cible": [
+      "Sciences",
+      "Recherche",
+      "STEM"
+    ],
+    "niveau_min": "Selon UNESCO",
+    "competences_requises": [
+      "Compétences scientifiques",
+      "Recherche"
+    ],
+    "localisation": "Multiple / International",
+    "deadline": "2026-12-31",
+    "status": "active",
+    "lien_candidature": "https://careers.unesco.org/go/All-jobs-openings/784002/?sortColumn=sort_title&sortDirection=desc&title=INTERNSHIP",
+    "image": "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-092",
+    "titre": "INTERNSHIP: Office of the Director-General",
+    "type": "Stage",
+    "source": "UNESCO Careers",
+    "source_url": "https://careers.unesco.org/search/?q=remote+internships",
+    "entreprise": "UNESCO",
+    "description": "Stage officiel au Bureau du Directeur général, publié le 4 septembre 2026 et indiqué avec clôture au 31 décembre 2026.",
+    "filiere_cible": [
+      "Administration",
+      "Relations internationales",
+      "Communication",
+      "Gestion"
+    ],
+    "niveau_min": "Selon UNESCO",
+    "competences_requises": [
+      "Organisation",
+      "Communication",
+      "Travail institutionnel"
+    ],
+    "localisation": "Multiple / International",
+    "deadline": "2026-12-31",
+    "status": "active",
+    "lien_candidature": "https://careers.unesco.org/search/?q=remote+internships",
+    "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-093",
+    "titre": "INTERNSHIP: Digital Business Solutions",
+    "type": "Stage",
+    "source": "UNESCO Careers",
+    "source_url": "https://careers.unesco.org/go/All-jobs-openings/784002/?facility=internship",
+    "entreprise": "UNESCO",
+    "description": "Stage UNESCO en solutions numériques, présent dans la liste officielle 2026 avec clôture au 31 décembre 2026.",
+    "filiere_cible": [
+      "Informatique",
+      "Transformation numérique",
+      "Systèmes d’information"
+    ],
+    "niveau_min": "Selon UNESCO",
+    "competences_requises": [
+      "Numérique",
+      "Technologies de l’information",
+      "Analyse"
+    ],
+    "localisation": "Multiple / International",
+    "deadline": "2026-12-31",
+    "status": "active",
+    "lien_candidature": "https://careers.unesco.org/go/All-jobs-openings/784002/?facility=internship",
+    "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-094",
+    "titre": "INTERNSHIP: Education Sector",
+    "type": "Stage",
+    "source": "UNESCO Careers",
+    "source_url": "https://careers.unesco.org/search/?q=INTERNSHIP+JOBS",
+    "entreprise": "UNESCO",
+    "description": "Stage officiel dans le secteur de l’éducation, avec clôture indiquée au 31 décembre 2026.",
+    "filiere_cible": [
+      "Éducation",
+      "Sciences de l’éducation",
+      "Développement international"
+    ],
+    "niveau_min": "Selon UNESCO",
+    "competences_requises": [
+      "Éducation",
+      "Analyse",
+      "Rédaction"
+    ],
+    "localisation": "Multiple / International",
+    "deadline": "2026-12-31",
+    "status": "active",
+    "lien_candidature": "https://careers.unesco.org/search/?q=INTERNSHIP+JOBS",
+    "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-095",
+    "titre": "INTERNSHIP: Communications and Public Engagement",
+    "type": "Stage",
+    "source": "UNESCO Careers",
+    "source_url": "https://careers.unesco.org/search/?q=INTERNSHIP+JOBS",
+    "entreprise": "UNESCO",
+    "description": "Stage officiel en communication et engagement public, avec clôture indiquée au 31 décembre 2026.",
+    "filiere_cible": [
+      "Communication",
+      "Relations publiques",
+      "Médias"
+    ],
+    "niveau_min": "Selon UNESCO",
+    "competences_requises": [
+      "Communication",
+      "Rédaction",
+      "Engagement public"
+    ],
+    "localisation": "Multiple / International",
+    "deadline": "2026-12-31",
+    "status": "active",
+    "lien_candidature": "https://careers.unesco.org/search/?q=INTERNSHIP+JOBS",
+    "image": "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-096",
+    "titre": "INTERNSHIP: Culture Sector",
+    "type": "Stage",
+    "source": "UNESCO Careers",
+    "source_url": "https://careers.unesco.org/search/?q=INTERNSHIP+JOBS",
+    "entreprise": "UNESCO",
+    "description": "Stage officiel dans le secteur Culture, avec clôture indiquée au 31 décembre 2026.",
+    "filiere_cible": [
+      "Culture",
+      "Patrimoine",
       "Sciences sociales"
     ],
-    "niveau_min": "Aucun",
+    "niveau_min": "Selon UNESCO",
     "competences_requises": [
-      "Engagement communautaire"
+      "Culture",
+      "Recherche",
+      "Communication"
     ],
-    "localisation": "Bénin",
-    "deadline": null,
+    "localisation": "Multiple / International",
+    "deadline": "2026-12-31",
     "status": "active",
-    "lien_candidature": "https://www.setondji.org/blog/bourses",
+    "lien_candidature": "https://careers.unesco.org/search/?q=INTERNSHIP+JOBS",
+    "image": "https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-097",
+    "titre": "INTERNSHIP: Division of Financial Services",
+    "type": "Stage",
+    "source": "UNESCO Careers",
+    "source_url": "https://careers.unesco.org/search/?q=remote+internships",
+    "entreprise": "UNESCO",
+    "description": "Stage officiel dans la Division des services financiers, publié le 3 septembre 2026 et indiqué avec clôture au 31 décembre 2026.",
+    "filiere_cible": [
+      "Finance",
+      "Comptabilité",
+      "Administration"
+    ],
+    "niveau_min": "Selon UNESCO",
+    "competences_requises": [
+      "Finance",
+      "Analyse",
+      "Bureautique"
+    ],
+    "localisation": "Multiple / International",
+    "deadline": "2026-12-31",
+    "status": "active",
+    "lien_candidature": "https://careers.unesco.org/search/?q=remote+internships",
+    "image": "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-098",
+    "titre": "INTERNSHIP: Intergovernmental Oceanographic Commission",
+    "type": "Stage",
+    "source": "UNESCO Careers",
+    "source_url": "https://careers.unesco.org/search/?q=remote+internships",
+    "entreprise": "UNESCO – IOC",
+    "description": "Stage officiel de la Commission océanographique intergouvernementale, avec clôture indiquée au 31 décembre 2026.",
+    "filiere_cible": [
+      "Sciences marines",
+      "Océanographie",
+      "Environnement"
+    ],
+    "niveau_min": "Selon UNESCO",
+    "competences_requises": [
+      "Sciences marines",
+      "Recherche",
+      "Analyse"
+    ],
+    "localisation": "Multiple / International",
+    "deadline": "2026-12-31",
+    "status": "active",
+    "lien_candidature": "https://careers.unesco.org/search/?q=remote+internships",
+    "image": "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-099",
+    "titre": "INTERNSHIP: All Sectors/Bureaus",
+    "type": "Stage",
+    "source": "UNESCO Careers",
+    "source_url": "https://careers.unesco.org/go/All-jobs-openings/784002/?facility=internship",
+    "entreprise": "UNESCO",
+    "description": "Programme officiel de stages UNESCO ouvert dans plusieurs secteurs et bureaux, clôture indiquée au 31 décembre 2026.",
+    "filiere_cible": [
+      "Toutes filières",
+      "Administration",
+      "Communication",
+      "Sciences",
+      "Éducation"
+    ],
+    "niveau_min": "Selon UNESCO",
+    "competences_requises": [
+      "Selon l’affectation"
+    ],
+    "localisation": "Multiple / International",
+    "deadline": "2026-12-31",
+    "status": "active",
+    "lien_candidature": "https://careers.unesco.org/go/All-jobs-openings/784002/?facility=internship",
+    "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-100",
+    "titre": "Internship – Planning, Suivi & Evaluation – UNICEF Maroc",
+    "type": "Stage",
+    "source": "UNICEF Careers",
+    "source_url": "https://jobs.unicef.org/es/search/?search-keyword=&work-type=internship",
+    "entreprise": "UNICEF Maroc",
+    "description": "Stage de 3 mois en planning, suivi, évaluation, analyse des données et performance des programmes.",
+    "filiere_cible": [
+      "Suivi-évaluation",
+      "Analyse de données",
+      "Gestion de programme"
+    ],
+    "niveau_min": "Étudiant selon UNICEF",
+    "competences_requises": [
+      "Analyse de données",
+      "Suivi-évaluation",
+      "Rédaction"
+    ],
+    "localisation": "Rabat, Maroc",
+    "deadline": "2026-09-20",
+    "status": "active",
+    "lien_candidature": "https://jobs.unicef.org/es/search/?search-keyword=&work-type=internship",
+    "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "opp-101",
+    "titre": "Internship – Social and Behaviour Change – UNICEF Cameroun",
+    "type": "Stage",
+    "source": "UNICEF Careers",
+    "source_url": "https://jobs.unicef.org/es/search/?search-keyword=&work-type=internship",
+    "entreprise": "UNICEF Cameroun",
+    "description": "Programme de 12 stages de 6 mois en Social and Behaviour Change dans plusieurs bureaux au Cameroun.",
+    "filiere_cible": [
+      "Communication",
+      "Sciences sociales",
+      "Changement social et comportemental"
+    ],
+    "niveau_min": "Étudiant selon UNICEF",
+    "competences_requises": [
+      "Communication",
+      "Sciences sociales",
+      "Analyse comportementale"
+    ],
+    "localisation": "Cameroun",
+    "deadline": "2026-09-19",
+    "status": "active",
+    "lien_candidature": "https://jobs.unicef.org/es/search/?search-keyword=&work-type=internship",
     "image": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
   }
 ]

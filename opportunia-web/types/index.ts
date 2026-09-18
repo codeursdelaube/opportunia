@@ -3,22 +3,27 @@
 // ============================================================
 
 export type OpportunityType =
-  | 'stage'
-  | 'emploi'
-  | 'bourse'
-  | 'concours'
-  | 'formation'
-  | 'freelance'
-  | 'projet'
-  | 'job'
+  // Valeurs JSON actuelles (capitalisées)
   | 'Stage'
   | 'Emploi'
+  | 'Job'
   | 'Bourse'
   | 'Concours'
   | 'Formation'
   | 'Freelance'
   | 'Projet'
-  | 'Job'
+  | 'Mission'
+  | 'Stage / Job'
+  // Variantes minuscules (rétrocompat)
+  | 'stage'
+  | 'emploi'
+  | 'job'
+  | 'bourse'
+  | 'concours'
+  | 'formation'
+  | 'freelance'
+  | 'projet'
+  | 'mission'
 
 export interface Opportunity {
   id: string

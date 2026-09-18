@@ -211,31 +211,39 @@ function findFieldGroup(normalised: string): string | null {
 // ── Skill proximity & alternatives ────────────────────────────
 
 const SKILL_PROXIMITY: Record<string, string[]> = {
-  javascript: ['typescript', 'node.js', 'nodejs', 'react', 'developpement web', 'frontend'],
-  typescript: ['javascript', 'react', 'next.js', 'node.js', 'developpement web'],
-  react: ['next.js', 'nextjs', 'react native', 'javascript', 'typescript', 'frontend', 'developpement web'],
+  javascript: ['typescript', 'node.js', 'nodejs', 'react', 'developpement web', 'frontend', 'programmation', 'competences numeriques'],
+  typescript: ['javascript', 'react', 'next.js', 'node.js', 'developpement web', 'programmation'],
+  react: ['next.js', 'nextjs', 'react native', 'javascript', 'typescript', 'frontend', 'developpement web', 'programmation'],
   'next.js': ['react', 'nextjs', 'typescript', 'javascript', 'frontend', 'developpement web'],
   nextjs: ['react', 'next.js', 'typescript', 'javascript', 'developpement web'],
-  'node.js': ['nodejs', 'javascript', 'typescript', 'express', 'backend'],
+  'node.js': ['nodejs', 'javascript', 'typescript', 'express', 'backend', 'programmation'],
   nodejs: ['node.js', 'javascript', 'typescript', 'express', 'backend'],
-  'developpement web': ['web', 'react', 'javascript', 'typescript', 'html', 'css', 'next.js', 'frontend', 'backend', 'fullstack'],
-  web: ['developpement web', 'html', 'css', 'javascript', 'react'],
-  html: ['css', 'javascript', 'developpement web', 'frontend'],
+  'developpement web': ['web', 'react', 'javascript', 'typescript', 'html', 'css', 'next.js', 'frontend', 'backend', 'fullstack', 'programmation'],
+  web: ['developpement web', 'html', 'css', 'javascript', 'react', 'programmation'],
+  html: ['css', 'javascript', 'developpement web', 'frontend', 'programmation'],
   css: ['html', 'javascript', 'tailwind', 'bootstrap', 'developpement web'],
   tailwind: ['css', 'bootstrap', 'developpement web'],
-  python: ['django', 'flask', 'fastapi', 'data science', 'machine learning', 'ia', 'intelligence artificielle'],
+  programmation: ['javascript', 'typescript', 'python', 'react', 'java', 'developpement web', 'competences numeriques', 'bases en informatique', 'informatique'],
+  'competences numeriques': ['informatique', 'programmation', 'bases en informatique', 'numerique', 'developpement web', 'javascript', 'python'],
+  'bases en informatique': ['informatique', 'programmation', 'competences numeriques', 'numerique', 'javascript'],
+  'travail sur projets numeriques': ['programmation', 'developpement web', 'javascript', 'react', 'informatique'],
+  'outils informatiques': ['informatique', 'bureautique', 'excel', 'word', 'competences numeriques'],
+  bureautique: ['excel', 'word', 'outils informatiques', 'informatique'],
+  excel: ['bureautique', 'analyse', 'gestion', 'finance'],
+  python: ['django', 'flask', 'fastapi', 'data science', 'machine learning', 'ia', 'intelligence artificielle', 'programmation'],
   ia: ['intelligence artificielle', 'machine learning', 'deep learning', 'data science', 'python'],
   'intelligence artificielle': ['ia', 'machine learning', 'deep learning', 'data science', 'python'],
   'machine learning': ['ia', 'intelligence artificielle', 'data science', 'python', 'statistiques'],
   'data science': ['machine learning', 'statistiques', 'analyse de donnees', 'python', 'sql', 'ia'],
-  'bases en numerique': ['informatique', 'numerique', 'developpement web', 'web', 'outils informatiques'],
-  numerique: ['informatique', 'bases en numerique', 'developpement web', 'technologie'],
-  informatique: ['developpement web', 'bases en numerique', 'numerique', 'programmation', 'python', 'javascript'],
+  'bases en numerique': ['informatique', 'numerique', 'developpement web', 'web', 'outils informatiques', 'competences numeriques'],
+  numerique: ['informatique', 'bases en numerique', 'developpement web', 'technologie', 'competences numeriques'],
+  informatique: ['developpement web', 'bases en numerique', 'numerique', 'programmation', 'python', 'javascript', 'competences numeriques'],
   anglais: ['anglais ou francais', 'anglais ou portugais'],
   francais: ['anglais ou francais'],
   portugais: ['anglais ou portugais'],
   communication: ['relations publiques', 'redaction', 'marketing', 'community management'],
-  redaction: ['redaction de rapports', 'redaction de projet', 'communication', 'journalisme'],
+  redaction: ['redaction de rapports', 'redaction de projet', 'communication', 'journalisme', 'redaction web'],
+  'redaction web': ['redaction', 'communication', 'seo', 'content'],
   'redaction de rapports': ['redaction', 'communication', 'rapports'],
   'redaction de projet': ['redaction', 'gestion de projet', 'conception de projet'],
   'gestion de projet': ['management', 'leadership', 'redaction de projet', 'coordination'],
@@ -249,9 +257,16 @@ const SKILL_PROXIMITY: Record<string, string[]> = {
   figma: ['ui ux', 'ui/ux', 'design', 'prototypage', 'graphisme'],
   'ui ux': ['figma', 'design', 'ui/ux', 'prototypage'],
   marketing: ['digital marketing', 'communication', 'community management', 'reseaux sociaux'],
-  'digital marketing': ['marketing', 'community management', 'communication', 'seo'],
-  finance: ['comptabilite', 'tresorerie', 'audit', 'gestion'],
-  comptabilite: ['finance', 'audit', 'gestion'],
+  'digital marketing': ['marketing', 'community management', 'communication', 'seo', 'reseaux sociaux'],
+  'reseaux sociaux': ['marketing', 'digital marketing', 'community management', 'creation de contenu', 'communication'],
+  'creation de contenu': ['reseaux sociaux', 'marketing', 'communication', 'canva', 'audiovisuel'],
+  canva: ['design', 'creation de contenu', 'graphisme', 'communication'],
+  finance: ['comptabilite', 'tresorerie', 'audit', 'gestion', 'analyse financiere'],
+  comptabilite: ['finance', 'audit', 'gestion', 'tresorerie', 'comptabilite generale'],
+  'comptabilite generale': ['comptabilite', 'finance', 'audit'],
+  'analyse financiere': ['finance', 'comptabilite', 'analyse', 'excel'],
+  'gestion financiere': ['finance', 'comptabilite', 'gestion', 'analyse financiere'],
+  tresorerie: ['finance', 'comptabilite', 'gestion financiere'],
   biologie: ['microbiologie', 'biochimie', 'sciences biomedicales', 'recherche scientifique', 'recherche', 'genetique', 'biologie marine', 'sante'],
   microbiologie: ['biologie', 'biochimie', 'analyses biomedicales', 'recherche scientifique'],
   biochimie: ['biologie', 'microbiologie', 'chimie', 'recherche scientifique'],
@@ -261,6 +276,18 @@ const SKILL_PROXIMITY: Record<string, string[]> = {
   'sante publique': ['sante', 'epidemiologie', 'medecine', 'action humanitaire', 'sensibilisation'],
   droit: ['droit des affaires', 'sciences juridiques', 'droit du travail', 'veille juridique', 'contentieux'],
   'genie civil': ['btp', 'autocad', 'gestion de chantier', 'topographie', 'ingenierie'],
+  coordination: ['gestion de projet', 'management', 'organisation'],
+  organisation: ['coordination', 'gestion de projet', 'planification', 'bureautique'],
+  sensibilisation: ['communication', 'animation', 'engagement communautaire'],
+  animation: ['sensibilisation', 'communication', 'engagement communautaire'],
+  'management qualite': ['qualite', 'organisation', 'rigueur', 'audit'],
+  qualite: ['management qualite', 'controle qualite', 'organisation', 'rigueur'],
+  'controle qualite': ['qualite', 'management qualite', 'organisation'],
+  'gestion de stock': ['logistique', 'organisation', 'inventaire'],
+  logistique: ['gestion de stock', 'supply chain', 'organisation'],
+  vente: ['commercial', 'relation client', 'prospection', 'marketing'],
+  'relation client': ['vente', 'commercial', 'communication', 'accueil'],
+  accueil: ['relation client', 'communication', 'organisation', 'secretariat'],
 }
 
 // ── Level conversion ──────────────────────────────────────────
@@ -283,11 +310,25 @@ const LEVEL_MAP: Record<string, number> = {
 function levelToNumber(level: string): number {
   if (!level) return 0
   const n = normalizeText(level)
-  if (n === 'aucun' || n === 'tous' || n === 'tous niveaux' || n.includes('sans')) return 0
+  // Open-to-all levels from the new dataset
+  if (
+    n === 'aucun' ||
+    n === 'tous' ||
+    n === 'tous niveaux' ||
+    n.includes('sans') ||
+    n.includes('etudiant') ||
+    n.includes('jeune diplome') ||
+    n.includes('entry level') ||
+    n.includes('debut de carriere') ||
+    n.includes('non precise') ||
+    n.includes('selon')
+  ) return 0
   if (LEVEL_MAP[n] !== undefined) return LEVEL_MAP[n]
   for (const [key, val] of Object.entries(LEVEL_MAP)) {
     if (n.includes(key) || key.includes(n)) return val
   }
+  // Experience-based levels from the new dataset (treat as senior = Bac+4)
+  if (n.includes('experience') || n.includes('senior') || n.includes('p-5') || n.includes('p-4')) return 5
   return -1
 }
 
@@ -544,14 +585,16 @@ export function getLocationScore(profileLocation: string, opportunityLocation: s
 // ── DIMENSION E — Intérêts / Type score (0-10) ──────────────
 
 const TYPE_SYNONYMS: Record<string, string[]> = {
-  stage: ['stage', 'internship', 'apprentissage'],
-  emploi: ['emploi', 'job', 'cdi', 'cdd', 'travail', 'recrutement'],
-  job: ['emploi', 'job', 'cdi', 'cdd', 'travail', 'recrutement'],
+  stage: ['stage', 'internship', 'apprentissage', 'stage / job'],
+  emploi: ['emploi', 'job', 'cdi', 'cdd', 'travail', 'recrutement', 'stage / job'],
+  job: ['emploi', 'job', 'cdi', 'cdd', 'travail', 'recrutement', 'stage / job'],
   bourse: ['bourse', 'scholarship', 'financement'],
   concours: ['concours', 'competition', 'hackathon', 'challenge'],
   formation: ['formation', 'cours', 'certification', 'apprentissage'],
   freelance: ['freelance', 'mission', 'projet independant'],
   projet: ['projet', 'mission', 'collaboration'],
+  mission: ['mission', 'freelance', 'projet independant', 'collaboration'],
+  'stage / job': ['stage', 'emploi', 'job', 'internship', 'travail'],
 }
 
 export function getInterestScore(profileInterests: string[], opportunityType: string): number {

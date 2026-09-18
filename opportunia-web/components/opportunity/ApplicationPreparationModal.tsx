@@ -29,13 +29,13 @@ export function ApplicationPreparationModal({
     if (profile) return profile
     return {
       id: 'demo-user',
-      prenom: 'Éric',
-      nom: 'Koffi',
-      filiere: 'Informatique',
-      niveau: 'Bac+3',
-      competences: ['JavaScript', 'React', 'Git'],
+      prenom: 'John',
+      nom: 'Doe',
+      filiere: '',
+      niveau: '',
+      competences: [''],
       localisation: 'Lomé',
-      interets: ['Stage', 'Emploi'],
+      interets: ['Stage'],
       createdAt: new Date().toISOString(),
     }
   }, [profile])
@@ -126,22 +126,20 @@ export function ApplicationPreparationModal({
             <div className="flex gap-2 mb-3">
               <button
                 onClick={() => setActiveTab('email')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
-                  activeTab === 'email'
-                    ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/25'
-                    : 'bg-white/5 text-slate-400 hover:text-white border border-white/10'
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${activeTab === 'email'
+                  ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/25'
+                  : 'bg-white/5 text-slate-400 hover:text-white border border-white/10'
+                  }`}
               >
                 <Mail className="w-4 h-4" />
                 Message email
               </button>
               <button
                 onClick={() => setActiveTab('letter')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
-                  activeTab === 'letter'
-                    ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/25'
-                    : 'bg-white/5 text-slate-400 hover:text-white border border-white/10'
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${activeTab === 'letter'
+                  ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/25'
+                  : 'bg-white/5 text-slate-400 hover:text-white border border-white/10'
+                  }`}
               >
                 <FileText className="w-4 h-4" />
                 Lettre de motivation courte
@@ -183,11 +181,10 @@ export function ApplicationPreparationModal({
         <div className="p-4 sm:p-5 border-t border-white/10 bg-white/[0.02] flex flex-wrap items-center justify-between gap-3">
           <button
             onClick={handleSavePrepared}
-            className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
-              markedAsPrepared
-                ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400'
-                : 'bg-white/10 hover:bg-white/15 border border-white/10 text-slate-300 hover:text-white'
-            }`}
+            className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${markedAsPrepared
+              ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400'
+              : 'bg-white/10 hover:bg-white/15 border border-white/10 text-slate-300 hover:text-white'
+              }`}
           >
             <BookmarkCheck className="w-4 h-4" />
             {markedAsPrepared ? 'Ajouté à "Candidatures préparées"' : 'Enregistrer dans mon tracker'}

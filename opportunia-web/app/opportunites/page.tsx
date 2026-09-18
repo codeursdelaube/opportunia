@@ -10,7 +10,7 @@ import { getTypeLabel } from '@/lib/utils'
 import { ALL_OPPORTUNITIES } from '@/lib/opportunities'
 import type { MatchResult, UserProfile } from '@/types'
 
-const TYPES = ['Tous', 'stage', 'emploi', 'bourse', 'concours', 'formation', 'projet', 'freelance']
+const TYPES = ['Tous', 'stage', 'emploi', 'bourse', 'concours', 'formation', 'mission', 'projet', 'freelance']
 const NIVEAUX = ['Tous', 'Aucun', 'Bac', 'Licence / Bac+3', 'Master', 'Doctorat']
 const LOCALISATIONS = ['Toutes', 'À distance', 'Afrique / Régional', 'International']
 const SORTS = ['Pertinence', 'Deadline', 'Plus récent']
@@ -89,7 +89,8 @@ export default function OpportunitesPage() {
       const tf = typeFilter.toLowerCase()
       results = results.filter((r) => {
         const oppType = (r.opportunity.type || '').toLowerCase()
-        if (tf === 'emploi') return oppType === 'emploi' || oppType === 'job'
+        if (tf === 'emploi') return oppType === 'emploi' || oppType === 'job' || oppType.includes('emploi') || oppType.includes('job')
+        if (tf === 'stage') return oppType === 'stage' || oppType.includes('stage')
         return oppType === tf
       })
     }

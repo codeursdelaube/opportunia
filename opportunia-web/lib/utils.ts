@@ -47,6 +47,8 @@ const TYPE_LABELS: Record<string, string> = {
   formation: 'Formation',
   freelance: 'Freelance',
   projet: 'Projet',
+  mission: 'Mission',
+  'stage / job': 'Stage / Emploi',
 }
 
 export function getTypeLabel(type: OpportunityType | string): string {
@@ -64,6 +66,8 @@ const TYPE_COLORS: Record<string, string> = {
   formation: 'bg-teal-50 text-teal-700 border-teal-200 dark:bg-teal-500/20 dark:text-teal-300 dark:border-teal-500/30',
   freelance: 'bg-indigo-50 text-indigo-700 border-indigo-200 dark:bg-indigo-500/20 dark:text-indigo-300 dark:border-indigo-500/30',
   projet: 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-500/20 dark:text-rose-300 dark:border-rose-500/30',
+  mission: 'bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-500/20 dark:text-orange-300 dark:border-orange-500/30',
+  'stage / job': 'bg-cyan-50 text-cyan-700 border-cyan-200 dark:bg-cyan-500/20 dark:text-cyan-300 dark:border-cyan-500/30',
 }
 
 export function getTypeColor(type: OpportunityType | string): string {
@@ -105,34 +109,58 @@ export function getOpportunityImage(opportunity: { image?: string; titre?: strin
   if (title.includes('mobile')) {
     return 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80'
   }
-  if (title.includes('react') || title.includes('web') || title.includes('dev') || filiere.includes('logiciel')) {
+  if (title.includes('react') || title.includes('web') || title.includes('dev') || filiere.includes('logiciel') || filiere.includes('developpement web')) {
     return 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80'
   }
   if (title.includes('reseau') || title.includes('video') || title.includes('cctv') || title.includes('system') || title.includes('support') || title.includes('technicien')) {
     return 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80'
   }
-  if (title.includes('data') || title.includes('intelligence') || title.includes('ia') || filiere.includes('data')) {
+  if (title.includes('ia') || title.includes('intelligence') || title.includes('data') || filiere.includes('data') || filiere.includes('intelligence artificielle')) {
     return 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80'
   }
-  if (title.includes('market') || title.includes('digital') || title.includes('community')) {
+  if (title.includes('cybersecurit') || title.includes('securit')) {
+    return 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80'
+  }
+  if (title.includes('market') || title.includes('digital') || title.includes('community') || title.includes('reseaux sociaux') || title.includes('contenu')) {
     return 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80'
   }
   if (title.includes('design') || title.includes('graphi') || filiere.includes('design') || filiere.includes('arts')) {
     return 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80'
   }
-  if (title.includes('compta') || title.includes('finance') || filiere.includes('comptabilite') || filiere.includes('finance')) {
+  if (title.includes('monteur') || title.includes('audiovisuel') || title.includes('video') || filiere.includes('audiovisuel')) {
+    return 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80'
+  }
+  if (title.includes('compta') || title.includes('finance') || filiere.includes('comptabilite') || filiere.includes('finance') || title.includes('financier')) {
     return 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80'
   }
-  if (title.includes('commerc') || title.includes('vent') || title.includes('prospect') || title.includes('client')) {
+  if (title.includes('assurance') || filiere.includes('assurance') || filiere.includes('banque')) {
+    return 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80'
+  }
+  if (title.includes('commerc') || title.includes('vent') || title.includes('prospect') || title.includes('client') || title.includes('conseiller')) {
     return 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80'
   }
-  if (title.includes('rh') || title.includes('ressources') || title.includes('admin') || filiere.includes('ressources')) {
+  if (title.includes('rh') || title.includes('ressources') || title.includes('admin') || title.includes('accueil') || filiere.includes('ressources')) {
     return 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80'
   }
-  if (title.includes('logist') || title.includes('supply')) {
+  if (title.includes('logist') || title.includes('supply') || title.includes('magasinier') || title.includes('stock')) {
     return 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80'
   }
-  if (title.includes('projet')) {
+  if (title.includes('sante') || title.includes('medical') || title.includes('hopital') || filiere.includes('sante')) {
+    return 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80'
+  }
+  if (title.includes('agro') || title.includes('agricul') || title.includes('elevage') || filiere.includes('agriculture') || filiere.includes('agroalimentaire')) {
+    return 'https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1200&q=80'
+  }
+  if (title.includes('eau') || title.includes('aep') || title.includes('hydraulique') || title.includes('genie civil') || filiere.includes('genie civil')) {
+    return 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80'
+  }
+  if (title.includes('education') || title.includes('enseignant') || title.includes('formateur') || filiere.includes('education') || filiere.includes('enseignement')) {
+    return 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80'
+  }
+  if (title.includes('unicef') || title.includes('unfpa') || title.includes('fao') || title.includes('onu') || title.includes('nations unies') || title.includes('international')) {
+    return 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80'
+  }
+  if (title.includes('projet') || title.includes('programme') || title.includes('coordination')) {
     return 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80'
   }
   if (type.includes('bourse')) {
@@ -143,6 +171,9 @@ export function getOpportunityImage(opportunity: { image?: string; titre?: strin
   }
   if (type.includes('formation')) {
     return 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80'
+  }
+  if (type.includes('mission')) {
+    return 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80'
   }
   return 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80'
 }
